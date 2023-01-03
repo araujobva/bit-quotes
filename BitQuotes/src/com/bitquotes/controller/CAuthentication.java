@@ -4,15 +4,17 @@
  */
 package com.bitquotes.controller;
 
-import com.bitquotes.view.VJFrameAuthentication;
+import com.bitquotes.model.MUser;
+import com.bitquotes.jdbc.JConnectionFactory;
+import com.sun.jdi.connect.spi.Connection;
 
 /**
  *
  * @author bruno
  */
-public class CMain {
-    public static void main(String[] args) {
-        VJFrameAuthentication tela = new VJFrameAuthentication();
-        tela.setVisible(true);
+public class CAuthentication {
+
+    public static boolean authentication(MUser user) {
+        return true;
     }
 }
