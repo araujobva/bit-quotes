@@ -15,13 +15,18 @@ import javax.swing.JOptionPane;
  */
 
 public class JConnectionFactory {
+    
+    private static String driverJDBC = "com.mysql.jdbc.Driver";
+    private static String connectionPath = "jdbc:mysql://127.0.0.1/bit_quote_test";
+    private static String user = "root";
+    private static String password = "852";
+    
     public static Connection getConnection() throws SQLException {
         try {
-            Class.forName("com.mysql.jdbc.Driver"); //Definindo o driver do meu projeto. (NOTA: Para funcionar, importe o driver de conexão para o projeto.)
-            return DriverManager.getConnection("jdbc:mysql://127.0.0.1/bit_quote","root","852"); //Retornando uma conexão para o método que chamar este método.          
+            Class.forName(driverJDBC); //Definindo o driver do meu projeto. (NOTA: Para funcionar, importe o driver de conexão para o projeto)
+            return DriverManager.getConnection(connectionPath, user, password); //Retornando uma conexão para o método que chamar este método.          
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null,"Driver MySQL não encontrado.\n"+ex,"Erro de Driver",JOptionPane.ERROR_MESSAGE);
-            System.out.println("Driver MySQL não encontrado."+ex);
             return null;
         } 
     }

@@ -6,6 +6,7 @@ package com.bitquotes.view;
 
 import com.bitquotes.model.MUser;
 import com.bitquotes.controller.CAuthentication;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -165,6 +166,10 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
         user.setUser(jTextField1.getText());
         user.setPassword(jPasswordField1.getText());
         boolean authentication = CAuthentication.authentication(user);
+        if(authentication)
+            System.out.println("Chamada da tela iniical...");
+        else
+            JOptionPane.showMessageDialog(null,"Usuário ou Senha inválidos!","Erro de Login!",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -22,7 +22,7 @@ public class MUser {
         this.user = user;
     }
     
-    public String password() {
+    public String getPassword() {
         return this.password;
     }
     

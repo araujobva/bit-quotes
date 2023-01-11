@@ -6,6 +6,7 @@ package com.bitquotes.controller;
 
 import com.bitquotes.jdbc.dao.DSelect;
 import com.bitquotes.model.MUser;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,7 +15,12 @@ import com.bitquotes.model.MUser;
 public class CAuthentication {
 
     public static boolean authentication(MUser user) {
-        DSelect.authentication();
-        return true;
+        ArrayList<MUser> userList = new ArrayList<MUser>();
+        userList = DSelect.authentication();
+        for(int i = 0; i < userList.size(); i++) { 
+            if(userList.get(i).getUser().equals(user.getUser()) && userList.get(i).getPassword().equals(user.getPassword()))
+                return true;
+        }
+        return false;
     }
 }
