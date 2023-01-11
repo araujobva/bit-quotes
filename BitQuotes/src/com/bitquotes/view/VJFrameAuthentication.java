@@ -21,6 +21,7 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); //Define a localização que o JFrame vai abrir na tela
                                     //Neste caso ela abrirá no meio da tela por causa do parâmetro null.
+        jTextField1.setText("bruno");
     }
 
     /**
@@ -41,7 +42,7 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Autenticação");
+        setTitle("Bit Quotes - Autenticação");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
@@ -54,12 +55,12 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel2.setText("Nome:");
 
-        jTextField1.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel3.setText("Senha:");
 
-        jPasswordField1.setFont(new java.awt.Font("Ubuntu", 0, 15)); // NOI18N
+        jPasswordField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(252, 252, 252));
         jButton1.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
@@ -116,7 +117,7 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -126,19 +127,16 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)))
         );
 
@@ -166,10 +164,13 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
         user.setUser(jTextField1.getText());
         user.setPassword(jPasswordField1.getText());
         boolean authentication = CAuthentication.authentication(user);
-        if(authentication)
-            System.out.println("Chamada da tela iniical...");
-        else
-            JOptionPane.showMessageDialog(null,"Usuário ou Senha inválidos!","Erro de Login!",JOptionPane.ERROR_MESSAGE);
+        if(authentication){
+            dispose(); //Fecha a tela corrente
+            VJFrameMain main = new VJFrameMain(user.getUser());
+            main.setVisible(true);
+        } else {
+           JOptionPane.showMessageDialog(null,"Usuário ou Senha inválidos!","Erro de Login!",JOptionPane.ERROR_MESSAGE); 
+        }         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
