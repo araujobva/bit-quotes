@@ -18,7 +18,7 @@ public class JConnectionFactory {
     public static Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver"); //Definindo o driver do meu projeto. (NOTA: Para funcionar, importe o driver de conexão para o projeto.)
-            return DriverManager.getConnection("jdbc:mysql://127.0.0.1/bit_quotes","root",""); //Retornando uma conexão para o método que chamar este método.          
+            return DriverManager.getConnection("jdbc:mysql://127.0.0.1/bit_quote","root","852"); //Retornando uma conexão para o método que chamar este método.          
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null,"Driver MySQL não encontrado.\n"+ex,"Erro de Driver",JOptionPane.ERROR_MESSAGE);
             System.out.println("Driver MySQL não encontrado."+ex);

@@ -12,6 +12,7 @@ public class MUser {
     
     private String user;
     private String password;
+    private boolean administrator;
       
     public String getUser() {
         return this.user;
@@ -27,6 +28,14 @@ public class MUser {
     
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public boolean getAdministrator() {
+	    return this.administrator;
+    }
+    
+    public void setAdministrator(boolean administrator) {
+	    this.administrator = administrator;
     }
     
 }

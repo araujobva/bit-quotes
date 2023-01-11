@@ -4,9 +4,8 @@
  */
 package com.bitquotes.controller;
 
+import com.bitquotes.jdbc.dao.DSelect;
 import com.bitquotes.model.MUser;
-import com.bitquotes.jdbc.JConnectionFactory;
-import com.sun.jdi.connect.spi.Connection;
 
 /**
  *
@@ -15,6 +14,7 @@ import com.sun.jdi.connect.spi.Connection;
 public class CAuthentication {
 
     public static boolean authentication(MUser user) {
+        DSelect.authentication();
         return true;
     }
 }
