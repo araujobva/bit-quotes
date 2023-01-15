@@ -6,7 +6,7 @@ package com.bitquotes.view;
 
 /**
  *
- * @author wolf
+ * @author bruno
  */
 public class VJFrameMain extends javax.swing.JFrame {
 
