@@ -4,6 +4,8 @@
  */
 package com.bitquotes.view;
 
+import com.bitquotes.controller.CAdd;
+
 /**
  *
  * @author bruno
@@ -50,6 +52,7 @@ public class VJFrameMain extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Bit Quotes - Página Principal");
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
 
@@ -78,6 +81,11 @@ public class VJFrameMain extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/add.png"))); // NOI18N
         jButton2.setText("Adicionar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(252, 252, 252));
         jButton3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -236,6 +244,11 @@ public class VJFrameMain extends javax.swing.JFrame {
         VJFrameAuthentication authentication = new VJFrameAuthentication();
         authentication.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        VJFrameAddQuote frame = new VJFrameAddQuote();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
