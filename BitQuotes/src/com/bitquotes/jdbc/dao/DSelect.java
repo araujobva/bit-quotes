@@ -36,7 +36,7 @@ public class DSelect {
             rs.close(); //Fechando o ResultSet
             return userList;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Erro na autenticação!"+ex,"Erro!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Erro na autenticação! "+ex,"Erro!",JOptionPane.ERROR_MESSAGE);
         } 
         return null;
     }

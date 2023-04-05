@@ -22,6 +22,7 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
         setLocationRelativeTo(null); //Define a localização que o JFrame vai abrir na tela
                                     //Neste caso ela abrirá no meio da tela por causa do parâmetro null.
         jTextField1.setText("bruno");
+        jPasswordField1.setText("bruno");
     }
 
     /**
