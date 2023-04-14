@@ -55,11 +55,11 @@ public class DSelect {
                     + "FROM quote "
                     + "INNER JOIN book "
                     + "ON book.bo_id = quote.bo_id "
-                    + "WHERE quote.us_name = ? AND book.bo_name = ?";
+                    + "WHERE quote.us_name = ? AND book.bo_name LIKE ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);
-            stmt.setString(2, bookName);
+            stmt.setString(2, "%" + bookName + "%");
             //ResultSet rs = con.createStatement().executeQuery(query);
             ResultSet rs = stmt.executeQuery();
             ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
@@ -72,6 +72,9 @@ public class DSelect {
                 quoteList.add(objQuote);
                 objQuote = new MQuote();
             }
+            con.close();
+            stmt.close();
+            rs.close();
             return quoteList;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível fazer a pesquisa pelo nome do livro!\n" + ex, "Erro de pesquisa!", JOptionPane.ERROR_MESSAGE);
