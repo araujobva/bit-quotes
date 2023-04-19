@@ -20,4 +20,10 @@ public class CSearchQuote {
         return quoteList;
     }
     
+    public static ArrayList searchQuote(String user, String quotePiece) {
+        ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
+        quoteList = DSelect.searchQuote(user, quotePiece);
+        return quoteList;
+    }
+    
 }
