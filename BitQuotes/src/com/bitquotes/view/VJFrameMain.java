@@ -24,10 +24,10 @@ public class VJFrameMain extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         jTextField2.setText(user);
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(50); //Modificando o tamanho da coluna ID da citação.
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(600); //Modificando o tamanho da coluna da citação.
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(35); //Modificando o tamanho da coluna ID da citação.
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(630); //Modificando o tamanho da coluna da citação.
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(300); //Modificando o tamanho da coluna do livro.
-        jTable1.getColumnModel().getColumn(3).setPreferredWidth(50); //Modificando o tamanho da coluna página.
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(35); //Modificando o tamanho da coluna página.
     }
 
     private VJFrameMain() {
