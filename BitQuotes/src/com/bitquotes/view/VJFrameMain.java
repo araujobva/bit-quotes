@@ -295,7 +295,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        VJFrameAddQuote frame = new VJFrameAddQuote();
+        VJFrameAddQuote frame = new VJFrameAddQuote(jTextField2.getText());
         frame.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 

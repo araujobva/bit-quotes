@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import com.bitquotes.model.MQuote;
+import com.bitquotes.model.MBookName;
 
 /**
  *
@@ -84,7 +85,7 @@ public class DSelect {
     
     //Método para procurar citações por uma citação.
     public static ArrayList searchQuote(String user, String quotePiece) {
-                try {
+        try {
             Connection con = JConnectionFactory.getConnection();
             //SELECT quote.qu_id, quote.qu_quote, book.bo_name, quote.qu_book_page FROM quote INNER JOIN book ON book.bo_id = quote.bo_id WHERE quote.us_name = "user" AND quote.qu_quote LIKE "%Quote Piece%";
             String query = "SELECT quote.qu_id, quote.qu_quote, book.bo_name, quote.qu_book_page "
@@ -116,6 +117,32 @@ public class DSelect {
             JOptionPane.showMessageDialog(null, "Não foi possível fazer a pesquisa pela citação do livro!\n" + ex, "Erro de pesquisa!", JOptionPane.ERROR_MESSAGE);
             return null;
         }
+    }
+    
+    public static ArrayList searchBook(String user) {
+        try {
+            Connection con = JConnectionFactory.getConnection();
+            String query = "SELECT book.bo_name FROM book INNER JOIN user WHERE user.us_name = ?";
+            PreparedStatement stmt;
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, user);
+            ResultSet rs = stmt.executeQuery();
+            MBookName objNameBook = new MBookName();
+            ArrayList<MBookName> bookList = new ArrayList<MBookName>();
+            while(rs.next()) {
+                objNameBook.setBookName(rs.getString("book.bo_name"));
+                bookList.add(objNameBook);
+                objNameBook = new MBookName();
+            }
+            con.close();
+            stmt.close();
+            rs.close();
+            return bookList;
+        } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível trazer as informações do livro!\n" +ex, "Erro de pesquisa!", JOptionPane.ERROR_MESSAGE);
+        }
+        return null; 
+        
     }
     
 }
