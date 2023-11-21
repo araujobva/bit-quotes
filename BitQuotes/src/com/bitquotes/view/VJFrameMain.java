@@ -175,7 +175,7 @@ public class VJFrameMain extends javax.swing.JFrame {
         });
 
         jTable1.setBackground(new java.awt.Color(252, 252, 252));
-        jTable1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -295,8 +295,8 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        VJFrameAddQuote frame = new VJFrameAddQuote(jTextField2.getText());
-        frame.setVisible(true);
+        VJFrameAddQuote screen = new VJFrameAddQuote(jTextField2.getText());
+        screen.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
