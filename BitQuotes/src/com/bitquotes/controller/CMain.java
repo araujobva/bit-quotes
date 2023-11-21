@@ -14,8 +14,7 @@ import com.bitquotes.jdbc.dao.DSelect;
  */
 public class CMain {
     public static void main(String[] args) {
-        VJFrameAuthentication tela = new VJFrameAuthentication();
-        tela.setVisible(true);
-//        DSelect.searchBookName("bruno", "Drácula");
+        VJFrameAuthentication screen = new VJFrameAuthentication();
+        screen.setVisible(true);
     }
 }

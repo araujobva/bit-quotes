@@ -6,6 +6,7 @@ package com.bitquotes.view;
 import com.bitquotes.controller.CSearchBook;
 import java.util.ArrayList;
 import com.bitquotes.model.MBookName;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -16,20 +17,26 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     /**
      * Creates new form VJFrameAddQuote
      */
-    public VJFrameAddQuote(String usr) {
+    
+    public VJFrameAddQuote(String user) {
         initComponents();
         setLocationRelativeTo(null);
-        String user = usr;
-        ArrayList<MBookName> bookList = new ArrayList<MBookName>();
-        bookList = CSearchBook.cSearchBook(user);
-        for(int i = 0; i < bookList.size(); i++) {
-          jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { bookList.get(i).getBookName() }));  
-        }
-        //jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBox(user);
     }
 
     private VJFrameAddQuote() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    //Carregando o JComboBox com dados dos nomes dos livros persistidos no banco de dados.
+    private void comboBox(String user) {         
+        ArrayList<MBookName> bookList = new ArrayList<MBookName>();
+        bookList = CSearchBook.cSearchBook(user);
+        String[] bookNameArray = new String[bookList.size()];
+        for(int i = 0; i < bookList.size(); i++) {
+            bookNameArray[i] = bookList.get(i).getBookName();
+        }
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(bookNameArray));
     }
 
     /**
@@ -90,7 +97,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(252, 252, 252));
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         /*
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Item 1", "Item 2", "Item 3", "Item 4"}));
         */
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +109,6 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
@@ -117,6 +123,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +157,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+   
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
        
     }//GEN-LAST:event_jComboBox1ActionPerformed
