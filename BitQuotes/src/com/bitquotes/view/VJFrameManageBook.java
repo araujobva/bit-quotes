@@ -212,6 +212,8 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         boolean verification = CManageBook.addBook(objBook);
         if(verification) {
             JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+            jTextField1.setText(null);
+            jTextField2.setText(null);
         } else {
             JOptionPane.showMessageDialog(null, "ERRRO ao adicionar livro!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }

@@ -25,7 +25,6 @@ public class DSelect {
     public static ArrayList authentication() {
         try {
             Connection con = JConnectionFactory.getConnection();
-            //SELECT user.us_name, user.us_password, user.us_administrator FROM user
             String query = "SELECT user.us_name, user.us_password, user.us_administrator "
                     + "FROM user";
             ResultSet rs = con.createStatement().executeQuery(query);

@@ -4,6 +4,7 @@
  */
 package com.bitquotes.controller;
 
+import com.bitquotes.jdbc.dao.DInsert;
 import com.bitquotes.model.MBookName;
 
 /**
@@ -12,8 +13,9 @@ import com.bitquotes.model.MBookName;
  */
 public class CManageBook {
     
-    public static boolean addBook(MBookName objBook) {
-        return true;
+    public static boolean addBook(MBookName objBookName) {
+        boolean verification = DInsert.insertBook(objBookName);
+        return verification;
     }
     
 }
