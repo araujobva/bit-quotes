@@ -6,7 +6,7 @@ package com.bitquotes.view;
 import com.bitquotes.controller.CSearchBook;
 import java.util.ArrayList;
 import com.bitquotes.model.MBookName;
-import javax.swing.JComboBox;
+import com.bitquotes.view.VJFrameManageBook;
 
 /**
  *
@@ -18,10 +18,13 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
      * Creates new form VJFrameAddQuote
      */
     
+    String user;
+    
     public VJFrameAddQuote(String user) {
         initComponents();
         setLocationRelativeTo(null);
         comboBox(user);
+        this.user = user;
     }
 
     private VJFrameAddQuote() {
@@ -182,8 +185,8 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        VJFrameManageBook screen = new VJFrameManageBook(this.user);
         dispose();
-        VJFrameManageBook screen = new VJFrameManageBook();
         screen.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 

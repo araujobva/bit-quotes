@@ -6,6 +6,8 @@ package com.bitquotes.view;
 
 import com.bitquotes.model.MBookName;
 import com.bitquotes.controller.CManageBook;
+import com.bitquotes.controller.CSearchBook;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,9 +19,19 @@ public class VJFrameManageBook extends javax.swing.JFrame {
     /**
      * Creates new form VJFrameManageBook
      */
+    
+    String user;
+            
     public VJFrameManageBook() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+    
+    public VJFrameManageBook(String user) {
+        initComponents();
+        setLocationRelativeTo(null);
+        comboBox(user);
+        this.user = user;
     }
 
     /**
@@ -117,9 +129,16 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(252, 252, 252));
         jButton2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton2.setText("Excluir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        /*
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        */
 
         jButton4.setBackground(new java.awt.Color(252, 252, 252));
         jButton4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -214,11 +233,26 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
             jTextField1.setText(null);
             jTextField2.setText(null);
+            comboBox(this.user);
         } else {
             JOptionPane.showMessageDialog(null, "ERRRO ao adicionar livro!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void comboBox(String user) {
+        ArrayList<MBookName> bookList = new ArrayList<MBookName>();
+        bookList = CSearchBook.cSearchBook(user);
+        String[] bookNameArray = new String[bookList.size()];
+        for(int i = 0; i < bookList.size(); i++) {
+            bookNameArray[i] = bookList.get(i).getBookName();
+        }
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(bookNameArray));
+    }
+    
     /**
      * @param args the command line arguments
      */
