@@ -230,9 +230,9 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         objBook.setAuthor(jTextField2.getText());
         boolean verification = CManageBook.addBook(objBook);
         if(verification) {
-            JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
             jTextField1.setText(null);
             jTextField2.setText(null);
+            JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
             comboBox(this.user);
         } else {
             JOptionPane.showMessageDialog(null, "ERRRO ao adicionar livro!","ERRO!",JOptionPane.ERROR_MESSAGE);
@@ -240,7 +240,12 @@ public class VJFrameManageBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        int key = JOptionPane.showConfirmDialog(null, "IMPORTANTE! \n Se você excluir esse livro, todas a citações referentes a ele também serão excluídas!", "EXCLUIR", JOptionPane.OK_CANCEL_OPTION);
+        if(key == JOptionPane.OK_OPTION) {
+            System.out.println("ok");
+        } else if (key == JOptionPane.CANCEL_OPTION) {
+            System.out.println("cancel");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void comboBox(String user) {
