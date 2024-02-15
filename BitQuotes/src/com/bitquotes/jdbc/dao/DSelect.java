@@ -121,7 +121,7 @@ public class DSelect {
     public static ArrayList searchBook(String user) {
         try {
             Connection con = JConnectionFactory.getConnection();
-            String query = "SELECT book.bo_name FROM book INNER JOIN user WHERE user.us_name = ?";
+            String query = "SELECT book.bo_name FROM book INNER JOIN user WHERE user.us_name = ? ORDER BY book.bo_name ASC";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);

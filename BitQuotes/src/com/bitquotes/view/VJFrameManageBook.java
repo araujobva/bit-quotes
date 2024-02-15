@@ -259,7 +259,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
     }
     
     /**
-     * @param args the command line arguments
+     * @param args the command line argumentsb
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
