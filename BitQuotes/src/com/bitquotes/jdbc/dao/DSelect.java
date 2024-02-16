@@ -164,4 +164,24 @@ public class DSelect {
         return -1;
     }
     
+        public static String authorName(String bookName) {
+        try {
+            Connection con = JConnectionFactory.getConnection();
+            String query = "SELECT book.bo_author FROM book WHERE book.bo_name = ?";
+            PreparedStatement stmt;
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, bookName);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            String name = rs.getString("bo_author");
+            con.close();
+            stmt.close();
+            rs.close();
+            return name;
+        } catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível trazer as informações do autor!\n" +ex, "Erro de pesquisa!", JOptionPane.ERROR_MESSAGE);
+        }
+        return null;    
+    }
+    
 }

@@ -7,6 +7,7 @@ package com.bitquotes.view;
 import com.bitquotes.model.MBookName;
 import com.bitquotes.controller.CManageBook;
 import com.bitquotes.controller.CSearchBook;
+import com.bitquotes.controller.CSearchAuthorName;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -143,6 +144,11 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         jButton4.setBackground(new java.awt.Color(252, 252, 252));
         jButton4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton4.setText("Editar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -252,6 +258,18 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        String bookName = jComboBox1.getSelectedItem().toString();
+        String author = CSearchAuthorName.cSearchAuthorName(bookName);
+        if(author != null) {
+            VJFrameEditBook screen = new VJFrameEditBook(bookName, author);
+            screen.setVisible(true);   
+        } else {
+            JOptionPane.showMessageDialog(null,"Erro ao achar o autor!","ERRO!",JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     public void comboBox(String user) {
         ArrayList<MBookName> bookList = new ArrayList<MBookName>();
         bookList = CSearchBook.cSearchBook(user);
@@ -263,7 +281,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
     }
     
     /**
-     * @param args the command line argumentsb
+     * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
