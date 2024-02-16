@@ -140,8 +140,28 @@ public class DSelect {
         } catch(SQLException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível trazer as informações do livro!\n" +ex, "Erro de pesquisa!", JOptionPane.ERROR_MESSAGE);
         }
-        return null; 
-        
+        return null;    
+    }
+    
+    public static int searchIdBook(String bookName) {
+        try {
+            int id;
+            Connection con = JConnectionFactory.getConnection();
+            String query = "SELECT book.bo_id FROM book WHERE bo_name = ?";
+            PreparedStatement stmt;
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, bookName);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            id = rs.getInt("book.bo_id");
+            con.close();
+            stmt.close();
+            rs.close();
+            return id;
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Não foi possível recuperar as informações do ID do Livro!\n"+ex, "Erro de pesquisa!",JOptionPane.ERROR_MESSAGE);
+        }
+        return -1;
     }
     
 }

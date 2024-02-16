@@ -5,6 +5,8 @@
 package com.bitquotes.controller;
 
 import com.bitquotes.jdbc.dao.DInsert;
+import com.bitquotes.jdbc.dao.DSelect;
+import com.bitquotes.jdbc.dao.DDelete;
 import com.bitquotes.model.MBookName;
 
 /**
@@ -19,7 +21,8 @@ public class CManageBook {
     }
     
     public static boolean removeBook(String bookName) {
-        boolean verification = true;
+        int idBook = DSelect.searchIdBook(bookName);
+        boolean verification = DDelete.deleteQuoteAndBook(idBook, bookName);
         return verification;
     }
     

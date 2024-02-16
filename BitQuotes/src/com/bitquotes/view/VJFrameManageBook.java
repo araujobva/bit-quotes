@@ -20,7 +20,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
      * Creates new form VJFrameManageBook
      */
     
-    String user;
+    private String user;
             
     public VJFrameManageBook() {
         initComponents();
@@ -232,17 +232,21 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         if(verification) {
             jTextField1.setText(null);
             jTextField2.setText(null);
-            JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
             comboBox(this.user);
+            JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "ERRRO ao adicionar livro!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int key = JOptionPane.showConfirmDialog(null, "IMPORTANTE! \n Se você excluir esse livro, todas a citações referentes a ele também serão excluídas!", "EXCLUIR", JOptionPane.OK_CANCEL_OPTION);
+        int key = JOptionPane.showConfirmDialog(null, "IMPORTANTE! \n Se você excluir esse livro, todas as citações referentes a ele também serão excluídas!", "EXCLUIR", JOptionPane.OK_CANCEL_OPTION);
         if(key == JOptionPane.OK_OPTION) {
-            CManageBook.removeBook(jComboBox1.getSelectedItem().toString());
+            boolean verification = CManageBook.removeBook(jComboBox1.getSelectedItem().toString());
+            if(verification) {
+                comboBox(user);
+                JOptionPane.showMessageDialog(null,"O Livro e todas suas citações foram removidas com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+            }
         } else if (key == JOptionPane.CANCEL_OPTION) {
            //Opção de exclusão do livro cancelada.
         }
