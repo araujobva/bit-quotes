@@ -18,4 +18,9 @@ public class CManageBook {
         return verification;
     }
     
+    public static boolean removeBook(String bookName) {
+        boolean verification = true;
+        return verification;
+    }
+    
 }
