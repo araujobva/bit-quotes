@@ -8,7 +8,7 @@ import com.bitquotes.jdbc.dao.DSelect;
 
 /**
  *
- * @author Wolf
+ * @author Bruno
  */
 public class CSearchAuthorName {
     
