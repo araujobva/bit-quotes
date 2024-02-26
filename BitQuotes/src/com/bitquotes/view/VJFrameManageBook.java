@@ -4,7 +4,7 @@
  */
 package com.bitquotes.view;
 
-import com.bitquotes.model.MBookName;
+import com.bitquotes.model.MBook;
 import com.bitquotes.controller.CManageBook;
 import com.bitquotes.controller.CSearchBook;
 import com.bitquotes.controller.CSearchAuthorName;
@@ -231,8 +231,8 @@ public class VJFrameManageBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MBookName objBook = new MBookName();
-        objBook.setBookName(jTextField1.getText());
+        MBook objBook = new MBook();
+        objBook.setName(jTextField1.getText());
         objBook.setAuthor(jTextField2.getText());
         boolean verification = CManageBook.addBook(objBook);
         if(verification) {
@@ -240,9 +240,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             jTextField2.setText(null);
             comboBox(this.user);
             JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "ERRRO ao adicionar livro!","ERRO!",JOptionPane.ERROR_MESSAGE);
-        }
+        } 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -271,11 +269,11 @@ public class VJFrameManageBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     public void comboBox(String user) {
-        ArrayList<MBookName> bookList = new ArrayList<MBookName>();
+        ArrayList<MBook> bookList = new ArrayList<MBook>();
         bookList = CSearchBook.cSearchBook(user);
         String[] bookNameArray = new String[bookList.size()];
         for(int i = 0; i < bookList.size(); i++) {
-            bookNameArray[i] = bookList.get(i).getBookName();
+            bookNameArray[i] = bookList.get(i).getName();
         }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(bookNameArray));
     }

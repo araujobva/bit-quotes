@@ -5,8 +5,10 @@
 package com.bitquotes.view;
 import com.bitquotes.controller.CSearchBook;
 import java.util.ArrayList;
-import com.bitquotes.model.MBookName;
-import com.bitquotes.view.VJFrameManageBook;
+import com.bitquotes.model.MBook;
+import com.bitquotes.model.MQuote;
+import com.bitquotes.controller.CAdd;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,11 +35,11 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     
     //Carregando o JComboBox com dados dos nomes dos livros persistidos no banco de dados.
     private void comboBox(String user) {         
-        ArrayList<MBookName> bookList = new ArrayList<MBookName>();
+        ArrayList<MBook> bookList = new ArrayList<MBook>();
         bookList = CSearchBook.cSearchBook(user);
         String[] bookNameArray = new String[bookList.size()];
         for(int i = 0; i < bookList.size(); i++) {
-            bookNameArray[i] = bookList.get(i).getBookName();
+            bookNameArray[i] = bookList.get(i).getName();
         }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(bookNameArray));
     }
@@ -84,7 +86,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(252, 252, 252));
         jButton2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton2.setText("Cancelar");
+        jButton2.setText("Fechar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -132,7 +134,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, 0, 429, Short.MAX_VALUE)
+                .addComponent(jComboBox1, 0, 442, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -181,7 +183,23 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        if(jTextArea1.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha o campo de citação!","ERRO!",JOptionPane.ERROR_MESSAGE);
+        } else if(jTextField1.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Preencha o campo da página!","ERRO!",JOptionPane.ERROR_MESSAGE);
+        } else {
+            MQuote objQuote = new MQuote();
+            objQuote.setQuote(jTextArea1.getText());
+            objQuote.setBookPage(Short.parseShort(jTextField1.getText()));
+            objQuote.setId(CSearchBook.cSearchIdBook(jComboBox1.getSelectedItem().toString()));
+            objQuote.setUserOwner(this.user);
+            boolean verification = CAdd.addQuote(objQuote);
+            if(verification){
+                jTextArea1.setText(null);
+                jTextField1.setText(null);
+                JOptionPane.showMessageDialog(null, "Citação adiciona com sucesso","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            }  
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

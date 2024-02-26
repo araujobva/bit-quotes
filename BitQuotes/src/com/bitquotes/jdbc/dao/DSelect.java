@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import com.bitquotes.model.MQuote;
-import com.bitquotes.model.MBookName;
+import com.bitquotes.model.MQuoteFrontEnd;
+import com.bitquotes.model.MBook;
 
 /**
  *
@@ -31,7 +31,7 @@ public class DSelect {
             ArrayList<MUser> userList = new ArrayList<MUser>();
             MUser objUser = new MUser();
             while (rs.next()) { //Enquanto tiver dados no ResultSet "rs" o while faz.
-                objUser.setUser(rs.getString("us_name"));
+                objUser.setName(rs.getString("us_name"));
                 objUser.setPassword(rs.getString("us_password"));
                 objUser.setAdministrator(rs.getBoolean("us_administrator"));
                 userList.add(objUser);
@@ -62,15 +62,15 @@ public class DSelect {
             stmt.setString(2, "%" + bookName + "%");
             //ResultSet rs = con.createStatement().executeQuery(query);
             ResultSet rs = stmt.executeQuery();
-            ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
-            MQuote objQuote = new MQuote();
+            ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
+            MQuoteFrontEnd objQuote = new MQuoteFrontEnd();
             while (rs.next()) {
                 objQuote.setId(rs.getInt("quote.qu_id"));
                 objQuote.setQuote(rs.getString("quote.qu_quote"));
                 objQuote.setBookName(rs.getString("book.bo_name"));
                 objQuote.setPageBook(rs.getShort("quote.qu_book_page"));
                 quoteList.add(objQuote);
-                objQuote = new MQuote();
+                objQuote = new MQuoteFrontEnd();
             }
             con.close();
             stmt.close();
@@ -98,15 +98,15 @@ public class DSelect {
             stmt.setString(2, "%" + quotePiece + "%");
             //ResultSet rs = con.createStatement().executeQuery(query);
             ResultSet rs = stmt.executeQuery();
-            ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
-            MQuote objQuote = new MQuote();
+            ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
+            MQuoteFrontEnd objQuote = new MQuoteFrontEnd();
             while (rs.next()) {
                 objQuote.setId(rs.getInt("quote.qu_id"));
                 objQuote.setQuote(rs.getString("quote.qu_quote"));
                 objQuote.setBookName(rs.getString("book.bo_name"));
                 objQuote.setPageBook(rs.getShort("quote.qu_book_page"));
                 quoteList.add(objQuote);
-                objQuote = new MQuote();
+                objQuote = new MQuoteFrontEnd();
             }
             con.close();
             stmt.close();
@@ -126,12 +126,12 @@ public class DSelect {
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);
             ResultSet rs = stmt.executeQuery();
-            MBookName objNameBook = new MBookName();
-            ArrayList<MBookName> bookList = new ArrayList<MBookName>();
+            MBook objNameBook = new MBook();
+            ArrayList<MBook> bookList = new ArrayList<MBook>();
             while(rs.next()) {
-                objNameBook.setBookName(rs.getString("book.bo_name"));
+                objNameBook.setName(rs.getString("book.bo_name"));
                 bookList.add(objNameBook);
-                objNameBook = new MBookName();
+                objNameBook = new MBook();
             }
             con.close();
             stmt.close();

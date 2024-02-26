@@ -4,7 +4,7 @@
  */
 package com.bitquotes.view;
 
-import com.bitquotes.model.MBookName;
+import com.bitquotes.model.MBook;
 
 /**
  *
@@ -158,11 +158,11 @@ public class VJFrameEditBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MBookName bookNameOld = new MBookName();
-        MBookName bookNameNew = new MBookName();
-        bookNameOld.setBookName(this.bookName);
+        MBook bookNameOld = new MBook();
+        MBook bookNameNew = new MBook();
+        bookNameOld.setName(this.bookName);
         bookNameOld.setAuthor(this.authorName);
-        bookNameNew.setBookName(jTextField1.getText());
+        bookNameNew.setName(jTextField1.getText());
         bookNameNew.setAuthor(jTextField2.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 

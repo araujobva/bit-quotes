@@ -8,10 +8,10 @@ package com.bitquotes.model;
  *
  * @author Bruno
  */
-public class MBookName {
+public class MBook {
     
     private int id;
-    private String bookName;
+    private String name;
     private String author;
     //private ??? photo;
 
@@ -32,15 +32,15 @@ public class MBookName {
     /**
      * @return the bookName
      */
-    public String getBookName() {
-        return bookName;
+    public String getName() {
+        return name;
     }
 
     /**
      * @param bookName the bookName to set
      */
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public void setName(String bookName) {
+        this.name = bookName;
     }
 
     /**

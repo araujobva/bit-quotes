@@ -18,7 +18,7 @@ public class CAuthentication {
         ArrayList<MUser> userList = new ArrayList<MUser>();
         userList = DSelect.authentication();
         for(int i = 0; i < userList.size(); i++) { 
-            if(userList.get(i).getUser().equals(user.getUser()) && userList.get(i).getPassword().equals(user.getPassword()))
+            if(userList.get(i).getName().equals(user.getName()) && userList.get(i).getPassword().equals(user.getPassword()))
                 return true;
         }
         return false;

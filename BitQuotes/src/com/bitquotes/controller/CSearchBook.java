@@ -5,7 +5,8 @@
 package com.bitquotes.controller;
 
 import java.util.ArrayList;
-import com.bitquotes.model.MBookName;
+import com.bitquotes.model.MBook;
+import com.bitquotes.jdbc.dao.DSelect;
 import com.bitquotes.jdbc.dao.DSelect;
 
 /**
@@ -15,9 +16,14 @@ import com.bitquotes.jdbc.dao.DSelect;
 public class CSearchBook {
     
     public static ArrayList cSearchBook(String user) {
-        ArrayList<MBookName> bookList = new ArrayList<MBookName>();
+        ArrayList<MBook> bookList = new ArrayList<MBook>();
         bookList = DSelect.searchBook(user);
         return bookList;
+    }
+    
+    public static int cSearchIdBook(String bookName) {
+        int idBook = DSelect.searchIdBook(bookName);
+        return idBook;
     }
     
 }

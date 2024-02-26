@@ -4,14 +4,18 @@
  */
 package com.bitquotes.controller;
 
+import com.bitquotes.jdbc.dao.DInsert;
+import com.bitquotes.model.MQuote;
+
 /**
  *
  * @author bruno
  */
 public class CAdd {
     
-    public static boolean addQuote() {
-        
-        return false;
+    public static boolean addQuote(MQuote objQuote) {
+        boolean verification = DInsert.insertQuote(objQuote);
+        return verification;
     } 
+    
 }

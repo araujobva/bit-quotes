@@ -162,12 +162,12 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         MUser user = new MUser();
-        user.setUser(jTextField1.getText());
+        user.setName(jTextField1.getText());
         user.setPassword(jPasswordField1.getText());
         boolean authentication = CAuthentication.authentication(user);
         if(authentication){
             dispose(); //Fecha a tela corrente
-            VJFrameMain main = new VJFrameMain(user.getUser());
+            VJFrameMain main = new VJFrameMain(user.getName());
             main.setVisible(true);
         } else {
            JOptionPane.showMessageDialog(null,"Usuário ou Senha inválidos!","Erro de Login!",JOptionPane.ERROR_MESSAGE); 

@@ -7,7 +7,7 @@ package com.bitquotes.view;
 import com.bitquotes.controller.CAdd;
 import com.bitquotes.controller.CSearchQuote;
 import java.util.ArrayList;
-import com.bitquotes.model.MQuote;
+import com.bitquotes.model.MQuoteFrontEnd;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -316,7 +316,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel(); //Pegando o modelo da tabela (Quantidade de Linhas, Colunas etc).
         tableModel.setRowCount(0); //Reseta a tabela, pois se não tiver essa linha, as pesquisas vão se acumulando, se repetindo.
-        ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
+        ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
         if(jRadioButton1.isSelected()) { 
             quoteList = CSearchQuote.searchQuoteBookName(jTextField2.getText(), jTextField1.getText());
             for(int i = 0; i < quoteList.size(); i++) {

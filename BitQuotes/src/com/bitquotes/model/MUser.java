@@ -10,16 +10,16 @@ package com.bitquotes.model;
  */
 public class MUser {
     
-    private String user;
+    private String name;
     private String password;
     private boolean administrator;
       
-    public String getUser() {
-        return this.user;
+    public String getName() {
+        return this.name;
     }
     
-    public void setUser(String user) {
-        this.user = user;
+    public void setName(String user) {
+        this.name = user;
     }
     
     public String getPassword() {
