@@ -164,15 +164,15 @@ public class DSelect {
         return -1;
     }
     
-    public static int searchIdBook(String bookName, String authorName) {
+    public static int searchIdBook(MBook book) {
         try {
             int id;
             Connection con = JConnectionFactory.getConnection();
             String query = "SELECT book.bo_id FROM book WHERE book.bo_name = ? AND book.bo_author = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
-            stmt.setString(1, bookName);
-            stmt.setString(2, authorName);
+            stmt.setString(1, book.getName());
+            stmt.setString(2, book.getAuthor());
             ResultSet rs = stmt.executeQuery();
             rs.next();
             id = rs.getInt("book.bo_id");

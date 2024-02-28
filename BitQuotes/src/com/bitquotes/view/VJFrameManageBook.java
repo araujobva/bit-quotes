@@ -260,12 +260,12 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         String bookName = jComboBox1.getSelectedItem().toString();
         String author = CSearchAuthorName.cSearchAuthorName(bookName);
         if(author != null) {
-            VJFrameEditBook screen = new VJFrameEditBook(bookName, author);
-            screen.setVisible(true);   
+            //VJFrameEditBook screen = new VJFrameEditBook(bookName, author);
+            //screen.setVisible(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(null,"Erro ao achar o autor!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_jButton4ActionPerformed
 
     public void comboBox(String user) {
