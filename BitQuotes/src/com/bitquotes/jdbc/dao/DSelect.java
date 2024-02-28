@@ -164,6 +164,28 @@ public class DSelect {
         return -1;
     }
     
+    public static int searchIdBook(String bookName, String authorName) {
+        try {
+            int id;
+            Connection con = JConnectionFactory.getConnection();
+            String query = "SELECT book.bo_id FROM book WHERE book.bo_name = ? AND book.bo_author = ?";
+            PreparedStatement stmt;
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, bookName);
+            stmt.setString(2, authorName);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            id = rs.getInt("book.bo_id");
+            con.close();
+            stmt.close();
+            rs.close();
+            return id;
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null,"Não foi possível recuperar as informações do ID do Livro!\n"+ex, "Erro de pesquisa!",JOptionPane.ERROR_MESSAGE);
+        }
+        return -1;
+    }
+    
         public static String authorName(String bookName) {
         try {
             Connection con = JConnectionFactory.getConnection();

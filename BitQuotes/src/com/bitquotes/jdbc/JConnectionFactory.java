@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
  *
  * @author bruno
  */
-
 public class JConnectionFactory {
     
     private static String driverJDBC = "com.mysql.jdbc.Driver";
