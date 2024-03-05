@@ -231,16 +231,24 @@ public class VJFrameManageBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MBook objBook = new MBook();
-        objBook.setName(jTextField1.getText());
-        objBook.setAuthor(jTextField2.getText());
-        boolean verification = CManageBook.addBook(objBook);
-        if(verification) {
-            jTextField1.setText(null);
-            jTextField2.setText(null);
-            comboBox(this.user);
-            JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
-        } 
+        if(jTextField1.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Preencha o campo do nome do livro!","Erro!",JOptionPane.ERROR_MESSAGE);
+        } else if(jTextField2.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Preencha o campo do nome do autor!","Erro!",JOptionPane.ERROR_MESSAGE);
+        } else {
+            MBook objBook = new MBook();
+            objBook.setName(jTextField1.getText());
+            objBook.setAuthor(jTextField2.getText());
+            objBook.setUserName(this.user);
+            boolean verification = CManageBook.addBook(objBook);
+            if(false) {
+                jTextField1.setText(null);
+                jTextField2.setText(null);
+                comboBox(this.user);
+                JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+            }            
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

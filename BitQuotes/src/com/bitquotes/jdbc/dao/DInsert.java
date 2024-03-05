@@ -21,10 +21,11 @@ public class DInsert {
     public static boolean insertBook(MBook objBookName) {
         try {
             Connection con = JConnectionFactory.getConnection();
-            String query = "INSERT INTO book (book.bo_name, book.bo_author) VALUES (?, ?)";
+            String query = "INSERT INTO book (book.bo_name, book.bo_author, book.us_us_name) VALUES (?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, objBookName.getName());
             stmt.setString(2, objBookName.getAuthor());
+            stmt.setString(3, objBookName.getUserName());
             stmt.executeUpdate();
             con.close();
             stmt.close();
