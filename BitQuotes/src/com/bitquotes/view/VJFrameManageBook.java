@@ -241,7 +241,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             objBook.setAuthor(jTextField2.getText());
             objBook.setUserName(this.user);
             boolean verification = CManageBook.addBook(objBook);
-            if(false) {
+            if(verification) {
                 jTextField1.setText(null);
                 jTextField2.setText(null);
                 comboBox(this.user);
