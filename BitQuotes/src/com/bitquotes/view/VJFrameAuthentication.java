@@ -162,8 +162,8 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         MUser user = new MUser();
-        user.setName(jTextField1.getText());
-        user.setPassword(jPasswordField1.getText());
+        user.setName(jTextField1.getText().trim());
+        user.setPassword(jPasswordField1.getText().trim());
         boolean authentication = CAuthentication.authentication(user);
         if(authentication){
             dispose(); //Fecha a tela corrente

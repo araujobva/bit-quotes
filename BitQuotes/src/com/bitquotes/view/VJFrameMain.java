@@ -318,12 +318,12 @@ public class VJFrameMain extends javax.swing.JFrame {
         tableModel.setRowCount(0); //Reseta a tabela, pois se não tiver essa linha, as pesquisas vão se acumulando, se repetindo.
         ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
         if(jRadioButton1.isSelected()) { 
-            quoteList = CSearchQuote.searchQuoteBookName(jTextField2.getText(), jTextField1.getText());
+            quoteList = CSearchQuote.searchQuoteBookName(jTextField2.getText().trim(), jTextField1.getText().trim());
             for(int i = 0; i < quoteList.size(); i++) {
                 tableModel.addRow(new Object[]{quoteList.get(i).getId(), quoteList.get(i).getQuote(), quoteList.get(i).getBookName(), quoteList.get(i).getPageBook()});
             }
         } else {
-            quoteList = CSearchQuote.searchQuote(jTextField2.getText(), jTextField1.getText());
+            quoteList = CSearchQuote.searchQuote(jTextField2.getText().trim(), jTextField1.getText().trim());
             for(int i = 0; i < quoteList.size(); i++) {
                 tableModel.addRow(new Object[]{quoteList.get(i).getId(), quoteList.get(i).getQuote(), quoteList.get(i).getBookName(), quoteList.get(i).getPageBook()});
             }

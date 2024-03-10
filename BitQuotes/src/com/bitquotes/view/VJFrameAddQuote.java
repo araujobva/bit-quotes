@@ -183,14 +183,14 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(jTextArea1.getText().isEmpty()){
+        if(jTextArea1.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha o campo de citação!","ERRO!",JOptionPane.ERROR_MESSAGE);
-        } else if(jTextField1.getText().isEmpty()){
+        } else if(jTextField1.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha o campo da página!","ERRO!",JOptionPane.ERROR_MESSAGE);
         } else {
             MQuote objQuote = new MQuote();
-            objQuote.setQuote(jTextArea1.getText());
-            objQuote.setBookPage(Short.parseShort(jTextField1.getText()));
+            objQuote.setQuote(jTextArea1.getText().trim());
+            objQuote.setBookPage(Short.parseShort(jTextField1.getText().trim()));
             objQuote.setId(CSearchBook.cSearchIdBook(jComboBox1.getSelectedItem().toString()));
             objQuote.setUserOwner(this.user);
             boolean verification = CAdd.addQuote(objQuote);

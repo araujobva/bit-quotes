@@ -237,8 +237,8 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Preencha o campo do nome do autor!","Erro!",JOptionPane.ERROR_MESSAGE);
         } else {
             MBook objBook = new MBook();
-            objBook.setName(jTextField1.getText());
-            objBook.setAuthor(jTextField2.getText());
+            objBook.setName(jTextField1.getText().trim());
+            objBook.setAuthor(jTextField2.getText().trim());
             objBook.setUserName(this.user);
             boolean verification = CManageBook.addBook(objBook);
             if(verification) {
