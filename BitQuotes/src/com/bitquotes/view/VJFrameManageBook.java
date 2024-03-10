@@ -232,9 +232,9 @@ public class VJFrameManageBook extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(jTextField1.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null,"Preencha o campo do nome do livro!","Erro!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Preencha o campo do nome do livro!","ERRO!",JOptionPane.ERROR_MESSAGE);
         } else if(jTextField2.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null,"Preencha o campo do nome do autor!","Erro!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Preencha o campo do nome do autor!","ERRO!",JOptionPane.ERROR_MESSAGE);
         } else {
             MBook objBook = new MBook();
             objBook.setName(jTextField1.getText().trim());
@@ -268,7 +268,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         String bookName = jComboBox1.getSelectedItem().toString();
         String authorName = CSearchAuthorName.cSearchAuthorName(bookName);
         if(authorName != null) {
-            VJFrameEditBook screen = new VJFrameEditBook(bookName, authorName);
+            VJFrameEditBook screen = new VJFrameEditBook(bookName, authorName, this.user);
             screen.setVisible(true);
             dispose();
         } else {

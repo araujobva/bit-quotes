@@ -168,11 +168,12 @@ public class DSelect {
         try {
             int id;
             Connection con = JConnectionFactory.getConnection();
-            String query = "SELECT book.bo_id FROM book WHERE book.bo_name = ? AND book.bo_author = ?";
+            String query = "SELECT book.bo_id FROM book WHERE book.bo_name = ? AND book.bo_author = ? AND us_us_name = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, book.getName());
             stmt.setString(2, book.getAuthor());
+            stmt.setString(3, book.getUserName());
             ResultSet rs = stmt.executeQuery();
             rs.next();
             id = rs.getInt("book.bo_id");
