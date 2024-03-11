@@ -4,7 +4,6 @@
  */
 package com.bitquotes.view;
 
-import com.bitquotes.controller.CAdd;
 import com.bitquotes.controller.CDeleteQuote;
 import com.bitquotes.controller.CSearchQuote;
 import java.util.ArrayList;
@@ -349,13 +348,18 @@ public class VJFrameMain extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada.
-        int column = 0; // Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a ID.
-        Object valueField = jTable1.getValueAt(selectedRow, column);
-        boolean verification = CDeleteQuote.deleteQuote((int) valueField);
-        if(verification) {
-            jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
-            JOptionPane.showMessageDialog(null,"A citação foi excluída com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Selectione uma citação para excluir!","ERRO!",JOptionPane.ERROR_MESSAGE);
+        }else {
+            int column = 0; // Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a ID.
+            Object valueField = jTable1.getValueAt(selectedRow, column);
+            boolean verification = CDeleteQuote.deleteQuote((int) valueField);
+            if(verification) {
+                jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
+                JOptionPane.showMessageDialog(null,"A citação foi excluída com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+            }          
         }
+    
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
