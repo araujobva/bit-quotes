@@ -36,5 +36,21 @@ public class DDelete {
             return false;
         }
     }
+    
+    public static boolean deleteQuote(int idQuote) {
+        try {
+            Connection con = JConnectionFactory.getConnection();
+            String query = "DELETE FROM quote WHERE quote.qu_id = ?"; 
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setInt(1, idQuote);
+            stmt.executeUpdate();
+            stmt.close();
+            con.close();
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao excluir o citação!\n"+ex,"Erro de exclusão!",JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
 
 }

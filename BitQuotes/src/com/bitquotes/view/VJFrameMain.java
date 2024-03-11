@@ -5,9 +5,11 @@
 package com.bitquotes.view;
 
 import com.bitquotes.controller.CAdd;
+import com.bitquotes.controller.CDeleteQuote;
 import com.bitquotes.controller.CSearchQuote;
 import java.util.ArrayList;
 import com.bitquotes.model.MQuoteFrontEnd;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,7 +24,8 @@ public class VJFrameMain extends javax.swing.JFrame {
     
     public VJFrameMain(String user) {
         initComponents();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); 
+        //this.setExtendedState(MAXIMIZED_BOTH); //Para abrir maximizado
         jTextField2.setText(user);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(35); //Modificando o tamanho da coluna ID da citação.
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(630); //Modificando o tamanho da coluna da citação.
@@ -96,6 +99,11 @@ public class VJFrameMain extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/delete.png"))); // NOI18N
         jButton3.setText("Excluir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(252, 252, 252));
         jButton4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -122,7 +130,7 @@ public class VJFrameMain extends javax.swing.JFrame {
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/backup.png"))); // NOI18N
         jButton7.setText("BackUp");
 
-        jPanel2.setBackground(new java.awt.Color(36, 131, 206));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
 
         jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(252, 252, 252));
@@ -209,11 +217,10 @@ public class VJFrameMain extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,6 +246,7 @@ public class VJFrameMain extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)))
                 .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,6 +346,17 @@ public class VJFrameMain extends javax.swing.JFrame {
         VJFrameManageBook screen = new VJFrameManageBook(jTextField2.getText());
         screen.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada.
+        int column = 0; // Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a ID.
+        Object valueField = jTable1.getValueAt(selectedRow, column);
+        boolean verification = CDeleteQuote.deleteQuote((int) valueField);
+        if(verification) {
+            jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
+            JOptionPane.showMessageDialog(null,"A citação foi excluída com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
