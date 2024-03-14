@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import com.bitquotes.model.MBook;
 import com.bitquotes.model.MQuote;
 import com.bitquotes.controller.CAdd;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author bruno
  */
-public class VJFrameAddQuote extends javax.swing.JFrame {
+public class VJFrameSeeQuote extends javax.swing.JFrame {
 
     /**
      * Creates new form VJFrameAddQuote
@@ -22,14 +23,18 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     
     String user;
     
-    public VJFrameAddQuote(String user) {
+    public VJFrameSeeQuote(String user) {
         initComponents();
         setLocationRelativeTo(null);
         comboBox(user);
         this.user = user;
+        jTextArea1.setEnabled(false);
+        jTextField1.setEnabled(false);
+        jComboBox1.setEnabled(false);
+        jButton1.setEnabled(false);
     }
 
-    private VJFrameAddQuote() {
+    private VJFrameSeeQuote() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
@@ -63,13 +68,13 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Bit Quotes - Adiciona Citação");
+        setTitle("Bit Quotes - Edita Citação");
         setAlwaysOnTop(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
 
-        jTextArea1.setBackground(new java.awt.Color(252, 252, 252));
+        jTextArea1.setBackground(new java.awt.Color(245, 245, 245));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jTextArea1.setLineWrap(true);
@@ -116,7 +121,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(252, 252, 252));
         jButton3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton3.setText("Gerenciar Livros");
+        jButton3.setText("Editar Citação");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -135,7 +140,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, 0, 442, Short.MAX_VALUE)
+                .addComponent(jComboBox1, 0, 457, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -176,7 +181,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        dispose();
+       dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
    
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -204,9 +209,13 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        VJFrameManageBook screen = new VJFrameManageBook(this.user);
-        dispose();
-        screen.setVisible(true);
+        jTextArea1.setBackground(new Color(252, 252, 252));
+        jTextField1.setBackground(new Color(252, 252, 252));
+        jComboBox1.setBackground(new Color(252, 252, 252));
+        jTextArea1.setEnabled(true);
+        jTextField1.setEnabled(true);
+        jComboBox1.setEnabled(true);
+        jButton1.setEnabled(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -226,20 +235,23 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VJFrameAddQuote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VJFrameSeeQuote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VJFrameAddQuote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VJFrameSeeQuote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VJFrameAddQuote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VJFrameSeeQuote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VJFrameAddQuote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VJFrameSeeQuote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VJFrameAddQuote().setVisible(true);
+                new VJFrameSeeQuote().setVisible(true);
             }
         });
     }

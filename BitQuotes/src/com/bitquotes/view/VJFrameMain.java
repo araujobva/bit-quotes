@@ -21,6 +21,8 @@ public class VJFrameMain extends javax.swing.JFrame {
      * Creates new form VJFrameMain
      */
     
+    ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
+    
     public VJFrameMain(String user) {
         initComponents();
         setLocationRelativeTo(null); 
@@ -108,11 +110,21 @@ public class VJFrameMain extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/edit.png"))); // NOI18N
         jButton4.setText("Editar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(252, 252, 252));
         jButton5.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/see.png"))); // NOI18N
         jButton5.setText("Ver");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(252, 252, 252));
         jButton6.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -201,6 +213,9 @@ public class VJFrameMain extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setHeaderValue("ID");
+        }
 
         jButton9.setBackground(new java.awt.Color(252, 252, 252));
         jButton9.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -326,11 +341,13 @@ public class VJFrameMain extends javax.swing.JFrame {
         ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
         if(jRadioButton1.isSelected()) { 
             quoteList = CSearchQuote.searchQuoteBookName(jTextField2.getText().trim(), jTextField1.getText().trim());
+            this.quoteList = quoteList;
             for(int i = 0; i < quoteList.size(); i++) {
                 tableModel.addRow(new Object[]{quoteList.get(i).getId(), quoteList.get(i).getQuote(), quoteList.get(i).getBookName(), quoteList.get(i).getPageBook()});
             }
         } else {
             quoteList = CSearchQuote.searchQuote(jTextField2.getText().trim(), jTextField1.getText().trim());
+            this.quoteList = quoteList;
             for(int i = 0; i < quoteList.size(); i++) {
                 tableModel.addRow(new Object[]{quoteList.get(i).getId(), quoteList.get(i).getQuote(), quoteList.get(i).getBookName(), quoteList.get(i).getPageBook()});
             }
@@ -349,7 +366,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada.
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Selectione uma citação para excluir!","ERRO!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Seleciona uma citação para excluir!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }else {
             int column = 0; // Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a ID.
             Object valueField = jTable1.getValueAt(selectedRow, column);
@@ -362,6 +379,30 @@ public class VJFrameMain extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada.
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Seleciona uma citação para ver!","ERRO!",JOptionPane.ERROR_MESSAGE);
+        }else {
+            int column = 0; // Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a ID.
+            Object valueField = jTable1.getValueAt(selectedRow, column);
+            boolean verification = CDeleteQuote.deleteQuote((int) valueField);
+            if(verification) {
+                VJFrameSeeQuote screen = new VJFrameSeeQuote(jTextField2.getText());
+                screen.setVisible(true);
+            }          
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private static int returnIdQuote() {
+        
+        return 0;
+    }
+    
     /**
      * @param args the command line arguments
      */
