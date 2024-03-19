@@ -364,9 +364,10 @@ public class VJFrameMain extends javax.swing.JFrame {
         if(selectedRow == -1){
             JOptionPane.showMessageDialog(null,"Seleciona uma citação para excluir!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }else {
-            int column = 0; // Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a ID.
+            int column = 0; // Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a da Citação.
             Object valueField = jTable1.getValueAt(selectedRow, column);
-            boolean verification = CDeleteQuote.deleteQuote((int) valueField);
+            int id = searchId((String) valueField);
+            boolean verification = CDeleteQuote.deleteQuote(id);
             if(verification) {
                 jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
                 JOptionPane.showMessageDialog(null,"A citação foi excluída com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
@@ -375,6 +376,15 @@ public class VJFrameMain extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private int searchId(String quote) {
+        for(int i = 0; i <= quoteList.size(); i++) {
+            if(quote.equals(quoteList.get(i).getQuote())) {
+                return quoteList.get(i).getId();
+            }
+        }
+        return -1;
+    }
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
     }//GEN-LAST:event_jButton4ActionPerformed
