@@ -28,10 +28,9 @@ public class VJFrameMain extends javax.swing.JFrame {
         setLocationRelativeTo(null); 
         //this.setExtendedState(MAXIMIZED_BOTH); //Para abrir maximizado
         jTextField2.setText(user);
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(35); //Modificando o tamanho da coluna ID da citação.
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(630); //Modificando o tamanho da coluna da citação.
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(300); //Modificando o tamanho da coluna do livro.
-        jTable1.getColumnModel().getColumn(3).setPreferredWidth(35); //Modificando o tamanho da coluna página.
+//        jTable1.getColumnModel().getColumn(1).setPreferredWidth(630); //Modificando o tamanho da coluna da citação.
+//        jTable1.getColumnModel().getColumn(2).setPreferredWidth(300); //Modificando o tamanho da coluna do livro.
+//        jTable1.getColumnModel().getColumn(3).setPreferredWidth(35); //Modificando o tamanho da coluna página.
     }
 
     private VJFrameMain() {
@@ -201,11 +200,11 @@ public class VJFrameMain extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Citação", "Livro", "Página"
+                "Citação", "Livro", "Página"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -213,9 +212,6 @@ public class VJFrameMain extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("ID");
-        }
 
         jButton9.setBackground(new java.awt.Color(252, 252, 252));
         jButton9.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -343,13 +339,13 @@ public class VJFrameMain extends javax.swing.JFrame {
             quoteList = CSearchQuote.searchQuoteBookName(jTextField2.getText().trim(), jTextField1.getText().trim());
             this.quoteList = quoteList;
             for(int i = 0; i < quoteList.size(); i++) {
-                tableModel.addRow(new Object[]{quoteList.get(i).getId(), quoteList.get(i).getQuote(), quoteList.get(i).getBookName(), quoteList.get(i).getPageBook()});
+                tableModel.addRow(new Object[]{quoteList.get(i).getQuote(), quoteList.get(i).getBookName(), quoteList.get(i).getPageBook()});
             }
         } else {
             quoteList = CSearchQuote.searchQuote(jTextField2.getText().trim(), jTextField1.getText().trim());
             this.quoteList = quoteList;
             for(int i = 0; i < quoteList.size(); i++) {
-                tableModel.addRow(new Object[]{quoteList.get(i).getId(), quoteList.get(i).getQuote(), quoteList.get(i).getBookName(), quoteList.get(i).getPageBook()});
+                tableModel.addRow(new Object[]{quoteList.get(i).getQuote(), quoteList.get(i).getBookName(), quoteList.get(i).getPageBook()});
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
