@@ -21,7 +21,7 @@ public class VJFrameMain extends javax.swing.JFrame {
      * Creates new form VJFrameMain
      */
     
-    ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
+    private ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
     private long quoteCount = 0;
     
     public VJFrameMain(String user) {
@@ -352,20 +352,17 @@ public class VJFrameMain extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel(); //Pegando o modelo da tabela (Quantidade de Linhas, Colunas etc).
         tableModel.setRowCount(0); //Reseta a tabela, pois se não tiver essa linha, as pesquisas vão se acumulando, se repetindo.
-        ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
         if(jRadioButton1.isSelected()) { 
-            quoteList = CSearchQuote.searchQuoteBookName(jTextField2.getText().trim(), jTextField1.getText().trim());
-            quoteList = quoteList;
-            for(int i = 0; i < quoteList.size(); i++) {
-                tableModel.addRow(new Object[]{quoteList.get(i).getQuote(), quoteList.get(i).getBookName(), quoteList.get(i).getPageBook()});
+            this.quoteList = CSearchQuote.searchQuoteBookName(jTextField2.getText().trim(), jTextField1.getText().trim());
+            for(int i = 0; i < this.quoteList.size(); i++) {
+                tableModel.addRow(new Object[]{this.quoteList.get(i).getQuote(), this.quoteList.get(i).getBookName(), this.quoteList.get(i).getPageBook()});
                 this.quoteCount++;
                 jTextField3.setText(Long.toString(this.quoteCount));
             }
         } else {
-            quoteList = CSearchQuote.searchQuote(jTextField2.getText().trim(), jTextField1.getText().trim());
-            this.quoteList = quoteList;
+            this.quoteList = CSearchQuote.searchQuote(jTextField2.getText().trim(), jTextField1.getText().trim());
             for(int i = 0; i < quoteList.size(); i++) {
-                tableModel.addRow(new Object[]{quoteList.get(i).getQuote(), quoteList.get(i).getBookName(), quoteList.get(i).getPageBook()});
+                tableModel.addRow(new Object[]{this.quoteList.get(i).getQuote(), this.quoteList.get(i).getBookName(), this.quoteList.get(i).getPageBook()});
                 this.quoteCount++;
                 jTextField3.setText(Long.toString(this.quoteCount));
             }
@@ -387,7 +384,7 @@ public class VJFrameMain extends javax.swing.JFrame {
         if(selectedRow == -1){
             JOptionPane.showMessageDialog(null,"Seleciona uma citação para excluir!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }else {
-            int column = 0; // Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a da Citação.
+            int column = 0; //Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a da Citação.
             Object valueField = jTable1.getValueAt(selectedRow, column);
             int id = searchId((String) valueField);
             boolean verification = CDeleteQuote.deleteQuote(id);
@@ -400,9 +397,9 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private int searchId(String quote) {
-        for(int i = 0; i <= quoteList.size(); i++) {
-            if(quote.equals(quoteList.get(i).getQuote())) {
-                return quoteList.get(i).getId();
+        for(int i = 0; i <= this.quoteList.size(); i++) {
+            if(quote.equals(this.quoteList.get(i).getQuote())) {
+                return this.quoteList.get(i).getId();
             }
         }
         return -1;
