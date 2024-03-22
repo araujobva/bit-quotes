@@ -52,7 +52,6 @@ public class VJFrameMain extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -108,20 +107,10 @@ public class VJFrameMain extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(252, 252, 252));
-        jButton4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/edit.png"))); // NOI18N
-        jButton4.setText("Editar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
         jButton5.setBackground(new java.awt.Color(252, 252, 252));
         jButton5.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/see.png"))); // NOI18N
-        jButton5.setText("Ver");
+        jButton5.setText("Ver ou Editar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -260,12 +249,10 @@ public class VJFrameMain extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
                         .addComponent(jButton7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)))
@@ -299,7 +286,6 @@ public class VJFrameMain extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton4)
                     .addComponent(jButton5)
                     .addComponent(jButton6)
                     .addComponent(jButton7)
@@ -405,22 +391,18 @@ public class VJFrameMain extends javax.swing.JFrame {
         return -1;
     }
     
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada.
+        int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada, se nenhuma linha for selecionada o valor será -1.
         if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Seleciona uma citação para ver!","ERRO!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Seleciona uma citação para ver ou editar!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }else {
-            int column = 0; // Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a ID.
-            Object valueField = jTable1.getValueAt(selectedRow, column);
-            boolean verification = CDeleteQuote.deleteQuote((int) valueField);
-            if(verification) {
-                VJFrameSeeQuote screen = new VJFrameSeeQuote(jTextField2.getText());
-                screen.setVisible(true);
-            }          
+            MQuoteFrontEnd quote = new MQuoteFrontEnd();
+            quote.setQuote((String) jTable1.getValueAt(selectedRow, 0));
+            quote.setBookName((String) jTable1.getValueAt(selectedRow, 1));
+            quote.setPageBook((short) jTable1.getValueAt(selectedRow, 2));
+            quote.setId(searchId(quote.getQuote()));
+            VJFrameSeeQuote screen = new VJFrameSeeQuote(jTextField2.getText(), quote);
+            screen.setVisible(true);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -469,7 +451,6 @@ public class VJFrameMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;

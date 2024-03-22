@@ -7,8 +7,8 @@ import com.bitquotes.controller.CSearchBook;
 import java.util.ArrayList;
 import com.bitquotes.model.MBook;
 import com.bitquotes.model.MQuote;
+import com.bitquotes.model.MQuoteFrontEnd;
 import com.bitquotes.controller.CAdd;
-import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,15 +23,13 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
     
     String user;
     
-    public VJFrameSeeQuote(String user) {
+    public VJFrameSeeQuote(String user, MQuoteFrontEnd quote) {
         initComponents();
         setLocationRelativeTo(null);
-        comboBox(user);
+        comboBox(user, quote.getBookName());
         this.user = user;
-        jTextArea1.setEnabled(false);
-        jTextField1.setEnabled(false);
-        jComboBox1.setEnabled(false);
-        jButton1.setEnabled(false);
+        jTextArea1.setText(quote.getQuote());
+        jTextField1.setText(Short.toString(quote.getPageBook()));
     }
 
     private VJFrameSeeQuote() {
@@ -39,7 +37,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
     }
     
     //Carregando o JComboBox com dados dos nomes dos livros persistidos no banco de dados.
-    private void comboBox(String user) {         
+    private void comboBox(String user, String bookName) {         
         ArrayList<MBook> bookList = new ArrayList<MBook>();
         bookList = CSearchBook.cSearchBook(user);
         String[] bookNameArray = new String[bookList.size()];
@@ -47,6 +45,13 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
             bookNameArray[i] = bookList.get(i).getName();
         }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(bookNameArray));
+        int index = -1;
+        for(int i = 0; i < bookList.size(); i++) { //Encontrar a posição do índice que o nome do livro está na lista para setar ele no jComboBox.
+            if(bookList.get(i).getName().equals(bookName)) {
+                index = i;
+            }
+        }
+        jComboBox1.setSelectedIndex(index);
     }
 
     /**
@@ -65,7 +70,6 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bit Quotes - Edita Citação");
@@ -74,7 +78,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
 
-        jTextArea1.setBackground(new java.awt.Color(245, 245, 245));
+        jTextArea1.setBackground(new java.awt.Color(252, 252, 252));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 0, 17)); // NOI18N
         jTextArea1.setLineWrap(true);
@@ -83,7 +87,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(252, 252, 252));
         jButton1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton1.setText("Salvar");
+        jButton1.setText("Salvar Edição");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -119,15 +123,6 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(252, 252, 252));
-        jButton3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton3.setText("Editar Citação");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -140,9 +135,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, 0, 457, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(jComboBox1, 0, 548, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -161,8 +154,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -208,16 +200,6 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        jTextArea1.setBackground(new Color(252, 252, 252));
-        jTextField1.setBackground(new Color(252, 252, 252));
-        jComboBox1.setBackground(new Color(252, 252, 252));
-        jTextArea1.setEnabled(true);
-        jTextField1.setEnabled(true);
-        jComboBox1.setEnabled(true);
-        jButton1.setEnabled(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -259,7 +241,6 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
