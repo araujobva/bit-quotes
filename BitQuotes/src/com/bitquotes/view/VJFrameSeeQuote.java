@@ -191,8 +191,8 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
             objQuote.setBookPage(Short.parseShort(jTextField1.getText().trim()));
             objQuote.setId(CSearchBook.cSearchIdBook(jComboBox1.getSelectedItem().toString()));
             objQuote.setUserOwner(this.user);
-            boolean verification = CAdd.addQuote(objQuote);
-            if(verification){
+            //Chamada do update
+            if(false){
                 jTextArea1.setText(null);
                 jTextField1.setText(null);
                 JOptionPane.showMessageDialog(null, "Citação adiciona com sucesso","Sucesso",JOptionPane.INFORMATION_MESSAGE);

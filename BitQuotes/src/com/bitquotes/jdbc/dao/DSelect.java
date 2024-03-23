@@ -5,6 +5,7 @@
 package com.bitquotes.jdbc.dao;
 
 import com.bitquotes.model.MUser;
+import com.bitquotes.model.MQuoteFrontEnd;
 import com.bitquotes.jdbc.JConnectionFactory;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
@@ -12,7 +13,6 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import com.bitquotes.model.MQuoteFrontEnd;
 import com.bitquotes.model.MBook;
 
 /**

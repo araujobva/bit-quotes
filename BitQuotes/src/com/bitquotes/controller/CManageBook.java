@@ -29,7 +29,7 @@ public class CManageBook {
     
     public static boolean updateBook(MBook bookNew, MBook bookOld) {
         int bookId = DSelect.searchIdBook(bookOld);
-        boolean verification = DUpdate.updateBook(bookNew, bookId);
+        boolean verification = DUpdate.bookUpdate(bookNew, bookId);
         return verification;
     }
     

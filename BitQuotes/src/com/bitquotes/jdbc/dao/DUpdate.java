@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.bitquotes.jdbc.JConnectionFactory;
 import com.bitquotes.model.MBook;
+import com.bitquotes.model.MQuote;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class DUpdate {
 
-    public static boolean updateBook(MBook objBook, int idBook) {  
+    public static boolean bookUpdate(MBook objBook, int idBook) {  
         try {
             Connection con = JConnectionFactory.getConnection();
             String query = "UPDATE book SET bo_name = ?, bo_author = ? WHERE bo_id = ?";
@@ -34,5 +35,24 @@ public class DUpdate {
             return false;
         }        
     }  
+    
+    public static boolean quoteUpdate(MQuote quote) {
+        try{         
+            Connection con = JConnectionFactory.getConnection();
+            String query = "UPDATE quote SET quote.qu_quote = ?, quote.qu_book_page = ?, quote.bo_id = ? WHERE quote.qu_id = ?";
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setString(1, quote.getQuote());
+            stmt.setShort(2, quote.getBookPage());
+            stmt.setInt(3, quote.getBookId());
+            stmt.setInt(4, quote.getBookId());
+            stmt.executeUpdate();
+            stmt.close(); //Fechando o PrepareStatement
+            con.close(); //Fechando a conexão          
+            return true;          
+        }catch(SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro! Não foi possível atualizar a citação\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
     
 }

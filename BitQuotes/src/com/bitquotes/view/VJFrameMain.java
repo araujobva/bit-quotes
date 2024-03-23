@@ -8,6 +8,7 @@ import com.bitquotes.controller.CDeleteQuote;
 import com.bitquotes.controller.CSearchQuote;
 import java.util.ArrayList;
 import com.bitquotes.model.MQuoteFrontEnd;
+import com.bitquotes.model.MQuote;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -372,7 +373,7 @@ public class VJFrameMain extends javax.swing.JFrame {
         }else {
             int column = 0; //Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a da Citação.
             Object valueField = jTable1.getValueAt(selectedRow, column);
-            int id = searchId((String) valueField);
+            int id = searchIdBook((String) valueField);
             boolean verification = CDeleteQuote.deleteQuote(id);
             if(verification) {
                 jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
@@ -382,8 +383,8 @@ public class VJFrameMain extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private int searchId(String quote) {
-        for(int i = 0; i <= this.quoteList.size(); i++) {
+    private int searchIdBook(String quote) { //Acha na lista o ID do livro.
+        for(int i = 0; i < this.quoteList.size(); i++) {
             if(quote.equals(this.quoteList.get(i).getQuote())) {
                 return this.quoteList.get(i).getId();
             }
@@ -393,16 +394,12 @@ public class VJFrameMain extends javax.swing.JFrame {
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada, se nenhuma linha for selecionada o valor será -1.
-        if(selectedRow == -1){
+        if(selectedRow == -1) {
             JOptionPane.showMessageDialog(null,"Seleciona uma citação para ver ou editar!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }else {
-            MQuoteFrontEnd quote = new MQuoteFrontEnd();
-            quote.setQuote((String) jTable1.getValueAt(selectedRow, 0));
-            quote.setBookName((String) jTable1.getValueAt(selectedRow, 1));
-            quote.setPageBook((short) jTable1.getValueAt(selectedRow, 2));
-            quote.setId(searchId(quote.getQuote()));
-            VJFrameSeeQuote screen = new VJFrameSeeQuote(jTextField2.getText(), quote);
-            screen.setVisible(true);
+            MQuote quote = new MQuote();
+            quote.setQuote((String)jTable1.getValueAt(selectedRow, 0));
+            quote.setBookId((int) jTable1.getValueAt(selectedRow, 0));
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
