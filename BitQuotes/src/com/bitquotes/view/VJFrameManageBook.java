@@ -5,6 +5,7 @@
 package com.bitquotes.view;
 
 import com.bitquotes.controller.CManageBook;
+import com.bitquotes.controller.CSearchAuthorName;
 import com.bitquotes.controller.CSearchBook;
 import com.bitquotes.model.MBook;
 import java.util.ArrayList;
@@ -149,6 +150,11 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(252, 252, 252));
         jButton3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton3.setText("Editar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -262,6 +268,18 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             }            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String bookName = jComboBox1.getSelectedItem().toString();
+        String authorName = CSearchAuthorName.cSearchAuthorName(bookName);
+        if(authorName != null) {
+            VJFrameEditBook screen = new VJFrameEditBook(bookName, authorName, this.user);
+            screen.setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null,"Erro ao achar o autor!","ERRO!",JOptionPane.ERROR_MESSAGE);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
