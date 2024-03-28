@@ -4,16 +4,15 @@
  */
 package com.bitquotes.view;
 
-import com.bitquotes.model.MBook;
 import com.bitquotes.controller.CManageBook;
 import com.bitquotes.controller.CSearchBook;
-import com.bitquotes.controller.CSearchAuthorName;
+import com.bitquotes.model.MBook;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Bruno
+ * @author bruno
  */
 public class VJFrameManageBook extends javax.swing.JFrame {
 
@@ -22,17 +21,26 @@ public class VJFrameManageBook extends javax.swing.JFrame {
      */
     
     private String user;
-            
+    
     public VJFrameManageBook() {
         initComponents();
-        setLocationRelativeTo(null);
     }
     
     public VJFrameManageBook(String user) {
         initComponents();
         setLocationRelativeTo(null);
-        comboBox(user);
         this.user = user;
+        comboBox(this.user);
+    }
+    
+    public void comboBox(String user) {
+        ArrayList<MBook> bookList = new ArrayList<MBook>();
+        bookList = CSearchBook.cSearchBook(user);
+        String[] bookNameArray = new String[bookList.size()];
+        for(int i = 0; i < bookList.size(); i++) {
+            bookNameArray[i] = bookList.get(i).getName();
+        }
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(bookNameArray));
     }
 
     /**
@@ -44,32 +52,36 @@ public class VJFrameManageBook extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("BIt Quotes - Gerenciador de Livros");
-        setAlwaysOnTop(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Bit Quote - Gerenciador de Livro");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
 
         jPanel2.setBackground(new java.awt.Color(252, 252, 252));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adiciona Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 17))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adiciona Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
+
+        jTextField2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel1.setText("Nome do Livro:");
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jLabel2.setText("Nome do Autor:");
 
         jButton1.setBackground(new java.awt.Color(252, 252, 252));
         jButton1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -80,11 +92,6 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel3.setText("Nome do Autor:");
-
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -93,40 +100,44 @@ public class VJFrameManageBook extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2)))
-                .addGap(112, 112, 112))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addComponent(jButton1)
-                .addGap(4, 4, 4)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jButton1)))
+                .addContainerGap())
         );
 
         jPanel3.setBackground(new java.awt.Color(252, 252, 252));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remove ou Edita Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 17))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remove ou Edita Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel2.setText("Remover Livro:");
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jLabel3.setText("Remove ou Edita Livro:");
+
+        jComboBox1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton2.setBackground(new java.awt.Color(252, 252, 252));
         jButton2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -137,19 +148,9 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        /*
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        */
-
-        jButton4.setBackground(new java.awt.Color(252, 252, 252));
-        jButton4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton4.setText("Editar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
+        jButton3.setBackground(new java.awt.Color(252, 252, 252));
+        jButton3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jButton3.setText("Editar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -157,13 +158,13 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, 0, 439, Short.MAX_VALUE)
+                .addComponent(jComboBox1, 0, 414, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(jButton3)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -171,19 +172,19 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
-                    .addComponent(jButton4))
+                    .addComponent(jButton3))
                 .addContainerGap())
         );
 
-        jButton3.setBackground(new java.awt.Color(252, 252, 252));
-        jButton3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jButton3.setText("Fechar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setBackground(new java.awt.Color(252, 252, 252));
+        jButton4.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jButton4.setText("Fechar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -198,19 +199,19 @@ public class VJFrameManageBook extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(jButton4)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,15 +222,28 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int key = JOptionPane.showConfirmDialog(null, "IMPORTANTE! \n Se você excluir esse livro, todas as citações referentes a ele também serão excluídas!", "EXCLUIR", JOptionPane.OK_CANCEL_OPTION);
+        if(key == JOptionPane.OK_OPTION) {
+            boolean verification = CManageBook.removeBook(jComboBox1.getSelectedItem().toString());
+            if(verification) {
+                comboBox(user);
+                JOptionPane.showMessageDialog(null,"O Livro e todas suas citações foram removidas com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else if (key == JOptionPane.CANCEL_OPTION) {
+           //Opção de exclusão do livro cancelada.
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(jTextField1.getText().trim().isEmpty()) {
@@ -249,44 +263,8 @@ public class VJFrameManageBook extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
             }            
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int key = JOptionPane.showConfirmDialog(null, "IMPORTANTE! \n Se você excluir esse livro, todas as citações referentes a ele também serão excluídas!", "EXCLUIR", JOptionPane.OK_CANCEL_OPTION);
-        if(key == JOptionPane.OK_OPTION) {
-            boolean verification = CManageBook.removeBook(jComboBox1.getSelectedItem().toString());
-            if(verification) {
-                comboBox(user);
-                JOptionPane.showMessageDialog(null,"O Livro e todas suas citações foram removidas com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
-            }
-        } else if (key == JOptionPane.CANCEL_OPTION) {
-           //Opção de exclusão do livro cancelada.
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        String bookName = jComboBox1.getSelectedItem().toString();
-        String authorName = CSearchAuthorName.cSearchAuthorName(bookName);
-        if(authorName != null) {
-            VJFrameEditBook screen = new VJFrameEditBook(bookName, authorName, this.user);
-            screen.setVisible(true);
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(null,"Erro ao achar o autor!","ERRO!",JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    public void comboBox(String user) {
-        ArrayList<MBook> bookList = new ArrayList<MBook>();
-        bookList = CSearchBook.cSearchBook(user);
-        String[] bookNameArray = new String[bookList.size()];
-        for(int i = 0; i < bookList.size(); i++) {
-            bookNameArray[i] = bookList.get(i).getName();
-        }
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(bookNameArray));
-    }
-    
     /**
      * @param args the command line arguments
      */
