@@ -107,13 +107,13 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         jLabel1.setText("* Página:");
 
         jTextField1.setBackground(new java.awt.Color(252, 252, 252));
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel2.setText("* Livro:");
 
         jComboBox1.setBackground(new java.awt.Color(252, 252, 252));
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         /*
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Item 1", "Item 2", "Item 3", "Item 4"}));
         */
@@ -146,7 +146,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)

@@ -56,12 +56,12 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel2.setText("Nome:");
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel3.setText("Senha:");
 
-        jPasswordField1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jPasswordField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(252, 252, 252));
         jButton1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N

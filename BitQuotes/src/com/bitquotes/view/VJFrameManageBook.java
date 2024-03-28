@@ -74,9 +74,9 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(252, 252, 252));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adiciona Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jTextField2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel1.setText("Nome do Livro:");
@@ -135,7 +135,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel3.setText("Remove ou Edita Livro:");
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton2.setBackground(new java.awt.Color(252, 252, 252));
