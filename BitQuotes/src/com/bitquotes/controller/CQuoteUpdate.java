@@ -13,8 +13,8 @@ import com.bitquotes.jdbc.dao.DUpdate;
  */
 public class CQuoteUpdate {
     
-    public static boolean quoteUpdate(MQuote quote) {
-        boolean verification = quoteUpdate(quote);
+    public static boolean quoteUpdate(MQuote objQuote) {
+        boolean verification = DUpdate.quoteUpdate(objQuote);
         return verification;
     }
     

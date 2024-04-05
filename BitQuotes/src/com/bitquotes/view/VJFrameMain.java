@@ -6,7 +6,6 @@ package com.bitquotes.view;
 
 import com.bitquotes.controller.CDeleteQuote;
 import com.bitquotes.controller.CSearchQuote;
-import com.bitquotes.model.MBook;
 import java.util.ArrayList;
 import com.bitquotes.model.MQuoteFrontEnd;
 import com.bitquotes.model.MQuote;
@@ -378,32 +377,22 @@ public class VJFrameMain extends javax.swing.JFrame {
         }else {
             int column = 0; //Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a da Citação.
             Object valueField = jTable1.getValueAt(selectedRow, column);
-            int id = searchIdBook((String) valueField);
+            int id = searchIdQuote((String) valueField);
             boolean verification = CDeleteQuote.deleteQuote(id);
             if(verification) {
                 jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
                 JOptionPane.showMessageDialog(null,"A citação foi excluída com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
             }          
         }
-    
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private int searchIdBook(String quote) { //Acha na lista o ID do livro.
+    private int searchIdQuote(String quote) { //Acha na lista o ID da citação.
         for(int i = 0; i < this.quoteList.size(); i++) {
             if(quote.equals(this.quoteList.get(i).getQuote())) {
                 return this.quoteList.get(i).getId();
             }
         }
         return -1;
-    }
-    
-    private int searchIdQuote(String quote) { //Acha na lista o ID da citação.
-        for(int i = 0; i < this.quoteList.size(); i++) {
-            if(quote.equals(this.quoteList.get(i).getId())) {
-                return this.quoteList.get(i).getId();
-            }
-        }
-        return -1;    
     }
     
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -418,7 +407,8 @@ public class VJFrameMain extends javax.swing.JFrame {
             String bookName = (String) qBookName;
             Object qPage = jTable1.getValueAt(selectedRow, 2); //Fixando a coluna 2 que é a página do livro.
             quote.setBookPage((short) qPage);
-            VJFrameSeeQuote screen = new VJFrameSeeQuote(this.user, bookName, quote);
+            int idQuote = searchIdQuote(quote.getQuote());
+            VJFrameSeeQuote screen = new VJFrameSeeQuote(this.user, bookName, quote, idQuote);
             screen.setVisible(true);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
