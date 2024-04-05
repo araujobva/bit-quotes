@@ -239,7 +239,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int key = JOptionPane.showConfirmDialog(null, "IMPORTANTE! \n Se você excluir esse livro, todas as citações referentes a ele também serão excluídas!", "EXCLUIR", JOptionPane.OK_CANCEL_OPTION);
         if(key == JOptionPane.OK_OPTION) {
-            boolean verification = CManageBook.removeBook(jComboBox1.getSelectedItem().toString());
+            boolean verification = CManageBook.removeBook(jComboBox1.getSelectedItem().toString(), user);
             if(verification) {
                 comboBox(user);
                 JOptionPane.showMessageDialog(null,"O Livro e todas suas citações foram removidas com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);

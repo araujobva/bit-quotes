@@ -21,8 +21,8 @@ public class CSearchBook {
         return bookList;
     }
     
-    public static int cSearchIdBook(String bookName) {
-        int idBook = DSelect.searchIdBook(bookName);
+    public static int cSearchIdBook(String bookName, String user) {
+        int idBook = DSelect.searchIdBook(bookName, user);
         return idBook;
     }
     

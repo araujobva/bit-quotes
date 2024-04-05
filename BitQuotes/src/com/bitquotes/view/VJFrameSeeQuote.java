@@ -3,12 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.bitquotes.view;
+import com.bitquotes.controller.CQuoteUpdate;
 import com.bitquotes.controller.CSearchBook;
 import java.util.ArrayList;
 import com.bitquotes.model.MBook;
 import com.bitquotes.model.MQuote;
-import com.bitquotes.model.MQuoteFrontEnd;
-import com.bitquotes.controller.CAdd;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,15 +20,15 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
      * Creates new form VJFrameAddQuote
      */
     
-    String user;
+    private String user;
     
-    public VJFrameSeeQuote(String user, MQuoteFrontEnd quote) {
+    public VJFrameSeeQuote(String user, String bookName, MQuote quote) {
         initComponents();
         setLocationRelativeTo(null);
-        comboBox(user, quote.getBookName());
         this.user = user;
         jTextArea1.setText(quote.getQuote());
-        jTextField1.setText(Short.toString(quote.getPageBook()));
+        jTextField1.setText(Short.toString(quote.getBookPage()));
+        comboBox(this.user, bookName);
     }
 
     private VJFrameSeeQuote() {
@@ -189,9 +188,9 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
             MQuote objQuote = new MQuote();
             objQuote.setQuote(jTextArea1.getText().trim());
             objQuote.setBookPage(Short.parseShort(jTextField1.getText().trim()));
-            objQuote.setId(CSearchBook.cSearchIdBook(jComboBox1.getSelectedItem().toString()));
+            objQuote.setId(CSearchBook.cSearchIdBook(jComboBox1.getSelectedItem().toString(), this.user));
             objQuote.setUserOwner(this.user);
-            //Chamada do update
+            //CQuoteUpdate.quoteUpdate(objQuote, this.user);
             if(false){
                 jTextArea1.setText(null);
                 jTextField1.setText(null);

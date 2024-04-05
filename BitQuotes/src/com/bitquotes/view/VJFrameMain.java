@@ -6,6 +6,7 @@ package com.bitquotes.view;
 
 import com.bitquotes.controller.CDeleteQuote;
 import com.bitquotes.controller.CSearchQuote;
+import com.bitquotes.model.MBook;
 import java.util.ArrayList;
 import com.bitquotes.model.MQuoteFrontEnd;
 import com.bitquotes.model.MQuote;
@@ -24,12 +25,14 @@ public class VJFrameMain extends javax.swing.JFrame {
     
     private ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
     private long quoteCount = 0;
+    private String user;
     
     public VJFrameMain(String user) {
         initComponents();
-        setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
+        this.user = user;
+        jTextField2.setText(this.user);
         //this.setExtendedState(MAXIMIZED_BOTH); //Para abrir maximizado
-        jTextField2.setText(user);
 //        jTable1.getColumnModel().getColumn(1).setPreferredWidth(630); //Modificando o tamanho da coluna da citação.
 //        jTable1.getColumnModel().getColumn(2).setPreferredWidth(300); //Modificando o tamanho da coluna do livro.
 //        jTable1.getColumnModel().getColumn(3).setPreferredWidth(35); //Modificando o tamanho da coluna página.
@@ -394,14 +397,29 @@ public class VJFrameMain extends javax.swing.JFrame {
         return -1;
     }
     
+    private int searchIdQuote(String quote) { //Acha na lista o ID da citação.
+        for(int i = 0; i < this.quoteList.size(); i++) {
+            if(quote.equals(this.quoteList.get(i).getId())) {
+                return this.quoteList.get(i).getId();
+            }
+        }
+        return -1;    
+    }
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada, se nenhuma linha for selecionada o valor será -1.
         if(selectedRow == -1) {
             JOptionPane.showMessageDialog(null,"Seleciona uma citação para ver ou editar!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }else {
             MQuote quote = new MQuote();
-            quote.setQuote((String)jTable1.getValueAt(selectedRow, 0));
-            quote.setBookId((int) jTable1.getValueAt(selectedRow, 0));
+            Object qQuote = jTable1.getValueAt(selectedRow, 0); //Fixando a coluna 0 que é a citação.
+            quote.setQuote((String) qQuote);
+            Object qBookName = jTable1.getValueAt(selectedRow, 1); //Fixando a coluna 1 que é o nome do livro.
+            String bookName = (String) qBookName;
+            Object qPage = jTable1.getValueAt(selectedRow, 2); //Fixando a coluna 2 que é a página do livro.
+            quote.setBookPage((short) qPage);
+            VJFrameSeeQuote screen = new VJFrameSeeQuote(this.user, bookName, quote);
+            screen.setVisible(true);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 

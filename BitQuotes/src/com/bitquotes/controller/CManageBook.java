@@ -21,8 +21,8 @@ public class CManageBook {
         return verification;
     }
     
-    public static boolean removeBook(String bookName) {
-        int idBook = DSelect.searchIdBook(bookName);
+    public static boolean removeBook(String bookName, String user) {
+        int idBook = DSelect.searchIdBook(bookName, user);
         boolean verification = DDelete.deleteQuoteAndBook(idBook, bookName);
         return verification;
     }

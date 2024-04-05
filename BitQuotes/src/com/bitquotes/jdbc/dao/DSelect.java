@@ -143,14 +143,15 @@ public class DSelect {
         return null;    
     }
     
-    public static int searchIdBook(String bookName) {
+    public static int searchIdBook(String bookName, String user) {
         try {
             int id;
             Connection con = JConnectionFactory.getConnection();
-            String query = "SELECT book.bo_id FROM book WHERE bo_name = ?";
+            String query = "SELECT book.bo_id FROM book WHERE bo_name = ? AND us_us_name = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, bookName);
+            stmt.setString(2, user);
             ResultSet rs = stmt.executeQuery();
             rs.next();
             id = rs.getInt("book.bo_id");
