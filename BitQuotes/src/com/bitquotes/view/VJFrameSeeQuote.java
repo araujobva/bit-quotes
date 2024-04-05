@@ -84,6 +84,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         jTextArea1.setBackground(new java.awt.Color(252, 252, 252));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
