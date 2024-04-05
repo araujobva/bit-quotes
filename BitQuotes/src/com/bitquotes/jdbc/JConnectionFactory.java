@@ -25,7 +25,7 @@ public class JConnectionFactory {
             Class.forName(driverJDBC); //Definindo o driver do meu projeto. (NOTA: Para funcionar, importe o driver de conexão para o projeto)
             return DriverManager.getConnection(connectionPath, user, password); //Retornando uma conexão para o método que chamar este método.          
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null,"Driver MySQL não encontrado.\n"+ex,"Erro de Driver",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Driver MySQL não encontrado!\n"+ex,"Erro de Driver!",JOptionPane.ERROR_MESSAGE);
             return null;
         } 
     }

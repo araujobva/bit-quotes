@@ -32,7 +32,7 @@ public class DDelete {
             con.close();
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Erro ao excluir o livro!\n"+ex,"Erro de exclusão!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Erro ao excluir o livro!\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
@@ -48,7 +48,7 @@ public class DDelete {
             con.close();
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Erro ao excluir o citação!\n"+ex,"Erro de exclusão!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Erro ao excluir o citação!\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }

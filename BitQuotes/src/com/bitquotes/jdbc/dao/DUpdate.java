@@ -31,7 +31,7 @@ public class DUpdate {
             con.close(); //Fechando a conexão          
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro! Não foi possível modificar!\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível modificar!\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
             return false;
         }        
     }  
@@ -51,7 +51,7 @@ public class DUpdate {
             con.close(); //Fechando a conexão          
             return true;          
         }catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Erro! Não foi possível atualizar a citação\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Não foi possível atualizar a citação\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }

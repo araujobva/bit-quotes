@@ -41,7 +41,7 @@ public class DSelect {
             rs.close(); //Fechando o ResultSet.
             return userList;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro na autenticação! " + ex, "Erro!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro na autenticação!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }
@@ -77,7 +77,7 @@ public class DSelect {
             rs.close();
             return quoteList;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível fazer a pesquisa pelo nome do livro!\n" + ex, "Erro de pesquisa!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível fazer a pesquisa pelo nome do livro!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }
@@ -113,7 +113,7 @@ public class DSelect {
             rs.close();
             return quoteList;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível fazer a pesquisa pela citação do livro!\n" + ex, "Erro de pesquisa!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível fazer a pesquisa pela citação do livro!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }
@@ -138,7 +138,7 @@ public class DSelect {
             rs.close();
             return bookList;
         } catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível trazer as informações do livro!\n" +ex, "Erro de pesquisa!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível trazer as informações do livro!\n" +ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
         }
         return null;    
     }
@@ -160,7 +160,7 @@ public class DSelect {
             rs.close();
             return id;
         }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Não foi possível recuperar as informações do ID do Livro!\n"+ex, "Erro de pesquisa!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Não foi possível recuperar as informações do ID do Livro!\n"+ex, "ERRO!",JOptionPane.ERROR_MESSAGE);
         }
         return -1;
     }
@@ -183,7 +183,7 @@ public class DSelect {
             rs.close();
             return id;
         }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null,"Não foi possível recuperar as informações do ID do Livro!\n"+ex, "Erro de pesquisa!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Não foi possível recuperar as informações do ID do Livro!\n"+ex, "ERRO!",JOptionPane.ERROR_MESSAGE);
         }
         return -1;
     }
@@ -203,7 +203,7 @@ public class DSelect {
             rs.close();
             return name;
         } catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível trazer as informações do autor!\n" +ex, "Erro de pesquisa!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível trazer as informações do autor!\n" +ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
         }
         return null;    
     }

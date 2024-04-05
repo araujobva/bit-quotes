@@ -237,12 +237,12 @@ public class VJFrameManageBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int key = JOptionPane.showConfirmDialog(null, "IMPORTANTE! \n Se você excluir esse livro, todas as citações referentes a ele também serão excluídas!", "EXCLUIR", JOptionPane.OK_CANCEL_OPTION);
+        int key = JOptionPane.showConfirmDialog(null, "IMPORTANTE! \n Se você excluir esse livro, todas as citações referentes a ele também serão excluídas!", "EXCLUIR?", JOptionPane.OK_CANCEL_OPTION);
         if(key == JOptionPane.OK_OPTION) {
             boolean verification = CManageBook.removeBook(jComboBox1.getSelectedItem().toString(), user);
             if(verification) {
                 comboBox(user);
-                JOptionPane.showMessageDialog(null,"O Livro e todas suas citações foram removidas com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"O Livro e todas suas citações foram excluídas com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
             }
         } else if (key == JOptionPane.CANCEL_OPTION) {
            //Opção de exclusão do livro cancelada.
@@ -264,7 +264,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
                 jTextField1.setText(null);
                 jTextField2.setText(null);
                 comboBox(this.user);
-                JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Livro adicionado com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
             }            
         }
     }//GEN-LAST:event_jButton1ActionPerformed

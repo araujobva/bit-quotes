@@ -31,7 +31,7 @@ public class DInsert {
             stmt.close();
             return true;
         }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Esse livro já existe!\n"+ex,"Erro ao inserir livro!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Esse livro já existe!\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }

@@ -197,7 +197,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
             if(verification) {
                 jTextArea1.setText(null);
                 jTextField1.setText(null);
-                JOptionPane.showMessageDialog(null, "Citação adiciona com sucesso","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Citação adiciona com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
             }  
         }
     }//GEN-LAST:event_jButton3ActionPerformed

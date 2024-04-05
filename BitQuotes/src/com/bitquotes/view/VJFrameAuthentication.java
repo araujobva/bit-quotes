@@ -172,7 +172,7 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
             VJFrameMain main = new VJFrameMain(user.getName());
             main.setVisible(true);
         } else {
-           JOptionPane.showMessageDialog(null,"Usuário ou Senha inválidos!","Erro de Login!",JOptionPane.ERROR_MESSAGE); 
+           JOptionPane.showMessageDialog(null,"Usuário ou Senha inválidos!","ERRO DE AUTENTICAÇÃO!",JOptionPane.ERROR_MESSAGE); 
         }         
     }//GEN-LAST:event_jButton2ActionPerformed
 

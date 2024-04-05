@@ -381,7 +381,7 @@ public class VJFrameMain extends javax.swing.JFrame {
             boolean verification = CDeleteQuote.deleteQuote(id);
             if(verification) {
                 jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
-                JOptionPane.showMessageDialog(null,"A citação foi excluída com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"A citação foi excluída com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
             }          
         }
     }//GEN-LAST:event_jButton3ActionPerformed

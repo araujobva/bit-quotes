@@ -158,7 +158,7 @@ public class VJFrameEditBook extends javax.swing.JFrame {
         if(verification) {
             jTextField1.setText(null);
             jTextField2.setText(null);
-            JOptionPane.showMessageDialog(null,"Livro editado com sucesso!","Sucesso!",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Livro editado com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
