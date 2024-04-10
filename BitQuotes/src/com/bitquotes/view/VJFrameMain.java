@@ -7,7 +7,6 @@ package com.bitquotes.view;
 import com.bitquotes.controller.CDeleteQuote;
 import com.bitquotes.controller.CSearchQuote;
 import java.util.ArrayList;
-import com.bitquotes.model.MQuoteFrontEnd;
 import com.bitquotes.model.MQuote;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +21,7 @@ public class VJFrameMain extends javax.swing.JFrame {
      * Creates new form VJFrameMain
      */
     
-    private ArrayList<MQuoteFrontEnd> quoteList = new ArrayList<MQuoteFrontEnd>();
+    private ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
     private long quoteCount = 0;
     private String user;
     
@@ -344,16 +343,16 @@ public class VJFrameMain extends javax.swing.JFrame {
         DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel(); //Pegando o modelo da tabela (Quantidade de Linhas, Colunas etc).
         tableModel.setRowCount(0); //Reseta a tabela, pois se não tiver essa linha, as pesquisas vão se acumulando, se repetindo.
         if(jRadioButton1.isSelected()) { 
-            this.quoteList = CSearchQuote.searchQuoteBookName(jTextField2.getText().trim(), jTextField1.getText().trim());
+            this.quoteList = CSearchQuote.searchQuoteBookName(this.user, jTextField1.getText().trim());
             for(int i = 0; i < this.quoteList.size(); i++) {
-                tableModel.addRow(new Object[]{this.quoteList.get(i).getQuote(), this.quoteList.get(i).getBookName(), this.quoteList.get(i).getPageBook()});
+                tableModel.addRow(new Object[]{this.quoteList.get(i).getQuote(), this.quoteList.get(i).getName(), this.quoteList.get(i).getBookPage()});
                 this.quoteCount++;
                 jTextField3.setText(Long.toString(this.quoteCount));
             }
         } else {
             this.quoteList = CSearchQuote.searchQuote(jTextField2.getText().trim(), jTextField1.getText().trim());
             for(int i = 0; i < quoteList.size(); i++) {
-                tableModel.addRow(new Object[]{this.quoteList.get(i).getQuote(), this.quoteList.get(i).getBookName(), this.quoteList.get(i).getPageBook()});
+                tableModel.addRow(new Object[]{this.quoteList.get(i).getQuote(), this.quoteList.get(i).getName(), this.quoteList.get(i).getBookPage()});
                 this.quoteCount++;
                 jTextField3.setText(Long.toString(this.quoteCount));
             }

@@ -8,7 +8,7 @@ package com.bitquotes.model;
  *
  * @author Bruno
  */
-public class MQuote {
+public class MQuote extends MBook {
     
     private int id;
     private String quote;
