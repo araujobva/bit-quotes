@@ -190,7 +190,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
         } else {
             MQuote objQuote = new MQuote();
             objQuote.setQuote(jTextArea1.getText().trim());
-            objQuote.setBookPage(Short.parseShort(jTextField1.getText().trim()));
+            objQuote.setBookPage(jTextField1.getText().trim());
             objQuote.setId(CSearchBook.cSearchIdBook(jComboBox1.getSelectedItem().toString(), user));
             objQuote.setUserOwner(this.user);
             boolean verification = CAdd.addQuote(objQuote);

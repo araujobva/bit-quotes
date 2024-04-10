@@ -42,7 +42,7 @@ public class DUpdate {
             String query = "UPDATE quote SET qu_quote = ?, qu_book_page = ?, bo_id = ?, us_name = ? WHERE qu_id = ?";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, quote.getQuote());
-            stmt.setShort(2, quote.getBookPage());
+            stmt.setString(2, quote.getBookPage());
             stmt.setInt(3, quote.getBookId());
             stmt.setString(4, quote.getUserOwner());
             stmt.setInt(5, quote.getId());

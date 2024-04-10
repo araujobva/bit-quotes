@@ -405,7 +405,7 @@ public class VJFrameMain extends javax.swing.JFrame {
             Object qBookName = jTable1.getValueAt(selectedRow, 1); //Fixando a coluna 1 que é o nome do livro.
             String bookName = (String) qBookName;
             Object qPage = jTable1.getValueAt(selectedRow, 2); //Fixando a coluna 2 que é a página do livro.
-            quote.setBookPage((short) qPage);
+            quote.setBookPage((String) qPage);
             int idQuote = searchIdQuote(quote.getQuote());
             VJFrameSeeQuote screen = new VJFrameSeeQuote(this.user, bookName, quote, idQuote);
             screen.setVisible(true);

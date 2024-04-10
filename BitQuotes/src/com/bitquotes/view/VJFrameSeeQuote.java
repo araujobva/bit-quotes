@@ -29,7 +29,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.user = user;
         jTextArea1.setText(quote.getQuote());
-        jTextField1.setText(Short.toString(quote.getBookPage()));
+        jTextField1.setText(quote.getBookPage());
         this.idQuote = idQuote;
         comboBox(this.user, bookName);
     }
@@ -195,7 +195,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         } else {
             MQuote objQuote = new MQuote();
             objQuote.setQuote(jTextArea1.getText().trim());
-            objQuote.setBookPage(Short.parseShort(jTextField1.getText().trim()));
+            objQuote.setBookPage(jTextField1.getText().trim());
             objQuote.setUserOwner(this.user);
             objQuote.setBookId(CSearchBook.cSearchIdBook(jComboBox1.getSelectedItem().toString(), objQuote.getUserOwner()));
             objQuote.setId(this.idQuote);

@@ -42,7 +42,7 @@ public class DInsert {
             String query = "INSERT INTO quote (qu_quote, qu_book_page, bo_id, us_name) VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, objQuote.getQuote());
-            stmt.setShort(2, objQuote.getBookPage());
+            stmt.setString(2, objQuote.getBookPage());
             stmt.setInt(3, objQuote.getId());
             stmt.setString(4, objQuote.getUserOwner());
             stmt.executeUpdate();

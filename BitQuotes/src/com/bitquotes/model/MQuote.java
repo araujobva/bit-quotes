@@ -12,7 +12,7 @@ public class MQuote extends MBook {
     
     private int id;
     private String quote;
-    private short bookPage;
+    private String bookPage;
     private int bookId;
     private String userOwner;
 
@@ -32,11 +32,11 @@ public class MQuote extends MBook {
         this.quote = quote;
     }
 
-    public short getBookPage() {
+    public String getBookPage() {
         return bookPage;
     }
 
-    public void setBookPage(short bookPage) {
+    public void setBookPage(String bookPage) {
         this.bookPage = bookPage;
     }
 

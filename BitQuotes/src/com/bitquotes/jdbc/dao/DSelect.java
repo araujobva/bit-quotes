@@ -62,7 +62,7 @@ public class DSelect {
             while (rs.next()) {
                 objQuote.setId(rs.getInt("quote.qu_id"));
                 objQuote.setQuote(rs.getString("quote.qu_quote"));
-                objQuote.setBookPage(rs.getShort("quote.qu_book_page"));
+                objQuote.setBookPage(rs.getString("quote.qu_book_page"));
                 objQuote.setBookId(rs.getInt("quote.bo_id"));
                 objQuote.setUserOwner(rs.getString("quote.us_name"));
                 objQuote.setName(rs.getString("book.bo_name"));
