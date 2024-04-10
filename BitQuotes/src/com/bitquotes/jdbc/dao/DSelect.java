@@ -50,7 +50,7 @@ public class DSelect {
     public static ArrayList searchBookName(String user, String bookName) {
         try {
             Connection con = JConnectionFactory.getConnection();
-            String query = "SELECT quote.qu_id, quote.qu_quote, quote.qu_book_page, quote.bo_id, quote.us_name, book.bo_name FROM quote INNER JOIN book ON book.bo_id = quote.bo_id WHERE quote.us_name = ? AND book.bo_name LIKE ?";
+            String query = "SELECT quote.qu_id, quote.qu_quote, quote.qu_book_page, quote.bo_id, quote.us_name, book.bo_name, book.bo_author FROM quote INNER JOIN book ON book.bo_id = quote.bo_id WHERE quote.us_name = ? AND book.bo_name LIKE ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);
@@ -66,6 +66,7 @@ public class DSelect {
                 objQuote.setBookId(rs.getInt("quote.bo_id"));
                 objQuote.setUserOwner(rs.getString("quote.us_name"));
                 objQuote.setName(rs.getString("book.bo_name"));
+                objQuote.setAuthor(rs.getString("book.bo_author"));
                 quoteList.add(objQuote);
                 objQuote = new MQuote(); //Para não duplicar os valors no ArrayList.
             }

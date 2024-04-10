@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.bitquotes.model.MQuote;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import com.bitquotes.controller.CSearchAuthorName;
 
 /**
  *
@@ -365,7 +366,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        VJFrameManageBook screen = new VJFrameManageBook(jTextField2.getText());
+        VJFrameManageBook screen = new VJFrameManageBook(this.user);
         screen.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -407,7 +408,8 @@ public class VJFrameMain extends javax.swing.JFrame {
             Object qPage = jTable1.getValueAt(selectedRow, 2); //Fixando a coluna 2 que é a página do livro.
             quote.setBookPage((String) qPage);
             int idQuote = searchIdQuote(quote.getQuote());
-            VJFrameSeeQuote screen = new VJFrameSeeQuote(this.user, bookName, quote, idQuote);
+            String authorName = CSearchAuthorName.cSearchAuthorName(bookName);
+            VJFrameSeeQuote screen = new VJFrameSeeQuote(this.user, bookName, quote, idQuote, authorName);
             screen.setVisible(true);
         }
     }//GEN-LAST:event_jButton5ActionPerformed

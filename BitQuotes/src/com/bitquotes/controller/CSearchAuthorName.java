@@ -13,7 +13,6 @@ import com.bitquotes.jdbc.dao.DSelect;
 public class CSearchAuthorName {
     
     public static String cSearchAuthorName(String bookName) {
-        //return DSelect.authorName(bookName);
         String author = DSelect.authorName(bookName);
         if(author != null) {
             return author;

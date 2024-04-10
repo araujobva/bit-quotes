@@ -46,8 +46,14 @@ public class DUpdate {
             stmt.setInt(3, quote.getBookId());
             stmt.setString(4, quote.getUserOwner());
             stmt.setInt(5, quote.getId());
-            stmt.executeUpdate();
+            stmt.executeUpdate();          
+            String query2 = "UPDATE book SET bo_author = ? WHERE book.bo_id = ?";
+            PreparedStatement stmt2 = con.prepareStatement(query2);         
+            stmt2.setString(1, quote.getAuthor());
+            stmt2.setInt(2, quote.getBookId());
+            stmt2.executeUpdate();           
             stmt.close(); //Fechando o PrepareStatement
+            stmt2.close();
             con.close(); //Fechando a conexão          
             return true;          
         }catch(SQLException ex) {
