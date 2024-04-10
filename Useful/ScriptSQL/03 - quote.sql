@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `bit_quote`.`quote` (
   `qu_id` INT NOT NULL AUTO_INCREMENT,
   `qu_quote` LONGTEXT NOT NULL,
-  `qu_book_page` SMALLINT NOT NULL,
+  `qu_book_page` VARCHAR(10) NOT NULL,
   `bo_id` INT NOT NULL,
   `us_name` VARCHAR(45) NOT NULL,
   INDEX `fk_citacao_livro1_idx` (`bo_id` ASC) VISIBLE,
