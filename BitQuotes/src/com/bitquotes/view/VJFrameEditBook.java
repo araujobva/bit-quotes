@@ -147,18 +147,24 @@ public class VJFrameEditBook extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        MBook objBookOld = new MBook();
-        MBook objBookNew = new MBook();
-        objBookOld.setName(this.bookName);
-        objBookOld.setAuthor(this.authorName);
-        objBookOld.setUserName(this.user);
-        objBookNew.setName(jTextField1.getText().trim());
-        objBookNew.setAuthor(jTextField2.getText().trim());
-        boolean verification = CManageBook.updateBook(objBookNew, objBookOld);
-        if(verification) {
-            jTextField1.setText(null);
-            jTextField2.setText(null);
-            JOptionPane.showMessageDialog(null,"Livro editado com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
+        if(jTextField1.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Preencha o campo do nome do livro!","ERRO!",JOptionPane.ERROR_MESSAGE);
+        } else if(jTextField2.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Preencha o campo do nome do autor!","ERRO!",JOptionPane.ERROR_MESSAGE);
+        } else {
+            MBook objBookOld = new MBook();
+            MBook objBookNew = new MBook();
+            objBookOld.setName(this.bookName);
+            objBookOld.setAuthor(this.authorName);
+            objBookOld.setUserName(this.user);
+            objBookNew.setName(jTextField1.getText().trim());
+            objBookNew.setAuthor(jTextField2.getText().trim());
+            boolean verification = CManageBook.updateBook(objBookNew, objBookOld);
+            if(verification) {
+                jTextField1.setText(null);
+                jTextField2.setText(null);
+                JOptionPane.showMessageDialog(null,"Livro editado com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
+            }     
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
