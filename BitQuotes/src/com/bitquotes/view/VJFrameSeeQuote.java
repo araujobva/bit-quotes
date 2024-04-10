@@ -210,7 +210,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha o campo de citação!","ERRO!",JOptionPane.ERROR_MESSAGE);
         } else if(jTextField1.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "Preencha o campo da página!","ERRO!",JOptionPane.ERROR_MESSAGE);
-        } if(jTextField2.getText().trim().isEmpty()) {
+        } else if(jTextField2.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Preencha o campo do autor!","ERRO!",JOptionPane.ERROR_MESSAGE);  
         } else {
             MQuote objQuote = new MQuote();
