@@ -65,7 +65,7 @@ public class DSelect {
                 objQuote.setBookPage(rs.getShort("quote.qu_book_page"));
                 objQuote.setBookId(rs.getInt("quote.bo_id"));
                 objQuote.setUserOwner(rs.getString("quote.us_name"));
-                objQuote.setName(rs.getString("bo_name"));
+                objQuote.setName(rs.getString("book.bo_name"));
                 quoteList.add(objQuote);
                 objQuote = new MQuote(); //Para não duplicar os valors no ArrayList.
             }
