@@ -49,6 +49,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jMenu3 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -70,7 +71,16 @@ public class VJFrameMain extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+
+        jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bit Quotes - Página Principal");
@@ -299,11 +309,66 @@ public class VJFrameMain extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jMenu1.setText("File");
+        jMenuBar1.setBackground(new java.awt.Color(252, 252, 252));
+
+        jMenu1.setText("Arquivos");
+        jMenu1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+
+        jMenuItem1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jMenuItem1.setText("Adicionar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jMenuItem2.setText("Excluir");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jMenuItem3.setText("Ver ou Editar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Gerenciamento");
+        jMenu2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+
+        jMenuItem4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jMenuItem4.setText("Gerenciar Usuários");
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jMenuItem5.setText("Gerenciar Livros");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
         jMenuBar1.add(jMenu2);
+
+        jMenu4.setText("Ajuda");
+        jMenu4.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+
+        jMenuItem6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jMenuItem6.setText("Sobre");
+        jMenu4.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -414,6 +479,51 @@ public class VJFrameMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada.
+        if(selectedRow == -1){
+            JOptionPane.showMessageDialog(null,"Seleciona uma citação para excluir!","ERRO!",JOptionPane.ERROR_MESSAGE);
+        }else {
+            int column = 0; //Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a da Citação.
+            Object valueField = jTable1.getValueAt(selectedRow, column);
+            int id = searchIdQuote((String) valueField);
+            boolean verification = CDeleteQuote.deleteQuote(id);
+            if(verification) {
+                jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
+                JOptionPane.showMessageDialog(null,"A citação foi excluída com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
+            }          
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        VJFrameAddQuote screen = new VJFrameAddQuote(jTextField2.getText());
+        screen.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada, se nenhuma linha for selecionada o valor será -1.
+        if(selectedRow == -1) {
+            JOptionPane.showMessageDialog(null,"Seleciona uma citação para ver ou editar!","ERRO!",JOptionPane.ERROR_MESSAGE);
+        }else {
+            MQuote quote = new MQuote();
+            Object qQuote = jTable1.getValueAt(selectedRow, 0); //Fixando a coluna 0 que é a citação.
+            quote.setQuote((String) qQuote);
+            Object qBookName = jTable1.getValueAt(selectedRow, 1); //Fixando a coluna 1 que é o nome do livro.
+            String bookName = (String) qBookName;
+            Object qPage = jTable1.getValueAt(selectedRow, 2); //Fixando a coluna 2 que é a página do livro.
+            quote.setBookPage((String) qPage);
+            int idQuote = searchIdQuote(quote.getQuote());
+            String authorName = CSearchAuthorName.cSearchAuthorName(bookName);
+            VJFrameSeeQuote screen = new VJFrameSeeQuote(this.user, bookName, quote, idQuote, authorName);
+            screen.setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        VJFrameManageBook screen = new VJFrameManageBook(this.user);
+        screen.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     private static int returnIdQuote() {
         
         return 0;
@@ -468,7 +578,15 @@ public class VJFrameMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton1;
