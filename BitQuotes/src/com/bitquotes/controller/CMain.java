@@ -6,8 +6,6 @@ package com.bitquotes.controller;
 
 import com.bitquotes.view.VJFrameAuthentication;
 
-import com.bitquotes.jdbc.dao.DSelect;
-
 /**
  *
  * @author bruno

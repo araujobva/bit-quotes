@@ -48,6 +48,7 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/security.png"))); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(252, 252, 252));
