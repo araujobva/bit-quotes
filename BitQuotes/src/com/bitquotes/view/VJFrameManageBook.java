@@ -22,6 +22,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
      */
     
     private String user;
+    private ArrayList<MBook> bookList = new ArrayList<MBook>();
     
     public VJFrameManageBook() {
         initComponents();
@@ -34,8 +35,20 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         comboBox(this.user);
     }
     
+    public VJFrameManageBook(String user, String bookName) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.user = user;
+        comboBox(this.user);
+        for(int i = 0; i < bookList.size(); i++) {
+            if(bookList.get(i).getName().equals(bookName)) {
+                jComboBox1.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+    
     public void comboBox(String user) {
-        ArrayList<MBook> bookList = new ArrayList<MBook>();
         bookList = CSearchBook.cSearchBook(user);
         String[] bookNameArray = new String[bookList.size()];
         for(int i = 0; i < bookList.size(); i++) {
