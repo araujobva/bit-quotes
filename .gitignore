@@ -1,4 +1,5 @@
 *.class
+*.txt
 /BitQuotes/nbproject/private/
 /BitQuotes/build/
 /BitQuotes/dist/
