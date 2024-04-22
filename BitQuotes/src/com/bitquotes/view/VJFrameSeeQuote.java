@@ -48,13 +48,12 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
             bookNameArray[i] = bookList.get(i).getName();
         }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(bookNameArray));
-        int index = -1;
         for(int i = 0; i < bookList.size(); i++) { //Encontrar a posição do índice que o nome do livro está na lista para setar ele no jComboBox.
             if(bookList.get(i).getName().equals(bookName)) {
-                index = i;
+                jComboBox1.setSelectedIndex(i);
+                break;
             }
         }
-        jComboBox1.setSelectedIndex(index);
     }
 
     /**
