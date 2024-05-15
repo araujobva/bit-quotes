@@ -144,6 +144,11 @@ public class VJFrameMain extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/backup.png"))); // NOI18N
         jButton7.setText("BackUp");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -522,6 +527,11 @@ public class VJFrameMain extends javax.swing.JFrame {
         VJFrameManageBook screen = new VJFrameManageBook(this.user);
         screen.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        JFrameBackUp screen = new JFrameBackUp();
+        screen.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     private static int returnIdQuote() {
         
