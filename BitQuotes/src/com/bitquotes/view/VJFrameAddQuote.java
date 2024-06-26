@@ -54,7 +54,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Bit Quote - Ver Citação");
+        setTitle("Bit Quote - Adicionar Citação");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
