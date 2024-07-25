@@ -143,7 +143,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(252, 252, 252));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remove ou Edita Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Excluir ou Edita Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel3.setText("Remove ou Edita Livro:");
