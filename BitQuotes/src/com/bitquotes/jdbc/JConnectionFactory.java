@@ -16,7 +16,8 @@ import javax.swing.JOptionPane;
 public class JConnectionFactory {
     
     private static String driverJDBC = "com.mysql.jdbc.Driver";
-    private static String connectionPath = "jdbc:mysql://127.0.0.1/bit_quote_test";
+    //private static String connectionPath = "jdbc:mysql://127.0.0.1/bit_quote_test";
+    private static String connectionPath = "jdbc:mysql://127.0.0.1/bit_quote_test?autoReconnect=true&useSSL=false";
     private static String user = "root";
     private static String password = "8528";
     
