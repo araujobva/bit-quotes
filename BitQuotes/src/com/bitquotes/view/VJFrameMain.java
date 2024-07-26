@@ -11,6 +11,7 @@ import com.bitquotes.model.MQuote;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.bitquotes.controller.CSearchAuthorName;
+import com.bitquotes.controller.CCheckADM;
 
 /**
  *
@@ -352,6 +353,11 @@ public class VJFrameMain extends javax.swing.JFrame {
 
         jMenuItem4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jMenuItem4.setText("Gerenciar Usuários");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -532,6 +538,17 @@ public class VJFrameMain extends javax.swing.JFrame {
         VJFrameBackUp screen = new VJFrameBackUp();
         screen.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        boolean adm = CCheckADM.cCheckADM(this.user);
+        if(adm) {
+            VJFrameUserManagerADM screen = new VJFrameUserManagerADM(this.user);
+            screen.setVisible(true);
+        }else {
+            System.out.println("chamada do JFrame de usuário comum!!!!");
+        }
+
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private static int returnIdQuote() {
         

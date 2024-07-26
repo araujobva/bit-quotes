@@ -198,5 +198,46 @@ public class DSelect {
         }
         return null;    
     }
-    
+        
+        public static boolean checkADM(String user) {
+            try{
+                Connection con = JConnectionFactory.getConnection();
+                String query = "SELECT  us_administrator FROM user WHERE us_name = ?";
+                PreparedStatement stmt;
+                stmt = con.prepareStatement(query);
+                stmt.setString(1, user);
+                ResultSet rs = stmt.executeQuery();
+                rs.next();
+                boolean adm = rs.getBoolean("us_administrator");
+                con.close();
+                stmt.close();
+                rs.close();
+                return adm;
+            } catch(SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Não foi possível verificar se o usuário é um administrador!\n"+ex, "ERRO!",JOptionPane.ERROR_MESSAGE);
+            }
+            return false;
+        }
+        
+        public static ArrayList recoverUser() {
+            try{
+                Connection con = JConnectionFactory.getConnection();
+                String query = "SELECT us_name FROM user";
+                PreparedStatement stmt;
+                stmt = con.prepareStatement(query);
+                ResultSet rs = stmt.executeQuery();
+                ArrayList<String> userList = new ArrayList<String>();
+                while(rs.next()) {
+                    userList.add(rs.getString("us_name"));
+                }
+                con.close();
+                stmt.close();
+                rs.close();
+                return userList;
+            } catch(SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Não foi possível buscar os usuário os usuários!\n"+ex, "ERRO!",JOptionPane.ERROR_MESSAGE);
+            }
+            return null;
+        }
+        
 }
