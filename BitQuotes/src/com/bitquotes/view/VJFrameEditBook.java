@@ -64,10 +64,8 @@ public class VJFrameEditBook extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel2.setText("Nome do Autor:");
 
-        jTextField1.setBackground(new java.awt.Color(252, 252, 252));
         jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
-        jTextField2.setBackground(new java.awt.Color(252, 252, 252));
         jTextField2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jToggleButton1.setBackground(new java.awt.Color(252, 252, 252));

@@ -106,7 +106,6 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel1.setText("Página:");
 
-        jTextField1.setBackground(new java.awt.Color(252, 252, 252));
         jTextField1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -137,7 +136,6 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel3.setText("Autor:");
 
-        jTextField2.setBackground(new java.awt.Color(252, 252, 252));
         jTextField2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

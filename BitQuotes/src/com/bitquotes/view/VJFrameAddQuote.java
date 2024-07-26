@@ -101,7 +101,6 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel1.setText("Página:");
 
-        jTextField1.setBackground(new java.awt.Color(252, 252, 252));
         jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(252, 252, 252));
