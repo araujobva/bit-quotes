@@ -11,13 +11,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import com.bitquotes.model.MUser;
 
 /**
  *
  * @author Bruno
  */
 public class DInsert {
-    
+
     public static boolean insertBook(MBook objBookName) {
         try {
             Connection con = JConnectionFactory.getConnection();
@@ -30,12 +31,12 @@ public class DInsert {
             con.close();
             stmt.close();
             return true;
-        }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Esse livro já existe!\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Esse livro já existe!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
-    
+
     public static boolean insertQuote(MQuote objQuote) {
         try {
             Connection con = JConnectionFactory.getConnection();
@@ -49,10 +50,30 @@ public class DInsert {
             con.close();
             stmt.close();
             return true;
-        }catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao inserir citação!\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao inserir citação!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
-    
+
+    public static boolean addUser(MUser user) {
+        try {
+            Connection con = JConnectionFactory.getConnection();
+            String query = "INSERT INTO user (us_name, us_password, us_administrator) VALUES (?, ?, ?)";
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getPassword());
+            stmt.setBoolean(3, user.getAdministrator());
+            stmt.executeUpdate();
+            con.close();
+            stmt.close();
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar um novo usuário!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
 }
+
+

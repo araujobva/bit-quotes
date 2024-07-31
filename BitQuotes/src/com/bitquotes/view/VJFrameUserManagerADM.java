@@ -248,6 +248,7 @@ public class VJFrameUserManagerADM extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         VJFrameAddUser screen = new VJFrameAddUser();
+        dispose();
         screen.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
