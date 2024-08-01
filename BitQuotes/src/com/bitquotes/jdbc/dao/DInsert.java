@@ -71,8 +71,6 @@ public class DInsert {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar um novo usuário!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
             return false;
-        } finally {
-            System.out.println("finally");
         }
     }
 
