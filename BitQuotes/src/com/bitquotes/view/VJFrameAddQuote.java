@@ -99,7 +99,7 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel1.setText("Página:");
+        jLabel1.setText("* Página:");
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
 

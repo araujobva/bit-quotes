@@ -203,7 +203,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="P&#xe1;gina:"/>
+                <Property name="text" type="java.lang.String" value="* P&#xe1;gina:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField1">
