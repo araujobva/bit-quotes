@@ -18,9 +18,18 @@ public class VJFrameAddUser extends javax.swing.JFrame {
     /**
      * Creates new form VJFrameAddUser
      */
+    
+    private String user;
+    
     public VJFrameAddUser() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+    
+    public VJFrameAddUser(String user) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.user = user;
     }
 
     /**
@@ -172,6 +181,8 @@ public class VJFrameAddUser extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
+        VJFrameUserManagerADM screen = new VJFrameUserManagerADM(this.user);
+        screen.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
