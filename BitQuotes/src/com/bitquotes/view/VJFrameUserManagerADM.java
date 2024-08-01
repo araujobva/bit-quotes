@@ -41,6 +41,7 @@ public class VJFrameUserManagerADM extends javax.swing.JFrame {
             userArray[i] = userList.get(i);
         }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(userArray));
+        jComboBox1.setSelectedItem(this.user);
     }
 
     /**
