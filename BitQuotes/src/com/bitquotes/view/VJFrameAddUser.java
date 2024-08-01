@@ -10,6 +10,8 @@ package com.bitquotes.view;
  */
 
 import com.bitquotes.model.MUser;
+import javax.swing.JOptionPane;
+import com.bitquotes.controller.CAddUser;
 
 public class VJFrameAddUser extends javax.swing.JFrame {
 
@@ -173,7 +175,39 @@ public class VJFrameAddUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        MUser user = new MUser();
+        user.setName(jTextField1.getText().trim());
+        String password01 = jPasswordField1.getText();
+        String password02 = jPasswordField2.getText();
+        user.setPassword(password01);
+        int index = jComboBox1.getSelectedIndex();
+        if (user.getName().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Preencha o nome do usuário!", "ERRO!", JOptionPane.ERROR_MESSAGE);
+        } else if (!password01.equals(password02)) {
+            JOptionPane.showMessageDialog(null, "As senhas são diferentes!", "ERRO!", JOptionPane.ERROR_MESSAGE);
+        } else if (index == 0) {
+            JOptionPane.showMessageDialog(null, "Defina se o usuário é Administrador ou Comum!", "ERRO!", JOptionPane.ERROR_MESSAGE);
+        } else if (index == 1) {
+            user.setAdministrator(true);
+            boolean verification = CAddUser.cAddUser(user);
+            if (verification) {
+                jTextField1.setText(null);
+                jPasswordField1.setText(null);
+                jPasswordField2.setText(null);
+                jComboBox1.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } else if (index == 2) {
+            user.setAdministrator(false);
+            boolean verification = CAddUser.cAddUser(user);
+            if (verification) {
+                jTextField1.setText(null);
+                jPasswordField1.setText(null);
+                jPasswordField2.setText(null);
+                jComboBox1.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
