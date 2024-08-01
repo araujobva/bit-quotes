@@ -68,7 +68,7 @@ public class VJFrameAddUser extends javax.swing.JFrame {
         jLabel5.setText("* Nome do usuário:");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jLabel1.setText("* Nível de acesso do usuário:");
+        jLabel1.setText("* Tipo de usuário:");
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Administrador", "Comum"}));
@@ -197,7 +197,7 @@ public class VJFrameAddUser extends javax.swing.JFrame {
         } else if (!password01.equals(password02)) {
             JOptionPane.showMessageDialog(null, "As senhas são diferentes!", "ERRO!", JOptionPane.ERROR_MESSAGE);
         } else if (index == 0) {
-            JOptionPane.showMessageDialog(null, "Defina se o usuário é Administrador ou Comum!", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Defina o tipo de usuário!", "ERRO!", JOptionPane.ERROR_MESSAGE);
         } else if (index == 1) {
             user.setAdministrator(true);
             boolean verification = CAddUser.cAddUser(user);
