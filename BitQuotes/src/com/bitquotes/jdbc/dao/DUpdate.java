@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class DUpdate {
 
-    public static boolean bookUpdate(MBook objBook, int idBook) {  
+    public static boolean bookUpdate(MBook objBook, int idBook) {
         try {
             Connection con = JConnectionFactory.getConnection();
             String query = "UPDATE book SET bo_name = ?, bo_author = ? WHERE bo_id = ?";
@@ -31,13 +31,13 @@ public class DUpdate {
             con.close(); //Fechando a conexão          
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível modificar!\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível modificar!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
             return false;
-        }        
-    }  
-    
+        }
+    }
+
     public static boolean quoteUpdate(MQuote quote) {
-        try{         
+        try {
             Connection con = JConnectionFactory.getConnection();
             String query = "UPDATE quote SET qu_quote = ?, qu_book_page = ?, bo_id = ?, us_name = ? WHERE qu_id = ?";
             PreparedStatement stmt = con.prepareStatement(query);
@@ -46,20 +46,20 @@ public class DUpdate {
             stmt.setInt(3, quote.getBookId());
             stmt.setString(4, quote.getUserOwner());
             stmt.setInt(5, quote.getId());
-            stmt.executeUpdate();          
+            stmt.executeUpdate();
             String query2 = "UPDATE book SET bo_author = ? WHERE book.bo_id = ?";
-            PreparedStatement stmt2 = con.prepareStatement(query2);         
+            PreparedStatement stmt2 = con.prepareStatement(query2);
             stmt2.setString(1, quote.getAuthor());
             stmt2.setInt(2, quote.getBookId());
-            stmt2.executeUpdate();           
+            stmt2.executeUpdate();
             stmt.close(); //Fechando o PrepareStatement
             stmt2.close();
             con.close(); //Fechando a conexão          
-            return true;          
-        }catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Não foi possível atualizar a citação\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar a citação\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
-    
+
 }
