@@ -187,30 +187,39 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(jTextArea1.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Preencha o campo de citação!","ERRO!",JOptionPane.ERROR_MESSAGE);
-        } else if(jTextField1.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Preencha o campo da página!","ERRO!",JOptionPane.ERROR_MESSAGE);
-        } else {
-            MQuote objQuote = new MQuote();
-            objQuote.setQuote(jTextArea1.getText().trim());
-            objQuote.setBookPage(jTextField1.getText().trim());
-            objQuote.setId(CSearchBook.cSearchIdBook(jComboBox1.getSelectedItem().toString(), user));
-            objQuote.setUserOwner(this.user);
-            boolean verification = CAdd.addQuote(objQuote);
-            if(verification) {
-                jTextArea1.setText(null);
-                jTextField1.setText(null);
-                JOptionPane.showMessageDialog(null, "Citação adiciona com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
-            }  
+        try {
+            if (jTextArea1.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o campo de citação!", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            } else if (jTextField1.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Preencha o campo da página!", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                MQuote objQuote = new MQuote();
+                objQuote.setQuote(jTextArea1.getText().trim());
+                objQuote.setBookPage(jTextField1.getText().trim());
+                objQuote.setId(CSearchBook.cSearchIdBook(jComboBox1.getSelectedItem().toString(), user));
+                objQuote.setUserOwner(this.user);
+                boolean verification = CAdd.addQuote(objQuote);
+                if (verification) {
+                    jTextArea1.setText(null);
+                    jTextField1.setText(null);
+                    JOptionPane.showMessageDialog(null, "Citação adiciona com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Seleciona um livro!\nCaso não tenha nenhum livro, volte a tela inicial e adicione livros no botão GERENCIAR LIVROS","ERRO!",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String bookName = jComboBox1.getSelectedItem().toString();
-        VJFrameManageBook screen = new VJFrameManageBook(this.user, bookName);
-        dispose();
-        screen.setVisible(true);
+        try {
+            String bookName = jComboBox1.getSelectedItem().toString();
+            VJFrameManageBook screen = new VJFrameManageBook(this.user, bookName);
+            dispose();
+            screen.setVisible(true);            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Seleciona um livro!\nCaso não tenha nenhum livro, volte a tela inicial e adicione livros no botão GERENCIAR LIVROS","ERRO!",JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
