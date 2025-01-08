@@ -69,7 +69,7 @@ public class DInsert {
             stmt.close();
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao adicionar um novo usuário!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar um novo usuário!\nESSE USUÁRIO JÁ EXISTE!","ERRO!", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
