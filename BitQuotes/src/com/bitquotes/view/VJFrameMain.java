@@ -540,14 +540,8 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        boolean adm = CCheckADM.cCheckADM(this.user);
-        if(adm) {
-            VJFrameUserManagerADM screen = new VJFrameUserManagerADM(this.user);
-            screen.setVisible(true);
-        }else {
-            System.out.println("chamada do JFrame de usuário comum!!!!");
-        }
-
+        VJFrameConfirmsIdentity screenIdentity = new VJFrameConfirmsIdentity(user);
+        screenIdentity.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private static int returnIdQuote() {

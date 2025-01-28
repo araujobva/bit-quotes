@@ -207,7 +207,7 @@ public class DSelect {
         public static boolean checkADM(String user) {
             try{
                 Connection con = JConnectionFactory.getConnection();
-                String query = "SELECT  us_administrator FROM user WHERE us_name = ?";
+                String query = "SELECT us_administrator FROM user WHERE us_name = ?";
                 PreparedStatement stmt;
                 stmt = con.prepareStatement(query);
                 stmt.setString(1, user);
@@ -245,4 +245,28 @@ public class DSelect {
             return null;
         }
         
+        //Verifica se o usuário relacionado a senha existe.
+        public static boolean confirmsIdentity(String user, String password) {
+        try {
+            Connection con = JConnectionFactory.getConnection();
+            String query = "SELECT COUNT(*) as user_count FROM user WHERE BINARY us_name = ? AND BINARY us_password = ?";
+            //Se o retorno no campo user_count for maior que 1, é porque o usuário existe.
+            PreparedStatement stmt;
+            stmt = con.prepareStatement(query);
+            stmt.setString(1, user);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            byte count = rs.getByte("user_count");
+            con.close();
+            stmt.close();
+            rs.close();
+            if (count > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível verificar se o usuário é existe!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
+        }
+        return false;
+    }
 }
