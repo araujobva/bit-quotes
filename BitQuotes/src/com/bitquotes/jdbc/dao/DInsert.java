@@ -15,7 +15,7 @@ import com.bitquotes.model.MUser;
 
 /**
  *
- * @author Bruno
+ * @author bruno
  */
 public class DInsert {
 

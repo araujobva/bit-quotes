@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author arauj
+ * @author bruno
  */
 public class VJFrameConfirmsIdentity extends javax.swing.JFrame {
 

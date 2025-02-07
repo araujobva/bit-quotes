@@ -6,7 +6,7 @@ package com.bitquotes.model;
 
 /**
  *
- * @author Bruno
+ * @author bruno
  */
 public class MBook {
     

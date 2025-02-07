@@ -8,7 +8,7 @@ import com.bitquotes.jdbc.dao.DDelete;
 
 /**
  *
- * @author Wolf
+ * @author bruno
  */
 public class CDeleteQuote {
     

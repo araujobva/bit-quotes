@@ -12,7 +12,7 @@ import com.bitquotes.jdbc.JConnectionFactory;
 
 /**
  *
- * @author Bruno
+ * @author bruno
  */
 public class DDelete {
 

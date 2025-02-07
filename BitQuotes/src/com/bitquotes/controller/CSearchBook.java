@@ -11,7 +11,7 @@ import com.bitquotes.jdbc.dao.DSelect;
 
 /**
  *
- * @author Bruno
+ * @author bruno
  */
 public class CSearchBook {
     

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Bruno
+ * @author bruno
  */
 public class DUpdate {
 

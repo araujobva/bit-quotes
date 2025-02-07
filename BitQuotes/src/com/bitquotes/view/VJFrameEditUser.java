@@ -6,7 +6,7 @@ package com.bitquotes.view;
 
 /**
  *
- * @author arauj
+ * @author bruno
  */
 
 import com.bitquotes.controller.CCheckADM;

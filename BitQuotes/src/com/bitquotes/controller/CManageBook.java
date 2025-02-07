@@ -12,7 +12,7 @@ import com.bitquotes.model.MBook;
 
 /**
  *
- * @author Bruno
+ * @author bruno
  */
 public class CManageBook {
     

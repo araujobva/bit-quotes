@@ -6,7 +6,7 @@ package com.bitquotes.controller;
 
 /**
  *
- * @author arauj
+ * @author bruno
  */
 
 import com.bitquotes.jdbc.dao.DSelect;

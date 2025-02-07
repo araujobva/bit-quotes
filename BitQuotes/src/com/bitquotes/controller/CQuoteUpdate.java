@@ -9,7 +9,7 @@ import com.bitquotes.jdbc.dao.DUpdate;
 
 /**
  *
- * @author wolf
+ * @author bruno
  */
 public class CQuoteUpdate {
     
