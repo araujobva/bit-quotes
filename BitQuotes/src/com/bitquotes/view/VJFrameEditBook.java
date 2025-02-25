@@ -6,6 +6,7 @@ package com.bitquotes.view;
 
 import com.bitquotes.controller.CManageBook;
 import com.bitquotes.model.MBook;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -65,8 +66,18 @@ public class VJFrameEditBook extends javax.swing.JFrame {
         jLabel2.setText("Nome do Autor:");
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         jTextField2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         jToggleButton1.setBackground(new java.awt.Color(252, 252, 252));
         jToggleButton1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -76,6 +87,11 @@ public class VJFrameEditBook extends javax.swing.JFrame {
                 jToggleButton1ActionPerformed(evt);
             }
         });
+        jToggleButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jToggleButton1KeyPressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(252, 252, 252));
         jButton1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -83,6 +99,11 @@ public class VJFrameEditBook extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
             }
         });
 
@@ -167,6 +188,42 @@ public class VJFrameEditBook extends javax.swing.JFrame {
             }     
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jToggleButton1ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton1ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jToggleButton1ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton1ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jToggleButton1ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton1ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jToggleButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jToggleButton1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jToggleButton1ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton1ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jToggleButton1KeyPressed
 
     /**
      * @param args the command line arguments

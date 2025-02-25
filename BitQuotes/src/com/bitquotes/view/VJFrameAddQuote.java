@@ -8,6 +8,7 @@ import com.bitquotes.controller.CAdd;
 import com.bitquotes.controller.CSearchBook;
 import com.bitquotes.model.MBook;
 import com.bitquotes.model.MQuote;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -79,6 +80,11 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyPressed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(252, 252, 252));
         jButton2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -86,6 +92,14 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jButton2KeyReleased(evt);
             }
         });
 
@@ -97,11 +111,21 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel1.setText("* Página:");
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(252, 252, 252));
         jButton1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -109,6 +133,11 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
             }
         });
 
@@ -225,6 +254,55 @@ public class VJFrameAddQuote extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton3ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton3ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton3ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton2KeyPressed
+
+    private void jButton2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2KeyReleased
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton3ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton3KeyPressed
+
+    private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton3ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jComboBox1KeyPressed
 
     //Carregando o JComboBox com dados dos nomes dos livros persistidos no banco de dados.
     private void comboBox(String user) {         

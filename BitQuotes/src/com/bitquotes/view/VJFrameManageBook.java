@@ -8,6 +8,7 @@ import com.bitquotes.controller.CManageBook;
 import com.bitquotes.controller.CSearchAuthorName;
 import com.bitquotes.controller.CSearchBook;
 import com.bitquotes.model.MBook;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -88,8 +89,18 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adiciona Livro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
 
         jTextField2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel1.setText("Nome do Livro:");
@@ -105,6 +116,11 @@ public class VJFrameManageBook extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,27 +134,24 @@ public class VJFrameManageBook extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton1)))
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -150,6 +163,11 @@ public class VJFrameManageBook extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyPressed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(252, 252, 252));
         jButton2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -159,6 +177,11 @@ public class VJFrameManageBook extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(252, 252, 252));
         jButton3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -166,6 +189,11 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
             }
         });
 
@@ -202,6 +230,11 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton4KeyPressed(evt);
             }
         });
 
@@ -293,6 +326,55 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Erro ao achar o autor!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jComboBox1KeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton2KeyPressed
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton3KeyPressed
+
+    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton4KeyPressed
 
     /**
      * @param args the command line arguments

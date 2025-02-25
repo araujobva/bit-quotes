@@ -6,6 +6,7 @@ package com.bitquotes.view;
 
 import java.util.ArrayList;
 import com.bitquotes.controller.CRecoverUser;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -125,6 +126,11 @@ public class VJFrameUserManagerADM extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyPressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(252, 252, 252));
         jButton1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -134,10 +140,20 @@ public class VJFrameUserManagerADM extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(252, 252, 252));
         jButton2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton2.setText("Excluir Usuário");
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(252, 252, 252));
         jButton5.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -145,6 +161,11 @@ public class VJFrameUserManagerADM extends javax.swing.JFrame {
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
+            }
+        });
+        jButton5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton5KeyPressed(evt);
             }
         });
 
@@ -189,6 +210,11 @@ public class VJFrameUserManagerADM extends javax.swing.JFrame {
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton4KeyPressed(evt);
             }
         });
 
@@ -255,6 +281,41 @@ public class VJFrameUserManagerADM extends javax.swing.JFrame {
         dispose();
         screen.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton4KeyPressed
+
+    private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jComboBox1KeyPressed
+
+    private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton5KeyPressed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton4ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton2KeyPressed
 
     /**
      * @param args the command line arguments

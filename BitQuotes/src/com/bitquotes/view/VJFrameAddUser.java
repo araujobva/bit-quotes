@@ -6,6 +6,7 @@ package com.bitquotes.view;
 
 import com.bitquotes.controller.CAddUser;
 import com.bitquotes.model.MUser;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -58,10 +59,25 @@ public class VJFrameAddUser extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adiciona Usuário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         jPasswordField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField1KeyPressed(evt);
+            }
+        });
 
         jPasswordField2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jPasswordField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordField2KeyPressed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel2.setText("Senha:");
@@ -80,6 +96,11 @@ public class VJFrameAddUser extends javax.swing.JFrame {
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
+            }
+        });
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyPressed(evt);
             }
         });
 
@@ -137,6 +158,11 @@ public class VJFrameAddUser extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(252, 252, 252));
         jButton1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
@@ -144,6 +170,11 @@ public class VJFrameAddUser extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
             }
         });
 
@@ -233,6 +264,60 @@ public class VJFrameAddUser extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton1ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton1ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jPasswordField1KeyPressed
+
+    private void jPasswordField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField2KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton1ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jPasswordField2KeyPressed
+
+    private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton1ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jComboBox1KeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton1ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton2KeyPressed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            jButton1ActionPerformed(keyPressed);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            jButton2ActionPerformed(keyPressed);
+        }
+    }//GEN-LAST:event_jButton1KeyPressed
 
     /**
      * @param args the command line arguments
