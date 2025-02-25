@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class VJFrameAddUser extends javax.swing.JFrame {
     
-    String user;
+    private String user;
 
     /**
      * Creates new form VJFrameAddUser
