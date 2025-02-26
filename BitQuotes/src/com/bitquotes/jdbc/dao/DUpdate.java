@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import com.bitquotes.jdbc.JConnectionFactory;
 import com.bitquotes.model.MBook;
 import com.bitquotes.model.MQuote;
+import com.bitquotes.model.MUser;
 import javax.swing.JOptionPane;
 
 /**
@@ -57,9 +58,41 @@ public class DUpdate {
             con.close(); //Fechando a conexão          
             return true;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível atualizar a citação\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar a citação!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+    
+    public static boolean userUpdate(MUser user, String oldUser) {
+        try {
+            Connection con = JConnectionFactory.getConnection();
+            String query1 = "UPDATE quote SET us_name = ? WHERE us_name = ?";
+            String query2 = "UPDATE book SET us_us_name = ? WHERE us_us_name = ?";
+            String query3 = "UPDATE user SET us_name = ?, us_password = ?, us_administrator = ? WHERE us_name = ?";
+            PreparedStatement stmt1 = con.prepareStatement(query1);
+            PreparedStatement stmt2 = con.prepareStatement(query2);
+            PreparedStatement stmt3 = con.prepareStatement(query3);
+            stmt1.setString(1, user.getName());
+            stmt1.setString(2, oldUser);
+            stmt2.setString(1, user.getName());
+            stmt2.setString(2, oldUser);
+            stmt3.setString(1, user.getName());
+            stmt3.setString(2, user.getPassword());
+            stmt3.setBoolean(3, user.getAdministrator());
+            stmt3.setString(4, oldUser);
+            stmt1.executeUpdate();
+            stmt2.executeUpdate();
+            stmt3.executeUpdate();
+            stmt1.close(); //Fechando o PrepareStatement
+            stmt2.close();
+            stmt3.close(); 
+            con.close(); //Fechando a conexão          
+            return true;  
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar o usuário!\n" +ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
 
 }
+

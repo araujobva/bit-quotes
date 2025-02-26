@@ -10,6 +10,7 @@ package com.bitquotes.view;
  */
 
 import com.bitquotes.controller.CCheckADM;
+import com.bitquotes.controller.CEditUser;
 import javax.swing.JOptionPane;
 import com.bitquotes.model.MUser;
 import java.awt.event.KeyEvent;
@@ -247,6 +248,8 @@ public class VJFrameEditUser extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha o nome do usuário!", "ERRO!", JOptionPane.ERROR_MESSAGE);
         } else if (!password01.equals(password02)) {
             JOptionPane.showMessageDialog(null, "As senhas são diferentes!", "ERRO!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            CEditUser.cEditUser(user, this.userJComboBox);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
