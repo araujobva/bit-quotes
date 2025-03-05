@@ -66,26 +66,14 @@ public class DUpdate {
     public static boolean userUpdate(MUser user, String oldUser) {
         try {
             Connection con = JConnectionFactory.getConnection();
-            String query1 = "UPDATE quote SET us_name = ? WHERE us_name = ?";
-            String query2 = "UPDATE book SET us_us_name = ? WHERE us_us_name = ?";
-            String query3 = "UPDATE user SET us_name = ?, us_password = ?, us_administrator = ? WHERE us_name = ?";
-            PreparedStatement stmt1 = con.prepareStatement(query1);
-            PreparedStatement stmt2 = con.prepareStatement(query2);
-            PreparedStatement stmt3 = con.prepareStatement(query3);
-            stmt1.setString(1, user.getName());
-            stmt1.setString(2, oldUser);
-            stmt2.setString(1, user.getName());
-            stmt2.setString(2, oldUser);
-            stmt3.setString(1, user.getName());
-            stmt3.setString(2, user.getPassword());
-            stmt3.setBoolean(3, user.getAdministrator());
-            stmt3.setString(4, oldUser);
-            stmt1.executeUpdate();
-            stmt2.executeUpdate();
-            stmt3.executeUpdate();
-            stmt1.close(); //Fechando o PrepareStatement
-            stmt2.close();
-            stmt3.close(); 
+            String query = "UPDATE user SET us_name = ?, us_password = ?, us_administrator = ? WHERE us_name = ?";
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getPassword());
+            stmt.setBoolean(3, user.getAdministrator());
+            stmt.setString(4, oldUser);
+            stmt.executeUpdate();
+            stmt.close(); //Fechando o PrepareStatement
             con.close(); //Fechando a conexão          
             return true;  
         } catch (Exception ex) {

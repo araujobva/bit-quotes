@@ -10,11 +10,11 @@ CREATE TABLE IF NOT EXISTS `bit_quote`.`quote` (
   CONSTRAINT `fk_citacao_livro1`
     FOREIGN KEY (`bo_id`)
     REFERENCES `bit_quote`.`book` (`bo_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_citacao_usuario1`
     FOREIGN KEY (`us_name`)
     REFERENCES `bit_quote`.`user` (`us_name`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB

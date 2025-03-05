@@ -9,6 +9,6 @@ CREATE TABLE IF NOT EXISTS `bit_quote`.`book` (
   CONSTRAINT `fk_book_user1`
     FOREIGN KEY (`us_us_name`)
     REFERENCES `bit_quote`.`user` (`us_name`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB

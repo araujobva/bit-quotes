@@ -249,7 +249,17 @@ public class VJFrameEditUser extends javax.swing.JFrame {
         } else if (!password01.equals(password02)) {
             JOptionPane.showMessageDialog(null, "As senhas são diferentes!", "ERRO!", JOptionPane.ERROR_MESSAGE);
         } else {
-            CEditUser.cEditUser(user, this.userJComboBox);
+            boolean verification = CEditUser.cEditUser(user, this.userJComboBox);
+            if (verification) {
+               dispose();
+               if (this.userJComboBox.equals(this.user)) {
+                   JOptionPane.showMessageDialog(null,"Usuário editado com sucesso\nNOTA: Como você editou o usuário logado, o programa irá fechar!" , "SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
+                   System.exit(0);
+               }
+               JOptionPane.showMessageDialog(null,"Usuário editado com sucesso!", "SUCESSO!" , JOptionPane.INFORMATION_MESSAGE);
+               VJFrameUserManagerADM screen = new VJFrameUserManagerADM(this.user);
+               screen.setVisible(true);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
