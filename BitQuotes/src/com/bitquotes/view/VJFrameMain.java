@@ -457,21 +457,45 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada.
-        if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Seleciona uma citação para excluir!","ERRO!",JOptionPane.ERROR_MESSAGE);
-        }else {
-            int column = 0; //Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a da Citação.
-            Object valueField = jTable1.getValueAt(selectedRow, column);
-            int id = searchIdQuote((String) valueField);
-            boolean verification = CDeleteQuote.deleteQuote(id);
-            if(verification) {
-                jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
-                JOptionPane.showMessageDialog(null,"A citação foi excluída com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
-            }          
+        if (confirmationButton()) {
+            int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada.
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(null, "Seleciona uma citação para excluir!", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                int column = 0; //Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a da Citação.
+                Object valueField = jTable1.getValueAt(selectedRow, column);
+                int id = searchIdQuote((String) valueField);
+                boolean verification = CDeleteQuote.deleteQuote(id);
+                if (verification) {
+                    jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
+                    JOptionPane.showMessageDialog(null, "A citação foi excluída com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private boolean confirmationButton() {
+        Object[] opcoes = {"Excluir", "Cancelar"};
+        int escolha = JOptionPane.showOptionDialog(
+                null, // Componente pai (null para centralizar na tela)
+                "Deseja excluir a citação selecionada?", // Mensagem
+                "EXCLUSÃO DE CITAÇÃO!", // Título
+                JOptionPane.YES_NO_OPTION, // Tipo de opção (sim/não)
+                JOptionPane.QUESTION_MESSAGE, // Tipo de mensagem (pergunta)
+                null, // Ícone personalizado (null para usar o padrão)
+                opcoes, // Array de opções
+                opcoes[0] // Opção padrão
+        );
+        if (escolha == JOptionPane.YES_OPTION) {
+            return true;
+        } else if (escolha == JOptionPane.NO_OPTION) {
+            return false;
+        } else if (escolha == JOptionPane.CLOSED_OPTION) {
+            return false;
+        }
+        return false;
+    }
+    
     private int searchIdQuote(String quote) { //Acha na lista o ID da citação.
         for(int i = 0; i < this.quoteList.size(); i++) {
             if(quote.equals(this.quoteList.get(i).getQuote())) {
@@ -501,19 +525,8 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada.
-        if(selectedRow == -1){
-            JOptionPane.showMessageDialog(null,"Seleciona uma citação para excluir!","ERRO!",JOptionPane.ERROR_MESSAGE);
-        }else {
-            int column = 0; //Pegando a coluna da linha selecionada, nesse caso eu travei na coluna 0 que é a da Citação.
-            Object valueField = jTable1.getValueAt(selectedRow, column);
-            int id = searchIdQuote((String) valueField);
-            boolean verification = CDeleteQuote.deleteQuote(id);
-            if(verification) {
-                jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
-                JOptionPane.showMessageDialog(null,"A citação foi excluída com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
-            }          
-        }
+        java.awt.event.ActionEvent evento = null;
+        jButton3ActionPerformed(evento);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
