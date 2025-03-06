@@ -52,5 +52,21 @@ public class DDelete {
             return false;
         }
     }
-
+    
+    public static boolean deleteUser(String user) {
+        try {
+            Connection con = JConnectionFactory.getConnection();
+            String query = "DELETE FROM user WHERE user.us_name = ?"; 
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setString(1, user);
+            stmt.executeUpdate();
+            stmt.close();
+            con.close();
+            return true;            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Erro ao excluir o usuário!\n"+ex,"ERRO!",JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+    
 }

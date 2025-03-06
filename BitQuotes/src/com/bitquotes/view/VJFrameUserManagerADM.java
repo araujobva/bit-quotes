@@ -6,7 +6,9 @@ package com.bitquotes.view;
 
 import java.util.ArrayList;
 import com.bitquotes.controller.CRecoverUser;
+import com.bitquotes.controller.CRemoveUser;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -149,6 +151,11 @@ public class VJFrameUserManagerADM extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(252, 252, 252));
         jButton2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jButton2.setText("Excluir Usuário");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jButton2KeyPressed(evt);
@@ -317,6 +324,45 @@ public class VJFrameUserManagerADM extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2KeyPressed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String user = jComboBox1.getSelectedItem().toString();
+        boolean confirmationDelete = confirmationButton();
+        if (confirmationDelete) {
+            boolean verification = CRemoveUser.cRemoveUser(user);
+            if (verification) {
+                if (user.equals(this.user)) {
+                    JOptionPane.showMessageDialog(null, "Usúario excluído com sucesso!\nNOTA: O programa será fechado!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                    System.exit(0);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usúario excluído com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                    comboBox();
+                }
+            }
+        }    
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private boolean confirmationButton() {
+        Object[] opcoes = {"Excluir", "Cancelar"};
+        int escolha = JOptionPane.showOptionDialog(
+                null, // Componente pai (null para centralizar na tela)
+                "Deseja excluir o usuário e todos as suas citações?", // Mensagem
+                "EXCLUSÃO DE USUÁRIO!", // Título
+                JOptionPane.YES_NO_OPTION, // Tipo de opção (sim/não)
+                JOptionPane.QUESTION_MESSAGE, // Tipo de mensagem (pergunta)
+                null, // Ícone personalizado (null para usar o padrão)
+                opcoes, // Array de opções
+                opcoes[0] // Opção padrão
+        );
+        if (escolha == JOptionPane.YES_OPTION) {
+            return true;
+        } else if (escolha == JOptionPane.NO_OPTION) {
+            return false;
+        } else if (escolha == JOptionPane.CLOSED_OPTION) {
+            return false;
+        }
+        return false;
+    }
+    
     /**
      * @param args the command line arguments
      */
