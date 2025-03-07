@@ -467,13 +467,17 @@ public class VJFrameMain extends javax.swing.JFrame {
                 int id = searchIdQuote((String) valueField);
                 boolean verification = CDeleteQuote.deleteQuote(id);
                 if (verification) {
-                    jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
+                    clickButton();
                     JOptionPane.showMessageDialog(null, "A citação foi excluída com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    public void clickButton() {
+        jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
+    }
+    
     private boolean confirmationButton() {
         Object[] opcoes = {"Excluir", "Cancelar"};
         int escolha = JOptionPane.showOptionDialog(
