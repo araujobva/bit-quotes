@@ -54,7 +54,6 @@ public class VJFrameEditBook extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bit Quote - Edição de Livro");
-        setAlwaysOnTop(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
@@ -182,10 +181,13 @@ public class VJFrameEditBook extends javax.swing.JFrame {
             objBookNew.setName(jTextField1.getText().trim());
             objBookNew.setAuthor(jTextField2.getText().trim());
             boolean verification = CManageBook.updateBook(objBookNew, objBookOld);
-            if(verification) {
+            if (verification) {
                 jTextField1.setText(null);
                 jTextField2.setText(null);
-                JOptionPane.showMessageDialog(null,"Livro editado com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Livro editado com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                VJFrameManageBook screen = new VJFrameManageBook(this.user);
+                screen.setVisible(true);
             }     
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed

@@ -29,7 +29,6 @@ public class VJFrameBackUp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bit Quotes - BackUp");
-        setAlwaysOnTop(true);
         setResizable(false);
 
         jFileChooser2.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
