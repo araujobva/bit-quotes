@@ -18,6 +18,7 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
     /**
      * Creates new form VJFrameAutenticacao
      */
+    
     public VJFrameAuthentication() {
         initComponents();
         setLocationRelativeTo(null); //Define a localização que o JFrame vai abrir na tela
@@ -197,6 +198,7 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
         if(authentication){
             dispose(); //Fecha a tela corrente
             VJFrameMain main = new VJFrameMain(user.getName());
+            main.savePointer(main);
             main.setVisible(true);
         } else {
            JOptionPane.showMessageDialog(null,"Usuário ou Senha inválidos!","ERRO DE AUTENTICAÇÃO!",JOptionPane.ERROR_MESSAGE); 

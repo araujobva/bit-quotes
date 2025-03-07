@@ -24,6 +24,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
     
     private String user;
     private ArrayList<MBook> bookList = new ArrayList<MBook>();
+    private VJFrameMain mainPointer;
     
     public VJFrameManageBook() {
         initComponents();
@@ -56,6 +57,10 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             bookNameArray[i] = bookList.get(i).getName();
         }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(bookNameArray));
+    }
+    
+    public void savePointer(VJFrameMain pointer) {
+        this.mainPointer = pointer;
     }
 
     /**
@@ -320,6 +325,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
         String authorName = CSearchAuthorName.cSearchAuthorName(bookName);
         if(authorName != null) {
             VJFrameEditBook screen = new VJFrameEditBook(bookName, authorName, this.user);
+            screen.savePointer(mainPointer);
             screen.setVisible(true);
             dispose();
         } else {

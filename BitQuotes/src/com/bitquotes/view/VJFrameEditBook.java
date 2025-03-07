@@ -22,6 +22,7 @@ public class VJFrameEditBook extends javax.swing.JFrame {
     private String bookName;
     private String authorName;
     private String user;
+    private VJFrameMain mainPointer;
     
     public VJFrameEditBook() {
         initComponents();
@@ -184,6 +185,7 @@ public class VJFrameEditBook extends javax.swing.JFrame {
             if (verification) {
                 jTextField1.setText(null);
                 jTextField2.setText(null);
+                mainPointer.clickButton();
                 JOptionPane.showMessageDialog(null, "Livro editado com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
                 dispose();
                 VJFrameManageBook screen = new VJFrameManageBook(this.user);
@@ -192,6 +194,10 @@ public class VJFrameEditBook extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    public void savePointer(VJFrameMain pointer) {
+        this.mainPointer = pointer;
+    }
+    
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {

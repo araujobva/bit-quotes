@@ -27,6 +27,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     private ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
     private long quoteCount = 0;
     private String user;
+    private VJFrameMain mainPointer; //Para armazenar a posição de memória onde este objeto está.
     
     public VJFrameMain(String user) {
         initComponents();
@@ -453,6 +454,7 @@ public class VJFrameMain extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         VJFrameManageBook screen = new VJFrameManageBook(this.user);
+        screen.savePointer(mainPointer);
         screen.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -558,8 +560,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        VJFrameManageBook screen = new VJFrameManageBook(this.user);
-        screen.setVisible(true);
+        jButton9ActionPerformed(null);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -586,6 +587,10 @@ public class VJFrameMain extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_jButton1KeyPressed
 
+    public void savePointer(VJFrameMain pointer) {
+        this.mainPointer = pointer;
+    }
+    
     private static int returnIdQuote() {
         
         return 0;
