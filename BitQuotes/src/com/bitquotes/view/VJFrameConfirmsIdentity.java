@@ -160,8 +160,8 @@ public class VJFrameConfirmsIdentity extends javax.swing.JFrame {
                 VJFrameUserManagerADM screen = new VJFrameUserManagerADM(this.user);
                 screen.setVisible(true);
             } else {
-                dispose();
-                System.out.println("chamada do JFrame de usuário comum!!!!");
+                VJFrameUserManagerUser screen = new VJFrameUserManagerUser(this.user);
+                screen.setVisible(true);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Senha Incorreta!","ERRO!",JOptionPane.ERROR_MESSAGE);
