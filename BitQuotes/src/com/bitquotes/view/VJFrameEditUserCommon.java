@@ -63,6 +63,7 @@ public class VJFrameEditUserCommon extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bit Quote - Edição de Usuário");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));

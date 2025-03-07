@@ -79,6 +79,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bit Quote - Visualização e Edição");
+        setAlwaysOnTop(true);
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
 

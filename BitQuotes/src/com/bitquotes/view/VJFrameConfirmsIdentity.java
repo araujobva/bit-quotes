@@ -43,6 +43,7 @@ public class VJFrameConfirmsIdentity extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bit Quotes - Confirmação de Usuário");
+        setAlwaysOnTop(true);
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
 

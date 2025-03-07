@@ -29,10 +29,11 @@ public class VJFrameBackUp extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bit Quotes - BackUp");
+        setAlwaysOnTop(true);
         setResizable(false);
 
         jFileChooser2.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
-        jFileChooser2.setCurrentDirectory(new java.io.File("C:\\Users"));
+        jFileChooser2.setCurrentDirectory(new java.io.File("/home/bruno/C:/Users"));
         jFileChooser2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jFileChooser2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
