@@ -158,6 +158,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jLabel3.setText("Autor:");
 
+        jTextField2.setEditable(false);
         jTextField2.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
