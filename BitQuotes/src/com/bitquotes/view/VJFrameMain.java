@@ -526,6 +526,7 @@ public class VJFrameMain extends javax.swing.JFrame {
             int idQuote = searchIdQuote(quote.getQuote());
             String authorName = CSearchAuthorName.cSearchAuthorName(bookName);
             VJFrameSeeQuote screen = new VJFrameSeeQuote(this.user, bookName, quote, idQuote, authorName);
+            screen.savePointer(mainPointer);
             screen.setVisible(true);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -541,22 +542,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        int selectedRow = jTable1.getSelectedRow(); //Pegando a linha selecionada, se nenhuma linha for selecionada o valor será -1.
-        if(selectedRow == -1) {
-            JOptionPane.showMessageDialog(null,"Seleciona uma citação para ver ou editar!","ERRO!",JOptionPane.ERROR_MESSAGE);
-        }else {
-            MQuote quote = new MQuote();
-            Object qQuote = jTable1.getValueAt(selectedRow, 0); //Fixando a coluna 0 que é a citação.
-            quote.setQuote((String) qQuote);
-            Object qBookName = jTable1.getValueAt(selectedRow, 1); //Fixando a coluna 1 que é o nome do livro.
-            String bookName = (String) qBookName;
-            Object qPage = jTable1.getValueAt(selectedRow, 2); //Fixando a coluna 2 que é a página do livro.
-            quote.setBookPage((String) qPage);
-            int idQuote = searchIdQuote(quote.getQuote());
-            String authorName = CSearchAuthorName.cSearchAuthorName(bookName);
-            VJFrameSeeQuote screen = new VJFrameSeeQuote(this.user, bookName, quote, idQuote, authorName);
-            screen.setVisible(true);
-        }
+        jButton5ActionPerformed(null);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed

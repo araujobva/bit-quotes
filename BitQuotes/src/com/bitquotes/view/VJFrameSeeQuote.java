@@ -24,6 +24,7 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
     
     private String user;
     private int idQuote;
+    private VJFrameMain mainPointer;
     
     public VJFrameSeeQuote(String user, String bookName, MQuote quote, int idQuote, String authorName) {
         initComponents();
@@ -245,13 +246,16 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
             objQuote.setAuthor(jTextField2.getText());
             boolean verification = CQuoteUpdate.quoteUpdate(objQuote);
             if(verification){
-                jTextArea1.setText(null);
-                jTextField1.setText(null);
+                mainPointer.clickButton();
                 JOptionPane.showMessageDialog(null, "Dados atualizados com sucesso!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
             }  
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void savePointer(VJFrameMain pointer) {
+        this.mainPointer = pointer;
+    }
+    
     private void jComboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyPressed
         java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {

@@ -330,7 +330,7 @@ public class VJFrameManageBook extends javax.swing.JFrame {
             dispose();
         } else {
             JOptionPane.showMessageDialog(null,"Erro ao achar o autor!","ERRO!",JOptionPane.ERROR_MESSAGE);
-        }        // TODO add your handling code here:
+        }        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
