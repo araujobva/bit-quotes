@@ -116,8 +116,7 @@ public class DSelect {
     public static ArrayList searchBook(String user) {
         try {
             Connection con = JConnectionFactory.getConnection();
-            //String query = "SELECT book.bo_name FROM book INNER JOIN user WHERE user.us_name = ? ORDER BY book.bo_name ASC";
-            String query = "SELECT book.bo_name FROM book WHERE book.us_us_name = ? ORDER BY book.bo_name ASC";
+            String query = "SELECT book.bo_name, book.bo_author FROM book WHERE book.us_us_name = ? ORDER BY book.bo_name ASC";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);
@@ -126,6 +125,7 @@ public class DSelect {
             ArrayList<MBook> bookList = new ArrayList<MBook>();
             while(rs.next()) {
                 objNameBook.setName(rs.getString("book.bo_name"));
+                objNameBook.setAuthor(rs.getString("book.bo_author"));
                 bookList.add(objNameBook);
                 objNameBook = new MBook();
             }

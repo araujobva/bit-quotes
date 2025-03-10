@@ -25,14 +25,14 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
     private String user;
     private int idQuote;
     private VJFrameMain mainPointer;
+    private boolean isUpdating = true; //Flag para evitar que na chamada do comboBox ele não fique em um loop infinito.
     
-    public VJFrameSeeQuote(String user, String bookName, MQuote quote, int idQuote, String authorName) {
+    public VJFrameSeeQuote(String user, String bookName, MQuote quote, int idQuote) {
         initComponents();
         setLocationRelativeTo(null);
         this.user = user;
         jTextArea1.setText(quote.getQuote());
         jTextField1.setText(quote.getBookPage());
-        jTextField2.setText(authorName);
         this.idQuote = idQuote;
         comboBox(this.user, bookName);
     }
@@ -46,13 +46,18 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         ArrayList<MBook> bookList = new ArrayList<MBook>();
         bookList = CSearchBook.cSearchBook(user);
         String[] bookNameArray = new String[bookList.size()];
-        for(int i = 0; i < bookList.size(); i++) {
+        for (int i = 0; i < bookList.size(); i++) {
             bookNameArray[i] = bookList.get(i).getName();
         }
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(bookNameArray));
-        for(int i = 0; i < bookList.size(); i++) { //Encontrar a posição do índice que o nome do livro está na lista para setar ele no jComboBox.
-            if(bookList.get(i).getName().equals(bookName)) {
+        for (int i = 0; i < bookList.size(); i++) { //Encontrar a posição do índice que o nome do livro está na lista para setar ele no jComboBox.
+            if (bookList.get(i).getName().equals(bookName)) {
                 jComboBox1.setSelectedIndex(i);
+                for (int j = 0; j < bookList.size(); j++) { //Achando o autor referente ao livro.
+                    if (bookList.get(i).getName().equals(jComboBox1.getSelectedItem())) {
+                        jTextField2.setText(bookList.get(i).getAuthor());
+                    }
+                }
                 break;
             }
         }
@@ -121,6 +126,11 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
         jComboBox1.setBackground(new java.awt.Color(252, 252, 252));
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
         jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jComboBox1KeyPressed(evt);
@@ -301,6 +311,15 @@ public class VJFrameSeeQuote extends javax.swing.JFrame {
             jButton2ActionPerformed(keyPressed);
         }
     }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        if (this.isUpdating) {
+            this.isUpdating = false; //Para evitar que o comboBox entre numa chamada de loop infinito.
+            String nameSelectedBook = jComboBox1.getSelectedItem().toString();
+            comboBox(this.user, nameSelectedBook);
+            this.isUpdating = true;
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
 
     /**
      * @param args the command line arguments
