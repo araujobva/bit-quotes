@@ -549,7 +549,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        VJFrameBackUp screen = new VJFrameBackUp();
+        VJFrameChooseBackUpOption screen = new VJFrameChooseBackUpOption(this.user);
         screen.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
