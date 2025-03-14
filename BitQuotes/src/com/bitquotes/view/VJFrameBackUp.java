@@ -22,10 +22,8 @@ public class VJFrameBackUp {
         int result = fileChooser.showSaveDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             String fileName = fileChooser.getSelectedFile().getAbsolutePath();
-            // Exibir o nome do arquivo no JTextField
-            System.out.println("Nome do arquivo: " + fileName);
             CBackUp back = new CBackUp();
-            back.backUp(fileName); 
+            back.backUp(fileName);
         } else {
             System.out.println("Operação de salvar cancelada");
         }
