@@ -187,7 +187,9 @@ public class VJFrameChooseBackUpOption extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //Chamada para restauração do BackUp
+        VJFrameBackUp screen = new VJFrameBackUp();
+        dispose();
+        screen.vJFrameRecoverBackUp();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
