@@ -4,7 +4,9 @@
  */
 package com.bitquotes.view;
 
+import java.awt.Dimension;
 import javax.swing.*;
+import com.bitquotes.controller.CBackUp;
 
 /**
  *
@@ -15,12 +17,19 @@ public class VJFrameBackUp {
 
     public void vJFrameBackUp() {
         JFileChooser fileChooser = new JFileChooser();
+        Dimension dimension = new Dimension(800, 600);
+        fileChooser.setPreferredSize(dimension);
         int result = fileChooser.showSaveDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
-            System.out.println("Faz o BackUp");
+            String fileName = fileChooser.getSelectedFile().getAbsolutePath();
+            // Exibir o nome do arquivo no JTextField
+            System.out.println("Nome do arquivo: " + fileName);
+            CBackUp back = new CBackUp();
+            back.backUp(fileName); 
         } else {
             System.out.println("Operação de salvar cancelada");
         }
     }
+
 }
 

@@ -1,0 +1,112 @@
+-- MySQL dump 10.13  Distrib 8.0.41, for Linux (x86_64)
+--
+-- Host: localhost    Database: bit_quote_test
+-- ------------------------------------------------------
+-- Server version	8.0.41-0ubuntu0.24.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `book`
+--
+
+DROP TABLE IF EXISTS `book`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `book` (
+  `bo_id` int NOT NULL AUTO_INCREMENT,
+  `bo_name` varchar(90) NOT NULL,
+  `bo_author` varchar(90) NOT NULL,
+  `bo_photo` longblob,
+  `us_us_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`bo_id`),
+  KEY `us_us_name` (`us_us_name`),
+  CONSTRAINT `book_ibfk_1` FOREIGN KEY (`us_us_name`) REFERENCES `user` (`us_name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book`
+--
+
+LOCK TABLES `book` WRITE;
+/*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` VALUES (1,'Drácula','Bram Stoker',NULL,'bruno'),(2,'O Demonologista','Andrew Pyper',NULL,'bruno'),(3,'A Guerra dos Tronos - As Crônicas de Gelo e Fogo','George R. R. Martin',NULL,'bruno'),(4,'O mínimo que você precisa saber para não ser um idiota','Olavo de Carvalho',NULL,'bruno'),(5,'Apologia de Sócrates','Platão',NULL,'bruno'),(6,'O Médico e o monstro','Robert Louis Stevenson',NULL,'bruno'),(7,'A Fúria dos Reis - As Crônicas de Gelo e Fogo','George R. R. Martin',NULL,'bruno');
+/*!40000 ALTER TABLE `book` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `quote`
+--
+
+DROP TABLE IF EXISTS `quote`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `quote` (
+  `qu_id` int NOT NULL AUTO_INCREMENT,
+  `qu_quote` longtext NOT NULL,
+  `qu_book_page` varchar(10) DEFAULT NULL,
+  `bo_id` int NOT NULL,
+  `us_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`qu_id`),
+  KEY `fk_citacao_livro1_idx` (`bo_id`),
+  KEY `fk_citacao_usuario1_idx` (`us_name`),
+  CONSTRAINT `fk_citacao_livro1` FOREIGN KEY (`bo_id`) REFERENCES `book` (`bo_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_citacao_usuario1` FOREIGN KEY (`us_name`) REFERENCES `user` (`us_name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `quote`
+--
+
+LOCK TABLES `quote` WRITE;
+/*!40000 ALTER TABLE `quote` DISABLE KEYS */;
+INSERT INTO `quote` VALUES (1,'\"Mas um estrangeiro numa terra estranha não é ninguém; os homens não o conhecem, e não o conhecer significa não se importar com ele.\"\n(Drácula)','29',1,'bruno'),(2,'\"A vida não é outra coisa que esperar por algo diferente daquilo que estamos fazendo, e a morte é a única coisa com que de fato podemos contar.\"','90',1,'bruno'),(3,'\"Pois um homem forte com obsessão religiosa e homicida pode vir a se tornar perigoso\"\n(Dr. Seward)','121',1,'bruno'),(4,'\"As damas de honra enchem os olhos daquele que espera por sua noiva, mas, quando a noiva chega, as dasmas de honra perdem todo o seu brilho.\"\n(Renfield)','122',1,'bruno'),(5,'\"Olhe só o senhor aqui me fazendo perguntas sobre o que eu faço, e eu de mau humor; se não fosse pela maldita moeda que me deu, o teria expulsado antes de responder ... Mas o dinheiro acertou as coisas.\"\n(Thomas Bilder)','163',1,'bruno'),(6,'\"Algumas vezes as pessoas fecham a porta porque estão tentando encontrar uma maneira de fazer você bater nela.\"\n(O\'Brien)','43',2,'bruno'),(7,'\"Perder-se em Veneza é tão encantador como os livros afirmam. Só depende de quem anda ao seu lado. Com Tess, eu poderia ficar perdido para sempre. ... Enquanto eu estiver com ela nunca realmente estarei perdido.\"\n(David Ullman)','58',2,'bruno'),(8,'\" - O que tem no escuro que te assusta?\n- Esta noite, é uma joaninha. O que é tão engraçado?\n- Nada, docinho. É só que... Joaninhas? Elas são tão pequenas. Elas não picam. Elas têm essas pintas bonitinhas.\n- Não é a aparência de uma coisa que a torna má\"\n(David Ullman e Tess)','140',2,'bruno'),(9,'\"A guerra contra o paraíso nunca foi travada no inferno, nem na terra. O campo de batalha está em todas as mentes humanas.\"\n(Belial)','259',2,'bruno'),(10,'\"- Pode um Homem Continuar a ser valente se tiver medo?\" \n(Bram Stark)\n\"- Esta é a única maneira de um homem ser valente - Seu Pai respondeu.\"\n(Eddard Stark)','15',3,'bruno'),(11,'\" - Meu irmão não parece muito festivo hoje.\" \n(Benjen Stark)\n\"Jon também notará. Um bastardo tinha de aprender a reparar nas coisas, a ler a verdade que as pessoas escondiam por trás dos olhos.\"\n(Jon Snow)','40',3,'bruno'),(12,'\"Deixe-me lhe dar um conselho, bastardo. Nunca esqueça o que você é. O resto do mundo não o fará. Use-o como armadura, e isso nunca poderá ser usado para feri-lo.\"\n(Tyrion Lannister)','43',3,'bruno'),(13,'\"O pobre infeliz com certeza estava se torturando, à maneira dos loucos, com pensamentos dolorososos e desnecessários.\"','297',1,'bruno'),(14,'\"Deus não negocia almas desse jeito; e o Diabo embora talvez negocie, não cumpre com o prometido.\"\n(Van Helsing)','356',1,'bruno'),(15,'\"... nesta época esclarecida, em que os homens não acreditam sequer naquilo que veem, a descrença de homens sábios seria a maior força de nosso inimigo.\"\n(Van Helsing)','376',1,'bruno'),(16,'\"Os pequenos canalhas aproveitam da idiotice pronta. Os grandes a fabricam.\"','17',4,'bruno'),(17,'\"O jovem, é verdade, rebela-se muitas vezes contra pais e professores, mas é porque sabe que no fundo estão do seu lado e jamais revidarão suas agressões com força total. A luta contra os pais é um teatrinho, um jogo de cartas marcadas no qual um dos contendores luta para vencer e o outro para ajudá-lo a vencer.\"\n(Olavo de Carvalho)','29',4,'bruno'),(18,'\" ... por uma chuva de perplexidades paralisantes que me forçaram a largar tudo e a ir para a casa pensar. Acossado de perguntas que ultrapassavam minha capacidade de resposta, fui privado, pelo bom Deus, da oportunidade de tentar moldar o mundo à imagem da minha própia idiotice.\"\n(Olavo de Carvalho)','32',4,'bruno'),(19,'\"O aprendizado é impossível sem o direito de errar e sem uma longa tolerância para o estado de dúvida.\"\n(Olavo de Carvalho)','38',4,'bruno'),(20,'\"O verdadeiro homem da ciência aposta sempre em todos os cavalos, e aplaude incondicionalmente o vencedor, qualquer que seja. A isenção não é desinteresse, distanciamento frio: é paixão pela verdade deconhecida, é amor à ideia mesma da verdade, sem pressupor qual seja o conteúdo dela em cada caso particular.\"\n(Olavo de Carvalho)','39',4,'bruno'),(21,'\"Perguntaram-me uma vez, num debate, como definia a honestidade intelectual. Sem pestenejar, respondi: é você não fingir que sabe aquilo que não sabe, nem que não sabe aquilo que sabe perfeitamente bem. Se sei, sei que sei. Se não sei, sei que não sei. Isto é tudo. Saber que não saber é saber; saber que não sabe é também saber.\"\n(Olavo de Carvalho)','40',4,'bruno'),(22,'\"Sou mais sábio do que esse homem, porque nenhum de nós parece saber nada grande e bom; mas ele se diz saber de algo embor saiba nada. Ao passo que eu, como não sei de nada, não digo saber. Nessa peleja particular, me senti mais sábio do que ele porque não me declaro saber o que não sei.\"\n(Sócrates)','28',5,'bruno'),(23,'\"O homem realista, sincero consigo própio, direto e eficaz nas palvras e ações, é que se torna um tipo isolado, esquisito, alguém que se deve evitar a todo preço e a propósito do qual circulam cochichos à distância.\"\n(Olavo de Carvalho)','95',4,'bruno'),(24,'\"Aconteceu comigo, como ocorre com a vasta maioria de meus semelhantes, ter escolhido a melhor parte e me encontrar desprovido de forças para conservá-la.\"\n(Dr. Jekyll)','71',6,'bruno'),(25,'\"Todos os voos começam com uma queda, disse o corvo.\"','118',3,'bruno'),(26,'\"Mas, à sua maneira, a morte é a coisa mais natural de todas, Lorde Eddard.\"\n(Meistre Pycelle)','181',3,'bruno'),(27,'\"Quem combate verdadeiramente pelo o que é justo, se quer ser slavo por algum tempo, deve viver a vida privada, nunca meter-se nos negócios públicos.\"\n(Sócrates)','17',5,'bruno'),(28,'\"Cada um deles, por ter se superado na prática de sua arte, se achava muito sábio em outras questões importantes.\"\n(Sócrates)','30',5,'bruno'),(29,'\"Protegi-o de seus inimigos durante quinze anos, mas não consegui protegê-lo de seus amigos\"\n(Varys)','445',3,'bruno'),(30,'\"Use sua honra como uma armadura, Stark. Julga que o mantém a salvo, mas tudo que ela faz é torná-lo pesado.\"\n(Lorde Petyr)','364',3,'bruno'),(31,'\"Uma criança vê um obstáculo e a primiera coisa em que pensa é correr à sua volta ou pô-lo abaixo. Um senhor tem de aprender que por vezes as palavras são capazes de alcançar o que as espadas não são.\"\n(Catelyn Stark)','451',3,'bruno'),(32,'\"Uma ideologia é, por definição, um simulacro de teoria científica. É, segundo a correta expressão do própio Marx, um \"vestido de ideias que encobre interesses ou desejos.\"\"\n(Olavo de Carvalho)','128',4,'bruno'),(33,'\"Algumas regras usuais do leninismo ilustram esse cinismo na prática diária: \"Fomentar a corrupção e denunciá-la\" e \"Acuse-os do que você faz, xingue-os do que você é\" resumem às mil maravilhas na história do nosso PT, que cresceu pelo discurso de acusação moralista ao mesmo tempo que montava uma máquina de corrupção de dimensões faraônicas, perto da qual os velhos políticos ladrões começam a parecer meninos de escola culpados de roubar chicletes.\"\n(Olavo de Carvalho)','146',4,'bruno'),(34,'\"Todos deveriam saber que a morte é o bem maior do homem, mas os homens que a temem acham que ela é o maior dos males.\"\n(Sócrates)','42',5,'bruno'),(35,'\"Porque naõ acho ser possível que um homem melhor seja ferido por um outro pior.\"\n(Sócrates)','44',5,'bruno'),(36,'\"Porque morrer é uma ou outra destas duas coisas: ou o morto não tem absolutamente nenhuma existência, nenhuma consciência do que quer que seja, ou, como se diz, a morte é precisamente uma mudança de existência e, para a alma, uma migração deste lugar para um outro.\"\n(Platão)','60',5,'bruno'),(37,'\"Tão leal como uma corsa rodeada de lobos.\"\n(Tyrion Lanister)','40',7,'bruno'),(38,'\"As intrigas são como a fruta, requerem um certo amadurecimento.\"\n(Tyrion Lanister)','46',7,'bruno'),(39,'\"O medo golpeia mais profundamente do que as espadas.\"\n(Arya Stark)','62',7,'bruno'),(40,'\"Meu pai ensinou-me que não há vergonha no medo, o que importa é o modo como o enfrentamos.\"\n(Jon Snow)','69',7,'bruno'),(41,'\"O poder resite onde os homens acreditam que reside. Nem mais nem menos.\"\n(Varys)','92',7,'bruno'),(42,'\"Um homem assustado é um homem vencido.\"\n(Stannis Baratheon)','111',7,'bruno'),(43,'\"Ventoso, frio e úmido. Um lugar duro e miserável para falar a verdade... Mas o senhor meu pai me disse um dia que lugares duros geram homens duros, e homens duros governam o mundo.\"\n(Theon Greyjoy)','114',7,'bruno'),(44,'\"Quando arranca a língua de um homem, não está provando que ele é mentiroso, mas apenas dizendo ao mundo que teme o que ele possa dizer.\"\n(Tyrion Lanister)','154',7,'bruno'),(45,'\"Os homens veem aquilo que querem ver.\"\n(Varys)','161',7,'bruno'),(46,'\"Mindinho parecia um garotinho que tivesse acabado de dar uma mordida furtiva num favor de mel. Estava tentando ficar atento às abelhas, mas o mel era tão doce...\"','183',7,'bruno'),(47,'\"Uma bela oferta... Mas o que é doce, pode estar envenenado.\"\n(Varys)','184',7,'bruno'),(48,'\"O medo corta mais profundamente do que a espada.\"\n(Arya)','199',7,'bruno'),(49,'\"O inverno chega para todos nós. Catelyn ponderou. Para mim, chegou quando Ned morreu. Chegará para você também, filha, e mais cedo do que gostaria.\"\n(Catelyn)','230',7,'bruno'),(50,'\"Este vasto mundo está cheio de pessoas que querem ajuda, Jon. Seria bom que algumas encontrassem coragem para se ajudar a si próprias.\"\n(Velho Urso)','246',7,'bruno'),(51,'\"Bons cheiros são às vezes usados para encobrir os maus.\"\n(Jorah)','278',7,'bruno'),(52,'\"Um bom ato não lava os maus, e um mau não lava os bons. Cada um deve ter sua recompensa.\"\n(Stanis)','395',7,'bruno'),(53,'\" - Sou um homem. Sou gentil para minha mulher, mas conheci outras mulheres. Tentei ser um pai para os meus filhos, ajudar a criar para eles um lugar neste mundo. Sim, quebrei leis, mas nunca me senti mau até esta noite. Diria que meus papéis estão misturados, senhora. Bons e maus. - Um homem cinza. Nem branco nem preto, mas com um pouco de ambos. É isso o que é, Sor Davos? - E se for? Parece-me que a maioria dos homens é cinza. - Se metade de uma cebola estiver preta de podridão, é uma cebola podre. Um homem ou é bom ou é mau.\"\n(Davos e Melisandre)','400',7,'bruno');
+/*!40000 ALTER TABLE `quote` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `us_name` varchar(45) NOT NULL,
+  `us_password` varchar(45) NOT NULL,
+  `us_administrator` tinyint(1) NOT NULL,
+  PRIMARY KEY (`us_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('bruno','bruno',1);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-03-13 20:06:56
