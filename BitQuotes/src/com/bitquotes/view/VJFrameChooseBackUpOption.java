@@ -174,7 +174,8 @@ public class VJFrameChooseBackUpOption extends javax.swing.JFrame {
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
         java.awt.event.ActionEvent keyPressed = new java.awt.event.ActionEvent(this, 0, "");
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            //Chamada para restauração do BackUp
+            VJFrameBackUp screen = new VJFrameBackUp();
+            screen.vJFrameRecoverBackUp();
         } else if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             dispose();
         }

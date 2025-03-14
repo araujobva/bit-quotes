@@ -36,7 +36,7 @@ public class CBackUp {
     
     public boolean restoreBackUp(String backupFilePath) {
         this.backupFilePath = backupFilePath;
-        String[] executeCmd = {"/bin/bash", "-c", "mysqldump -u " + user + " -p" + password + " " + database + " < " + this.backupFilePath + ".sql"};
+        String[] executeCmd = {"/bin/bash", "-c", "mysql -u " + user + " -p" + password + " " + database + " < " + backupFilePath};
         try {
             Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
             int processComplete = runtimeProcess.waitFor();
