@@ -21,7 +21,6 @@ public class CBackUp {
     public boolean backUp(String backupFilePath) {
         this.backupFilePath = backupFilePath;
         String[] executeCmd = {"/bin/bash", "-c", "mysqldump -u " + user + " -p" + password + " " + database + " > " + this.backupFilePath +".sql"};
-        
         try {
             Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
             int processComplete = runtimeProcess.waitFor();
@@ -35,5 +34,6 @@ public class CBackUp {
         }
         return false;
     }
+    
 }
 
