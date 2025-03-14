@@ -26,7 +26,7 @@ public class VJFrameBackUp {
             CBackUp back = new CBackUp();
             boolean verification = back.backUp(fileName);
             if (verification) {
-                JOptionPane.showMessageDialog(null,"BackUp salvo com sucesso!!","SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"BackUp feito com sucesso!\nCaminhos do BackUp salvo: " + fileName + ".sql" , "SUCESSO!",JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao realizar o BackUp!\n", "ERRO!", JOptionPane.ERROR_MESSAGE);
             }        
