@@ -27,12 +27,11 @@ public class CBackUp {
             if (processComplete == 0) {
                 return true;
             } else {
-                JOptionPane.showMessageDialog(null, "Erro ao realizar o BackUp!\n", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                return false;
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao realizar o BackUp!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
-        return false;
     }
     
 }
