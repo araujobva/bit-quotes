@@ -17,11 +17,13 @@ public class CAuthentication {
     public static boolean authentication(MUser user) {
         ArrayList<MUser> userList = new ArrayList<MUser>();
         userList = DSelect.authentication();
-        for(int i = 0; i < userList.size(); i++) { 
-            if(userList.get(i).getName().equals(user.getName()) && userList.get(i).getPassword().equals(user.getPassword()))
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getName().equals(user.getName()) && userList.get(i).getPassword().equals(user.getPassword())) {
                 user.setAdministrator(userList.get(i).getAdministrator());
                 return true;
+            }
         }
         return false;
     }
+    
 }
