@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import com.bitquotes.model.MQuote;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import com.bitquotes.controller.CSearchAuthorName;
-import com.bitquotes.controller.CCheckADM;
+import com.bitquotes.model.MUser;
 import java.awt.event.KeyEvent;
 
 /**
@@ -28,11 +27,13 @@ public class VJFrameMain extends javax.swing.JFrame {
     private long quoteCount = 0;
     private String user;
     private VJFrameMain mainPointer; //Para armazenar a posição de memória onde este objeto está.
+    private MUser userObj;
     
-    public VJFrameMain(String user) {
+    public VJFrameMain(MUser userObj) {
         initComponents();
         setLocationRelativeTo(null);
-        this.user = user;
+        this.user = userObj.getName();
+        this.userObj = userObj;
         jTextField2.setText(this.user);
         //this.setExtendedState(MAXIMIZED_BOTH); //Para abrir maximizado
 //        jTable1.getColumnModel().getColumn(1).setPreferredWidth(630); //Modificando o tamanho da coluna da citação.
@@ -549,8 +550,12 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        VJFrameChooseBackUpOption screen = new VJFrameChooseBackUpOption(this.user);
-        screen.setVisible(true);
+        if (userObj.getAdministrator()) {
+            VJFrameChooseBackUpOption screen = new VJFrameChooseBackUpOption(this.user);
+            screen.setVisible(true);   
+        } else {
+            JOptionPane.showMessageDialog(null,"Apenas usuários administradores podem fazer ou restaurar BackUps!","ERRO!",JOptionPane.ERROR_MESSAGE); 
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed

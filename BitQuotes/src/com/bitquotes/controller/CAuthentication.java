@@ -19,6 +19,7 @@ public class CAuthentication {
         userList = DSelect.authentication();
         for(int i = 0; i < userList.size(); i++) { 
             if(userList.get(i).getName().equals(user.getName()) && userList.get(i).getPassword().equals(user.getPassword()))
+                user.setAdministrator(userList.get(i).getAdministrator());
                 return true;
         }
         return false;
