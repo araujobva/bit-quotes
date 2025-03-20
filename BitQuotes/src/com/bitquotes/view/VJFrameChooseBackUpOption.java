@@ -42,6 +42,7 @@ public class VJFrameChooseBackUpOption extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Bit Quote - BackUp");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(252, 252, 252));
 
