@@ -4,7 +4,7 @@
  */
 package com.bitquotes.controller;
 
-import com.bitquotes.jdbc.dao.DSelect;
+import com.bitquotes.jdbc.dao.mysql.MSelect;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +15,7 @@ public class CRecoverUser {
     
     public static ArrayList cRecoverUser() {
         ArrayList<String> userList = new ArrayList<String>();
-        userList = DSelect.recoverUser();
+        userList = MSelect.recoverUser();
         return userList;
     }
     

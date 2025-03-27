@@ -4,7 +4,7 @@
  */
 package com.bitquotes.controller;
 
-import com.bitquotes.jdbc.dao.DDelete;
+import com.bitquotes.jdbc.dao.mysql.MDelete;
 
 /**
  *
@@ -13,7 +13,7 @@ import com.bitquotes.jdbc.dao.DDelete;
 public class CDeleteQuote {
     
     public static boolean deleteQuote(int idQuote) {
-        DDelete.deleteQuote(idQuote);
+        MDelete.deleteQuote(idQuote);
         return true;
     }
     

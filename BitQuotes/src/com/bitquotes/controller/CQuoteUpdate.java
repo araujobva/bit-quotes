@@ -5,7 +5,7 @@
 package com.bitquotes.controller;
 
 import com.bitquotes.model.MQuote;
-import com.bitquotes.jdbc.dao.DUpdate;
+import com.bitquotes.jdbc.dao.mysql.MUpdate;
 
 /**
  *
@@ -14,7 +14,7 @@ import com.bitquotes.jdbc.dao.DUpdate;
 public class CQuoteUpdate {
     
     public static boolean quoteUpdate(MQuote objQuote) {
-        boolean verification = DUpdate.quoteUpdate(objQuote);
+        boolean verification = MUpdate.quoteUpdate(objQuote);
         return verification;
     }
     

@@ -9,12 +9,12 @@ package com.bitquotes.controller;
  * @author bruno
  */
 
-import com.bitquotes.jdbc.dao.DSelect;
+import com.bitquotes.jdbc.dao.mysql.MSelect;
 
 public class CConfirmsIdentity {
     
     public static boolean confirmsIdentity(String user, String password) {
-        boolean verification = DSelect.confirmsIdentity(user, password);
+        boolean verification = MSelect.confirmsIdentity(user, password);
         return verification;
     }
     

@@ -5,7 +5,7 @@
 package com.bitquotes.controller;
 
 import java.util.ArrayList;
-import com.bitquotes.jdbc.dao.DSelect;
+import com.bitquotes.jdbc.dao.mysql.MSelect;
 import com.bitquotes.model.MQuote;
 
 /**
@@ -16,13 +16,13 @@ public class CSearchQuote {
     
     public static ArrayList searchQuoteBookName(String user, String bookName) {
         ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
-        quoteList = DSelect.searchBookName(user, bookName);
+        quoteList = MSelect.searchBookName(user, bookName);
         return quoteList;
     }
     
     public static ArrayList searchQuote(String user, String quotePiece) {
         ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
-        quoteList = DSelect.searchQuote(user, quotePiece);
+        quoteList = MSelect.searchQuote(user, quotePiece);
         return quoteList;
     }
     

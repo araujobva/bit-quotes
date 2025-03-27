@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.bitquotes.jdbc.dao;
+package com.bitquotes.jdbc.dao.sqlite;
 
-import com.bitquotes.jdbc.JConnectionFactory;
+import com.bitquotes.jdbc.dao.mysql.*;
+import com.bitquotes.jdbc.JConnectionFactoryMySQL;
 import com.bitquotes.model.MBook;
 import com.bitquotes.model.MQuote;
 import java.sql.Connection;
@@ -17,11 +18,11 @@ import com.bitquotes.model.MUser;
  *
  * @author bruno
  */
-public class DInsert {
+public class SInsert {
 
     public static boolean insertBook(MBook objBookName) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "INSERT INTO book (book.bo_name, book.bo_author, book.us_us_name) VALUES (?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, objBookName.getName());
@@ -39,7 +40,7 @@ public class DInsert {
 
     public static boolean insertQuote(MQuote objQuote) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "INSERT INTO quote (qu_quote, qu_book_page, bo_id, us_name) VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, objQuote.getQuote());
@@ -58,7 +59,7 @@ public class DInsert {
 
     public static boolean addUser(MUser user) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "INSERT INTO user (us_name, us_password, us_administrator) VALUES (?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, user.getName());

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author bruno
  */
-public class JConnectionFactory {
+public class JConnectionFactoryMySQL {
     
     private static String driverJDBC = "com.mysql.jdbc.Driver";
     //private static String connectionPath = "jdbc:mysql://127.0.0.1/bit_quote_test";

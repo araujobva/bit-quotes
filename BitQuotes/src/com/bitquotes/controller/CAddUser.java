@@ -10,12 +10,12 @@ package com.bitquotes.controller;
  */
 
 import com.bitquotes.model.MUser;
-import com.bitquotes.jdbc.dao.DInsert;
+import com.bitquotes.jdbc.dao.mysql.MInsert;
 
 public class CAddUser {
     
     public static boolean cAddUser(MUser user) {
-        return DInsert.addUser(user);
+        return MInsert.addUser(user);
     }
     
 }

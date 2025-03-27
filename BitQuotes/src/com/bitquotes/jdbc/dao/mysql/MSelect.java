@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.bitquotes.jdbc.dao;
+package com.bitquotes.jdbc.dao.mysql;
 
 import com.bitquotes.model.MUser;
 import com.bitquotes.model.MQuote;
-import com.bitquotes.jdbc.JConnectionFactory;
+import com.bitquotes.jdbc.JConnectionFactoryMySQL;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -19,12 +19,12 @@ import com.bitquotes.model.MBook;
  *
  * @author bruno
  */
-public class DSelect {
+public class MSelect {
 
     //Método para autenticar usuário.
     public static ArrayList authentication() {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "SELECT user.us_name, user.us_password, user.us_administrator "
                     + "FROM user";
             ResultSet rs = con.createStatement().executeQuery(query);
@@ -49,7 +49,7 @@ public class DSelect {
     //Método para procurar citações pelo nome do livro.
     public static ArrayList searchBookName(String user, String bookName) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "SELECT quote.qu_id, quote.qu_quote, quote.qu_book_page, quote.bo_id, quote.us_name, book.bo_name, book.bo_author FROM quote INNER JOIN book ON book.bo_id = quote.bo_id WHERE quote.us_name = ? AND book.bo_name LIKE ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
@@ -83,7 +83,7 @@ public class DSelect {
     //Método para procurar citações por uma citação.
     public static ArrayList searchQuote(String user, String quotePiece) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "SELECT quote.qu_id, quote.qu_quote, quote.qu_book_page, quote.bo_id, quote.us_name, book.bo_name FROM quote INNER JOIN book ON book.bo_id = quote.bo_id WHERE quote.us_name = ? AND quote.qu_quote LIKE ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
@@ -115,7 +115,7 @@ public class DSelect {
     
     public static ArrayList searchBook(String user) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "SELECT book.bo_name, book.bo_author FROM book WHERE book.us_us_name = ? ORDER BY book.bo_name ASC";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
@@ -142,7 +142,7 @@ public class DSelect {
     public static int searchIdBook(String bookName, String user) {
         try {
             int id;
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "SELECT book.bo_id FROM book WHERE bo_name = ? AND us_us_name = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
@@ -164,7 +164,7 @@ public class DSelect {
     public static int searchIdBook(MBook book) {
         try {
             int id;
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "SELECT book.bo_id FROM book WHERE book.bo_name = ? AND book.bo_author = ? AND us_us_name = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
@@ -186,7 +186,7 @@ public class DSelect {
     
         public static String authorName(String bookName) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "SELECT book.bo_author FROM book WHERE book.bo_name = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
@@ -206,7 +206,7 @@ public class DSelect {
         
         public static boolean checkADM(String user) {
             try{
-                Connection con = JConnectionFactory.getConnection();
+                Connection con = JConnectionFactoryMySQL.getConnection();
                 String query = "SELECT us_administrator FROM user WHERE us_name = ?";
                 PreparedStatement stmt;
                 stmt = con.prepareStatement(query);
@@ -226,7 +226,7 @@ public class DSelect {
         
         public static ArrayList recoverUser() {
             try{
-                Connection con = JConnectionFactory.getConnection();
+                Connection con = JConnectionFactoryMySQL.getConnection();
                 String query = "SELECT us_name FROM user";
                 PreparedStatement stmt;
                 stmt = con.prepareStatement(query);
@@ -248,7 +248,7 @@ public class DSelect {
         //Verifica se o usuário relacionado a senha existe.
         public static boolean confirmsIdentity(String user, String password) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "SELECT COUNT(*) as user_count FROM user WHERE BINARY us_name = ? AND BINARY us_password = ?";
             //Se o retorno no campo user_count for maior que 1, é porque o usuário existe.
             PreparedStatement stmt;

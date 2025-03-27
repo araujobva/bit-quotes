@@ -6,8 +6,8 @@ package com.bitquotes.controller;
 
 import java.util.ArrayList;
 import com.bitquotes.model.MBook;
-import com.bitquotes.jdbc.dao.DSelect;
-import com.bitquotes.jdbc.dao.DSelect;
+import com.bitquotes.jdbc.dao.mysql.MSelect;
+import com.bitquotes.jdbc.dao.mysql.MSelect;
 
 /**
  *
@@ -17,12 +17,12 @@ public class CSearchBook {
     
     public static ArrayList cSearchBook(String user) {
         ArrayList<MBook> bookList = new ArrayList<MBook>();
-        bookList = DSelect.searchBook(user);
+        bookList = MSelect.searchBook(user);
         return bookList;
     }
     
     public static int cSearchIdBook(String bookName, String user) {
-        int idBook = DSelect.searchIdBook(bookName, user);
+        int idBook = MSelect.searchIdBook(bookName, user);
         return idBook;
     }
     

@@ -2,18 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.bitquotes.controller;
-
-import com.bitquotes.jdbc.dao.mysql.MDelete;
+package com.bitquotes.jdbc;
 
 /**
  *
  * @author bruno
  */
-public class CRemoveUser {
-    
-    public static boolean cRemoveUser(String user) {
-        return MDelete.deleteUser(user);
-    }
+public class JConnectionFactorySQLite {
     
 }

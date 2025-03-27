@@ -2,23 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.bitquotes.jdbc.dao;
+package com.bitquotes.jdbc.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import com.bitquotes.jdbc.JConnectionFactory;
+import com.bitquotes.jdbc.JConnectionFactoryMySQL;
 
 /**
  *
  * @author bruno
  */
-public class DDelete {
+public class MDelete {
 
     public static boolean deleteQuoteAndBook(int idBook, String bookName) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query0 = "DELETE FROM quote WHERE quote.bo_id = ?"; 
             String query1 = "DELETE FROM book WHERE bo_name = ?"; 
             PreparedStatement stmt0 = con.prepareStatement(query0);
@@ -39,7 +39,7 @@ public class DDelete {
     
     public static boolean deleteQuote(int idQuote) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "DELETE FROM quote WHERE quote.qu_id = ?"; 
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, idQuote);
@@ -55,7 +55,7 @@ public class DDelete {
     
     public static boolean deleteUser(String user) {
         try {
-            Connection con = JConnectionFactory.getConnection();
+            Connection con = JConnectionFactoryMySQL.getConnection();
             String query = "DELETE FROM user WHERE user.us_name = ?"; 
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, user);

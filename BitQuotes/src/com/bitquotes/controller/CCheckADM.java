@@ -4,7 +4,7 @@
  */
 package com.bitquotes.controller;
 
-import com.bitquotes.jdbc.dao.DSelect;
+import com.bitquotes.jdbc.dao.mysql.MSelect;
 
 /**
  *
@@ -13,7 +13,7 @@ import com.bitquotes.jdbc.dao.DSelect;
 public class CCheckADM {
     
     public static boolean cCheckADM(String user) {
-        boolean adm = DSelect.checkADM(user);
+        boolean adm = MSelect.checkADM(user);
         return adm;
     }
     
