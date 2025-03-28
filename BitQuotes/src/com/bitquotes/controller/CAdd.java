@@ -4,7 +4,7 @@
  */
 package com.bitquotes.controller;
 
-import com.bitquotes.jdbc.dao.mysql.MInsert;
+import com.bitquotes.jdbc.dao.sqlite.SInsert;
 import com.bitquotes.model.MQuote;
 
 /**
@@ -14,7 +14,7 @@ import com.bitquotes.model.MQuote;
 public class CAdd {
     
     public static boolean addQuote(MQuote objQuote) {
-        boolean verification = MInsert.insertQuote(objQuote);
+        boolean verification = SInsert.insertQuote(objQuote);
         return verification;
     } 
     

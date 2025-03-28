@@ -8,13 +8,12 @@ package com.bitquotes.controller;
  *
  * @author bruno
  */
-
-import com.bitquotes.jdbc.dao.mysql.MSelect;
+import com.bitquotes.jdbc.dao.sqlite.SSelect;
 
 public class CConfirmsIdentity {
     
     public static boolean confirmsIdentity(String user, String password) {
-        boolean verification = MSelect.confirmsIdentity(user, password);
+        boolean verification = SSelect.confirmsIdentity(user, password);
         return verification;
     }
     

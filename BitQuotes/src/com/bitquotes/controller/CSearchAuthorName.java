@@ -4,7 +4,7 @@
  */
 package com.bitquotes.controller;
 
-import com.bitquotes.jdbc.dao.mysql.MSelect;
+import com.bitquotes.jdbc.dao.sqlite.SSelect;
 
 /**
  *
@@ -13,7 +13,7 @@ import com.bitquotes.jdbc.dao.mysql.MSelect;
 public class CSearchAuthorName {
     
     public static String cSearchAuthorName(String bookName) {
-        String author = MSelect.authorName(bookName);
+        String author = SSelect.authorName(bookName);
         if(author != null) {
             return author;
         }else {

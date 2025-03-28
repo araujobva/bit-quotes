@@ -8,14 +8,13 @@ package com.bitquotes.controller;
  *
  * @author bruno
  */
-
 import com.bitquotes.model.MUser;
-import com.bitquotes.jdbc.dao.mysql.MInsert;
+import com.bitquotes.jdbc.dao.sqlite.SInsert;
 
 public class CAddUser {
     
     public static boolean cAddUser(MUser user) {
-        return MInsert.addUser(user);
+        return SInsert.addUser(user);
     }
     
 }

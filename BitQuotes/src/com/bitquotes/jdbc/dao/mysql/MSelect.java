@@ -21,7 +21,7 @@ import com.bitquotes.model.MBook;
  */
 public class MSelect {
 
-    //Método para autenticar usuário.
+    // Método para autenticar usuário.
     public static ArrayList authentication() {
         try {
             Connection con = JConnectionFactoryMySQL.getConnection();
@@ -30,15 +30,15 @@ public class MSelect {
             ResultSet rs = con.createStatement().executeQuery(query);
             ArrayList<MUser> userList = new ArrayList<MUser>();
             MUser objUser = new MUser();
-            while (rs.next()) { //Enquanto tiver dados no ResultSet "rs" o while faz.
+            while (rs.next()) { // Enquanto tiver dados no ResultSet "rs" o while faz.
                 objUser.setName(rs.getString("us_name"));
                 objUser.setPassword(rs.getString("us_password"));
                 objUser.setAdministrator(rs.getBoolean("us_administrator"));
                 userList.add(objUser);
-                objUser = new MUser(); //Para não duplicar os valors no ArrayList.
+                objUser = new MUser(); // Para não duplicar os valors no ArrayList.
             }
-            con.close(); //Fechando a conexão.
-            rs.close(); //Fechando o ResultSet.
+            con.close(); // Fechando a conexão.
+            rs.close(); // Fechando o ResultSet.
             return userList;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro na autenticação!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
@@ -46,7 +46,7 @@ public class MSelect {
         return null;
     }
 
-    //Método para procurar citações pelo nome do livro.
+    // Método para procurar citações pelo nome do livro.
     public static ArrayList searchBookName(String user, String bookName) {
         try {
             Connection con = JConnectionFactoryMySQL.getConnection();
@@ -55,7 +55,7 @@ public class MSelect {
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);
             stmt.setString(2, "%" + bookName + "%");
-            //ResultSet rs = con.createStatement().executeQuery(query);
+            // ResultSet rs = con.createStatement().executeQuery(query);
             ResultSet rs = stmt.executeQuery();
             ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
             MQuote objQuote = new MQuote();
@@ -68,7 +68,7 @@ public class MSelect {
                 objQuote.setName(rs.getString("book.bo_name"));
                 objQuote.setAuthor(rs.getString("book.bo_author"));
                 quoteList.add(objQuote);
-                objQuote = new MQuote(); //Para não duplicar os valors no ArrayList.
+                objQuote = new MQuote(); // Para não duplicar os valors no ArrayList.
             }
             con.close();
             stmt.close();
@@ -80,7 +80,7 @@ public class MSelect {
         }
     }
     
-    //Método para procurar citações por uma citação.
+    // Método para procurar citações por uma citação.
     public static ArrayList searchQuote(String user, String quotePiece) {
         try {
             Connection con = JConnectionFactoryMySQL.getConnection();
@@ -89,7 +89,7 @@ public class MSelect {
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);
             stmt.setString(2, "%" + quotePiece + "%");
-            //ResultSet rs = con.createStatement().executeQuery(query);
+            // ResultSet rs = con.createStatement().executeQuery(query);
             ResultSet rs = stmt.executeQuery();
             ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
             MQuote objQuote = new MQuote();
@@ -101,7 +101,7 @@ public class MSelect {
                 objQuote.setUserOwner(rs.getString("quote.us_name"));
                 objQuote.setName(rs.getString("book.bo_name"));
                 quoteList.add(objQuote);
-                objQuote = new MQuote(); //Para não duplicar os valors no ArrayList.
+                objQuote = new MQuote(); // Para não duplicar os valors no ArrayList.
             }
             con.close();
             stmt.close();
@@ -245,12 +245,12 @@ public class MSelect {
             return null;
         }
         
-        //Verifica se o usuário relacionado a senha existe.
+        // Verifica se o usuário relacionado a senha existe.
         public static boolean confirmsIdentity(String user, String password) {
         try {
             Connection con = JConnectionFactoryMySQL.getConnection();
+            // Se o retorno no campo user_count for maior que 1, é porque o usuário existe.
             String query = "SELECT COUNT(*) as user_count FROM user WHERE BINARY us_name = ? AND BINARY us_password = ?";
-            //Se o retorno no campo user_count for maior que 1, é porque o usuário existe.
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);

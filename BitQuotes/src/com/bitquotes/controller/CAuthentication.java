@@ -4,7 +4,7 @@
  */
 package com.bitquotes.controller;
 
-import com.bitquotes.jdbc.dao.mysql.MSelect;
+import com.bitquotes.jdbc.dao.sqlite.SSelect;
 import com.bitquotes.model.MUser;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ public class CAuthentication {
 
     public static boolean authentication(MUser user) {
         ArrayList<MUser> userList = new ArrayList<MUser>();
-        userList = MSelect.authentication();
+        userList = SSelect.authentication();
         for (int i = 0; i < userList.size(); i++) {
             if (userList.get(i).getName().equals(user.getName()) && userList.get(i).getPassword().equals(user.getPassword())) {
                 user.setAdministrator(userList.get(i).getAdministrator());

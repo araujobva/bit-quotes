@@ -4,7 +4,7 @@
  */
 package com.bitquotes.controller;
 
-import com.bitquotes.jdbc.dao.mysql.MDelete;
+import com.bitquotes.jdbc.dao.sqlite.SDelete;
 
 /**
  *
@@ -13,7 +13,7 @@ import com.bitquotes.jdbc.dao.mysql.MDelete;
 public class CRemoveUser {
     
     public static boolean cRemoveUser(String user) {
-        return MDelete.deleteUser(user);
+        return SDelete.deleteUser(user);
     }
     
 }

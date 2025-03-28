@@ -4,8 +4,7 @@
  */
 package com.bitquotes.jdbc.dao.sqlite;
 
-import com.bitquotes.jdbc.dao.mysql.*;
-import com.bitquotes.jdbc.JConnectionFactoryMySQL;
+import com.bitquotes.jdbc.JConnectionFactorySQLite;
 import com.bitquotes.model.MBook;
 import com.bitquotes.model.MQuote;
 import java.sql.Connection;
@@ -22,8 +21,8 @@ public class SInsert {
 
     public static boolean insertBook(MBook objBookName) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
-            String query = "INSERT INTO book (book.bo_name, book.bo_author, book.us_us_name) VALUES (?, ?, ?)";
+            Connection con = JConnectionFactorySQLite.getConnection();
+            String query = "INSERT INTO book (bo_name, bo_author, us_us_name) VALUES (?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, objBookName.getName());
             stmt.setString(2, objBookName.getAuthor());
@@ -40,7 +39,7 @@ public class SInsert {
 
     public static boolean insertQuote(MQuote objQuote) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
+            Connection con = JConnectionFactorySQLite.getConnection();
             String query = "INSERT INTO quote (qu_quote, qu_book_page, bo_id, us_name) VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, objQuote.getQuote());
@@ -59,7 +58,7 @@ public class SInsert {
 
     public static boolean addUser(MUser user) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
+            Connection con = JConnectionFactorySQLite.getConnection();
             String query = "INSERT INTO user (us_name, us_password, us_administrator) VALUES (?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, user.getName());

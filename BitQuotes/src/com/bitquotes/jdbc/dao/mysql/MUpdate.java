@@ -28,8 +28,8 @@ public class MUpdate {
             stmt.setString(2, objBook.getAuthor());
             stmt.setInt(3, idBook);
             stmt.executeUpdate();
-            stmt.close(); //Fechando o PrepareStatement
-            con.close(); //Fechando a conexão          
+            stmt.close(); // Fechando o PrepareStatement
+            con.close(); // Fechando a conexão          
             return true;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível modificar!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
@@ -53,9 +53,9 @@ public class MUpdate {
             stmt2.setString(1, quote.getAuthor());
             stmt2.setInt(2, quote.getBookId());
             stmt2.executeUpdate();
-            stmt.close(); //Fechando o PrepareStatement
+            stmt.close(); // Fechando o PrepareStatement
             stmt2.close();
-            con.close(); //Fechando a conexão          
+            con.close(); // Fechando a conexão          
             return true;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível atualizar a citação!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
@@ -73,8 +73,8 @@ public class MUpdate {
             stmt.setBoolean(3, user.getAdministrator());
             stmt.setString(4, oldUser);
             stmt.executeUpdate();
-            stmt.close(); //Fechando o PrepareStatement
-            con.close(); //Fechando a conexão          
+            stmt.close(); // Fechando o PrepareStatement
+            con.close(); // Fechando a conexão          
             return true;  
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Não foi possível atualizar o usuário!\n" +ex, "ERRO!", JOptionPane.ERROR_MESSAGE);

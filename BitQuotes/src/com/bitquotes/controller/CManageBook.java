@@ -4,10 +4,10 @@
  */
 package com.bitquotes.controller;
 
-import com.bitquotes.jdbc.dao.mysql.MInsert;
-import com.bitquotes.jdbc.dao.mysql.MSelect;
-import com.bitquotes.jdbc.dao.mysql.MDelete;
-import com.bitquotes.jdbc.dao.mysql.MUpdate;
+import com.bitquotes.jdbc.dao.sqlite.SInsert;
+import com.bitquotes.jdbc.dao.sqlite.SSelect;
+import com.bitquotes.jdbc.dao.sqlite.SDelete;
+import com.bitquotes.jdbc.dao.sqlite.SUpdate;
 import com.bitquotes.model.MBook;
 
 /**
@@ -17,19 +17,19 @@ import com.bitquotes.model.MBook;
 public class CManageBook {
     
     public static boolean addBook(MBook objBookName) {
-        boolean verification = MInsert.insertBook(objBookName);
+        boolean verification = SInsert.insertBook(objBookName);
         return verification;
     }
     
     public static boolean removeBook(String bookName, String user) {
-        int idBook = MSelect.searchIdBook(bookName, user);
-        boolean verification = MDelete.deleteQuoteAndBook(idBook, bookName);
+        int idBook = SSelect.searchIdBook(bookName, user);
+        boolean verification = SDelete.deleteQuoteAndBook(idBook, bookName);
         return verification;
     }
     
     public static boolean updateBook(MBook bookNew, MBook bookOld) {
-        int bookId = MSelect.searchIdBook(bookOld);
-        boolean verification = MUpdate.bookUpdate(bookNew, bookId);
+        int bookId = SSelect.searchIdBook(bookOld);
+        boolean verification = SUpdate.bookUpdate(bookNew, bookId);
         return verification;
     }
     

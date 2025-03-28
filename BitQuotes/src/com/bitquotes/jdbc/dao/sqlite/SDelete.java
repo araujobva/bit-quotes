@@ -4,12 +4,11 @@
  */
 package com.bitquotes.jdbc.dao.sqlite;
 
-import com.bitquotes.jdbc.dao.mysql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import com.bitquotes.jdbc.JConnectionFactoryMySQL;
+import com.bitquotes.jdbc.JConnectionFactorySQLite;
 
 /**
  *
@@ -19,8 +18,8 @@ public class SDelete {
 
     public static boolean deleteQuoteAndBook(int idBook, String bookName) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
-            String query0 = "DELETE FROM quote WHERE quote.bo_id = ?"; 
+            Connection con = JConnectionFactorySQLite.getConnection();
+            String query0 = "DELETE FROM quote WHERE bo_id = ?"; 
             String query1 = "DELETE FROM book WHERE bo_name = ?"; 
             PreparedStatement stmt0 = con.prepareStatement(query0);
             PreparedStatement stmt1 = con.prepareStatement(query1);
@@ -40,8 +39,8 @@ public class SDelete {
     
     public static boolean deleteQuote(int idQuote) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
-            String query = "DELETE FROM quote WHERE quote.qu_id = ?"; 
+            Connection con = JConnectionFactorySQLite.getConnection();
+            String query = "DELETE FROM quote WHERE qu_id = ?"; 
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setInt(1, idQuote);
             stmt.executeUpdate();
@@ -56,8 +55,8 @@ public class SDelete {
     
     public static boolean deleteUser(String user) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
-            String query = "DELETE FROM user WHERE user.us_name = ?"; 
+            Connection con = JConnectionFactorySQLite.getConnection();
+            String query = "DELETE FROM user WHERE us_name = ?"; 
             PreparedStatement stmt = con.prepareStatement(query);
             stmt.setString(1, user);
             stmt.executeUpdate();

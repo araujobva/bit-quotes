@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
  *
  * @author bruno
  */
-
 public class CBackUp {
     
     private String user = "root";

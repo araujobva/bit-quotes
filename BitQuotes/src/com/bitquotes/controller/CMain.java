@@ -11,8 +11,10 @@ import com.bitquotes.view.VJFrameAuthentication;
  * @author bruno
  */
 public class CMain {
+    
     public static void main(String[] args) {
         VJFrameAuthentication screen = new VJFrameAuthentication();
         screen.setVisible(true);
     }
+    
 }

@@ -4,10 +4,8 @@
  */
 package com.bitquotes.jdbc.dao.sqlite;
 
-import com.bitquotes.jdbc.dao.mysql.*;
 import com.bitquotes.model.MUser;
 import com.bitquotes.model.MQuote;
-import com.bitquotes.jdbc.JConnectionFactoryMySQL;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -15,6 +13,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import com.bitquotes.model.MBook;
+import com.bitquotes.jdbc.JConnectionFactorySQLite;
 
 /**
  *
@@ -22,24 +21,23 @@ import com.bitquotes.model.MBook;
  */
 public class SSelect {
 
-    //Método para autenticar usuário.
+    // Método para autenticar usuário
     public static ArrayList authentication() {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
-            String query = "SELECT user.us_name, user.us_password, user.us_administrator "
-                    + "FROM user";
+            Connection con = JConnectionFactorySQLite.getConnection();
+            String query = "SELECT user.us_name, user.us_password, user.us_administrator FROM user";
             ResultSet rs = con.createStatement().executeQuery(query);
             ArrayList<MUser> userList = new ArrayList<MUser>();
             MUser objUser = new MUser();
-            while (rs.next()) { //Enquanto tiver dados no ResultSet "rs" o while faz.
+            while (rs.next()) { // Enquanto tiver dados no ResultSet "rs" o while faz
                 objUser.setName(rs.getString("us_name"));
                 objUser.setPassword(rs.getString("us_password"));
                 objUser.setAdministrator(rs.getBoolean("us_administrator"));
                 userList.add(objUser);
-                objUser = new MUser(); //Para não duplicar os valors no ArrayList.
+                objUser = new MUser(); //Para não duplicar os valors no ArrayList
             }
-            con.close(); //Fechando a conexão.
-            rs.close(); //Fechando o ResultSet.
+            con.close(); // Fechando a conexão
+            rs.close(); // Fechando o ResultSet
             return userList;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro na autenticação!\n" + ex, "ERRO!", JOptionPane.ERROR_MESSAGE);
@@ -47,29 +45,28 @@ public class SSelect {
         return null;
     }
 
-    //Método para procurar citações pelo nome do livro.
+    // Método para procurar citações pelo nome do livro
     public static ArrayList searchBookName(String user, String bookName) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
+            Connection con = JConnectionFactorySQLite.getConnection();
             String query = "SELECT quote.qu_id, quote.qu_quote, quote.qu_book_page, quote.bo_id, quote.us_name, book.bo_name, book.bo_author FROM quote INNER JOIN book ON book.bo_id = quote.bo_id WHERE quote.us_name = ? AND book.bo_name LIKE ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);
             stmt.setString(2, "%" + bookName + "%");
-            //ResultSet rs = con.createStatement().executeQuery(query);
             ResultSet rs = stmt.executeQuery();
             ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
             MQuote objQuote = new MQuote();
             while (rs.next()) {
-                objQuote.setId(rs.getInt("quote.qu_id"));
-                objQuote.setQuote(rs.getString("quote.qu_quote"));
-                objQuote.setBookPage(rs.getString("quote.qu_book_page"));
-                objQuote.setBookId(rs.getInt("quote.bo_id"));
-                objQuote.setUserOwner(rs.getString("quote.us_name"));
-                objQuote.setName(rs.getString("book.bo_name"));
-                objQuote.setAuthor(rs.getString("book.bo_author"));
+                objQuote.setId(rs.getInt("qu_id"));
+                objQuote.setQuote(rs.getString("qu_quote"));
+                objQuote.setBookPage(rs.getString("qu_book_page"));
+                objQuote.setBookId(rs.getInt("bo_id"));
+                objQuote.setUserOwner(rs.getString("us_name"));
+                objQuote.setName(rs.getString("bo_name"));
+                objQuote.setAuthor(rs.getString("bo_author"));
                 quoteList.add(objQuote);
-                objQuote = new MQuote(); //Para não duplicar os valors no ArrayList.
+                objQuote = new MQuote(); // Para não duplicar os valors no ArrayList
             }
             con.close();
             stmt.close();
@@ -81,28 +78,27 @@ public class SSelect {
         }
     }
     
-    //Método para procurar citações por uma citação.
+    // Método para procurar citações por uma citação
     public static ArrayList searchQuote(String user, String quotePiece) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
+            Connection con = JConnectionFactorySQLite.getConnection();
             String query = "SELECT quote.qu_id, quote.qu_quote, quote.qu_book_page, quote.bo_id, quote.us_name, book.bo_name FROM quote INNER JOIN book ON book.bo_id = quote.bo_id WHERE quote.us_name = ? AND quote.qu_quote LIKE ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);
             stmt.setString(2, "%" + quotePiece + "%");
-            //ResultSet rs = con.createStatement().executeQuery(query);
             ResultSet rs = stmt.executeQuery();
             ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
             MQuote objQuote = new MQuote();
             while (rs.next()) {
-                objQuote.setId(rs.getInt("quote.qu_id"));
-                objQuote.setQuote(rs.getString("quote.qu_quote"));
-                objQuote.setBookPage(rs.getString("quote.qu_book_page"));
-                objQuote.setBookId(rs.getInt("quote.bo_id"));
-                objQuote.setUserOwner(rs.getString("quote.us_name"));
-                objQuote.setName(rs.getString("book.bo_name"));
+                objQuote.setId(rs.getInt("qu_id"));
+                objQuote.setQuote(rs.getString("qu_quote"));
+                objQuote.setBookPage(rs.getString("qu_book_page"));
+                objQuote.setBookId(rs.getInt("bo_id"));
+                objQuote.setUserOwner(rs.getString("us_name"));
+                objQuote.setName(rs.getString("bo_name"));
                 quoteList.add(objQuote);
-                objQuote = new MQuote(); //Para não duplicar os valors no ArrayList.
+                objQuote = new MQuote(); // Para não duplicar os valors no ArrayList
             }
             con.close();
             stmt.close();
@@ -116,8 +112,8 @@ public class SSelect {
     
     public static ArrayList searchBook(String user) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
-            String query = "SELECT book.bo_name, book.bo_author FROM book WHERE book.us_us_name = ? ORDER BY book.bo_name ASC";
+            Connection con = JConnectionFactorySQLite.getConnection();
+            String query = "SELECT book.bo_name, book.bo_author FROM book WHERE book.us_us_name = ? ORDER BY book.bo_name COLLATE NOCASE ASC";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);
@@ -125,8 +121,8 @@ public class SSelect {
             MBook objNameBook = new MBook();
             ArrayList<MBook> bookList = new ArrayList<MBook>();
             while(rs.next()) {
-                objNameBook.setName(rs.getString("book.bo_name"));
-                objNameBook.setAuthor(rs.getString("book.bo_author"));
+                objNameBook.setName(rs.getString("bo_name"));
+                objNameBook.setAuthor(rs.getString("bo_author"));
                 bookList.add(objNameBook);
                 objNameBook = new MBook();
             }
@@ -143,7 +139,7 @@ public class SSelect {
     public static int searchIdBook(String bookName, String user) {
         try {
             int id;
-            Connection con = JConnectionFactoryMySQL.getConnection();
+            Connection con = JConnectionFactorySQLite.getConnection();
             String query = "SELECT book.bo_id FROM book WHERE bo_name = ? AND us_us_name = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
@@ -151,7 +147,7 @@ public class SSelect {
             stmt.setString(2, user);
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            id = rs.getInt("book.bo_id");
+            id = rs.getInt("bo_id");
             con.close();
             stmt.close();
             rs.close();
@@ -165,7 +161,7 @@ public class SSelect {
     public static int searchIdBook(MBook book) {
         try {
             int id;
-            Connection con = JConnectionFactoryMySQL.getConnection();
+            Connection con = JConnectionFactorySQLite.getConnection();
             String query = "SELECT book.bo_id FROM book WHERE book.bo_name = ? AND book.bo_author = ? AND us_us_name = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
@@ -174,7 +170,7 @@ public class SSelect {
             stmt.setString(3, book.getUserName());
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            id = rs.getInt("book.bo_id");
+            id = rs.getInt("bo_id");
             con.close();
             stmt.close();
             rs.close();
@@ -187,7 +183,7 @@ public class SSelect {
     
         public static String authorName(String bookName) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
+            Connection con = JConnectionFactorySQLite.getConnection();
             String query = "SELECT book.bo_author FROM book WHERE book.bo_name = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
@@ -207,8 +203,8 @@ public class SSelect {
         
         public static boolean checkADM(String user) {
             try{
-                Connection con = JConnectionFactoryMySQL.getConnection();
-                String query = "SELECT us_administrator FROM user WHERE us_name = ?";
+                Connection con = JConnectionFactorySQLite.getConnection();
+                String query = "SELECT user.us_administrator FROM user WHERE user.us_name = ?";
                 PreparedStatement stmt;
                 stmt = con.prepareStatement(query);
                 stmt.setString(1, user);
@@ -227,8 +223,8 @@ public class SSelect {
         
         public static ArrayList recoverUser() {
             try{
-                Connection con = JConnectionFactoryMySQL.getConnection();
-                String query = "SELECT us_name FROM user";
+                Connection con = JConnectionFactorySQLite.getConnection();
+                String query = "SELECT user.us_name FROM user";
                 PreparedStatement stmt;
                 stmt = con.prepareStatement(query);
                 ResultSet rs = stmt.executeQuery();
@@ -246,12 +242,12 @@ public class SSelect {
             return null;
         }
         
-        //Verifica se o usuário relacionado a senha existe.
+        // Verifica se o usuário relacionado e a senha existe
         public static boolean confirmsIdentity(String user, String password) {
         try {
-            Connection con = JConnectionFactoryMySQL.getConnection();
-            String query = "SELECT COUNT(*) as user_count FROM user WHERE BINARY us_name = ? AND BINARY us_password = ?";
-            //Se o retorno no campo user_count for maior que 1, é porque o usuário existe.
+            Connection con = JConnectionFactorySQLite.getConnection();
+            // Se o retorno no campo user_count for maior que 1, é porque o usuário existe
+            String query = "SELECT COUNT(*) as user_count FROM user WHERE us_name = ? AND us_password = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(query);
             stmt.setString(1, user);
@@ -270,4 +266,5 @@ public class SSelect {
         }
         return false;
     }
+        
 }

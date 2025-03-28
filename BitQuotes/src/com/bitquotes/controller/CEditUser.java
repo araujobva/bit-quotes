@@ -4,7 +4,7 @@
  */
 package com.bitquotes.controller;
 
-import com.bitquotes.jdbc.dao.mysql.MUpdate;
+import com.bitquotes.jdbc.dao.sqlite.SUpdate;
 import com.bitquotes.model.MUser;
 
 /**
@@ -14,7 +14,7 @@ import com.bitquotes.model.MUser;
 public class CEditUser {
     
     public static boolean cEditUser(MUser user, String oldUser) {
-        return MUpdate.userUpdate(user, oldUser);
+        return SUpdate.userUpdate(user, oldUser);
     }
     
 }
