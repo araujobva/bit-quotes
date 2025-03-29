@@ -4,50 +4,44 @@
  */
 package com.bitquotes.controller;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author bruno
  */
-public class CBackUp {
-    
-    private String user = "root";
-    private String password = "852";
-    private String database = "bit_quote";
-    private String backupFilePath; //Define o caminho onde deseja salvar o backup.
-    
+public class CBackUpSQLite {
+
+    private String databasePath = System.getProperty("user.dir") + "/bitQuoteDatabase.db"; // Caminho relativo do arquivo do database no projeto
+
     public boolean backUp(String backupFilePath) {
-        this.backupFilePath = backupFilePath;
-        String[] executeCmd = {"/bin/bash", "-c", "mysqldump -u " + user + " -p" + password + " " + database + " > " + this.backupFilePath +".sql"};
+        // A variável backupFilePath que veio por parâmetro, é o caminho do diretório para salvar o backup
+        String[] executeCmd = {"/bin/bash", "-c", "cp " + this.databasePath + " " + backupFilePath + ".db"};
         try {
             Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
             int processComplete = runtimeProcess.waitFor();
-            if (processComplete == 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return processComplete == 0;
         } catch (Exception ex) {
             return false;
         }
     }
     
-    public boolean restoreBackUp(String backupFilePath) {
-        this.backupFilePath = backupFilePath;
-        String[] executeCmd = {"/bin/bash", "-c", "mysql -u " + user + " -p" + password + " " + database + " < " + backupFilePath};
+    public boolean restoreBackup(String backupFilePath) {
+        String restorePath = System.getProperty("user.dir") + "/bitQuoteDatabase.db"; // Caminho relativo do arquivo do database no projeto
+        String[] executeCmd = {"/bin/bash", "-c", "cp " + backupFilePath + " " + restorePath};
         try {
             Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
             int processComplete = runtimeProcess.waitFor();
             if (processComplete == 0) {
+                System.out.println("Backup restaurado com sucesso!");
                 return true;
             } else {
+                System.out.println("Falha ao restaurar o backup.");
                 return false;
             }
         } catch (Exception ex) {
+            ex.printStackTrace();
             return false;
         }
     }
-    
+
 }
 
