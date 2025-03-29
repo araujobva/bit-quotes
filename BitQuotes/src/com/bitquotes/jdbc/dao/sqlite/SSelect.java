@@ -237,7 +237,7 @@ public class SSelect {
                 rs.close();
                 return userList;
             } catch(SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Não foi possível buscar os usuário os usuários!\n"+ex, "ERRO!",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Não foi possível buscar os usuário!\n"+ex, "ERRO!",JOptionPane.ERROR_MESSAGE);
             }
             return null;
         }
