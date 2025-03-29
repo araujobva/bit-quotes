@@ -21,8 +21,8 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
     
     public VJFrameAuthentication() {
         initComponents();
-        setLocationRelativeTo(null); //Define a localização que o JFrame vai abrir na tela
-                                    //Neste caso ela abrirá no meio da tela por causa do parâmetro null.
+        setLocationRelativeTo(null); // Define a localização que o JFrame vai abrir na tela
+                                    // Neste caso ela abrirá no meio da tela por causa do parâmetro null
     }
 
     /**
@@ -185,7 +185,7 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.exit(0); //Encerra o software.
+        System.exit(0); // Encerra o software
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -194,7 +194,7 @@ public class VJFrameAuthentication extends javax.swing.JFrame {
         user.setPassword(jPasswordField1.getText().trim());
         boolean authentication = CAuthentication.authentication(user);
         if (authentication) {
-            dispose(); //Fecha a tela corrente
+            dispose(); // Fecha a tela corrente
             VJFrameMain main = new VJFrameMain(user);
             main.savePointer(main);
             main.setVisible(true);
