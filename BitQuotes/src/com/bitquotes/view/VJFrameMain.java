@@ -26,7 +26,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     private ArrayList<MQuote> quoteList = new ArrayList<MQuote>();
     private long quoteCount = 0;
     private String user;
-    private VJFrameMain mainPointer; //Para armazenar a posição de memória onde este objeto está.
+    private VJFrameMain mainPointer; // Para armazenar a posição de memória onde este objeto está
     private MUser userObj;
     
     public VJFrameMain(MUser userObj) {
@@ -35,14 +35,15 @@ public class VJFrameMain extends javax.swing.JFrame {
         this.user = userObj.getName();
         this.userObj = userObj;
         jTextField2.setText(this.user);
-        //this.setExtendedState(MAXIMIZED_BOTH); //Para abrir maximizado
-//        jTable1.getColumnModel().getColumn(1).setPreferredWidth(630); //Modificando o tamanho da coluna da citação.
-//        jTable1.getColumnModel().getColumn(2).setPreferredWidth(300); //Modificando o tamanho da coluna do livro.
-//        jTable1.getColumnModel().getColumn(3).setPreferredWidth(35); //Modificando o tamanho da coluna página.
+        jTextField3.setText(Long.toString(this.quoteCount));
+        //this.setExtendedState(MAXIMIZED_BOTH); // Para abrir maximizado
+//        jTable1.getColumnModel().getColumn(1).setPreferredWidth(630); // Modificando o tamanho da coluna da citação
+//        jTable1.getColumnModel().getColumn(2).setPreferredWidth(300); // Modificando o tamanho da coluna do livro
+//        jTable1.getColumnModel().getColumn(3).setPreferredWidth(35); // Modificando o tamanho da coluna página
     }
 
     private VJFrameMain() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose Tools | Templates
     }
 
     /**
@@ -410,7 +411,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        System.exit(0); //Fecha o software
+        System.exit(0); // Fecha o software
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -429,10 +430,12 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel(); //Pegando o modelo da tabela (Quantidade de Linhas, Colunas etc).
-        tableModel.setRowCount(0); //Reseta a tabela, pois se não tiver essa linha, as pesquisas vão se acumulando, se repetindo.
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel(); // Pegando o modelo da tabela (Quantidade de Linhas, Colunas etc)
+        tableModel.setRowCount(0); // Reseta a tabela, pois se não tiver essa linha, as pesquisas vão se acumulando, se repetindo
         if(jRadioButton1.isSelected()) { 
             this.quoteList = CSearchQuote.searchQuoteBookName(this.user, jTextField1.getText().trim());
+            this.quoteCount = 0;
+            jTextField3.setText(Long.toString(this.quoteCount));
             for(int i = 0; i < this.quoteList.size(); i++) {
                 tableModel.addRow(new Object[]{this.quoteList.get(i).getQuote(), this.quoteList.get(i).getName(), this.quoteList.get(i).getBookPage()});
                 this.quoteCount++;
@@ -440,13 +443,14 @@ public class VJFrameMain extends javax.swing.JFrame {
             }
         } else {
             this.quoteList = CSearchQuote.searchQuote(jTextField2.getText().trim(), jTextField1.getText().trim());
+            this.quoteCount = 0;
+            jTextField3.setText(Long.toString(this.quoteCount));
             for(int i = 0; i < quoteList.size(); i++) {
                 tableModel.addRow(new Object[]{this.quoteList.get(i).getQuote(), this.quoteList.get(i).getName(), this.quoteList.get(i).getBookPage()});
                 this.quoteCount++;
                 jTextField3.setText(Long.toString(this.quoteCount));
             }
         }
-        this.quoteCount = 0;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
@@ -478,7 +482,7 @@ public class VJFrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     public void clickButton() {
-        jButton1ActionPerformed(null); //Chamando o botão de pesquisa para atualizar a jTable.
+        jButton1ActionPerformed(null); // Chamando o botão de pesquisa para atualizar a jTable 
     }
     
     private boolean confirmationButton() {
@@ -518,11 +522,11 @@ public class VJFrameMain extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Seleciona uma citação para ver ou editar!","ERRO!",JOptionPane.ERROR_MESSAGE);
         }else {
             MQuote quote = new MQuote();
-            Object qQuote = jTable1.getValueAt(selectedRow, 0); //Fixando a coluna 0 que é a citação.
+            Object qQuote = jTable1.getValueAt(selectedRow, 0); // Fixando a coluna 0 que é a citação
             quote.setQuote((String) qQuote);
-            Object qBookName = jTable1.getValueAt(selectedRow, 1); //Fixando a coluna 1 que é o nome do livro.
+            Object qBookName = jTable1.getValueAt(selectedRow, 1); // Fixando a coluna 1 que é o nome do livro
             String bookName = (String) qBookName;
-            Object qPage = jTable1.getValueAt(selectedRow, 2); //Fixando a coluna 2 que é a página do livro.
+            Object qPage = jTable1.getValueAt(selectedRow, 2); // Fixando a coluna 2 que é a página do livro
             quote.setBookPage((String) qPage);
             int idQuote = searchIdQuote(quote.getQuote());
             VJFrameSeeQuote screen = new VJFrameSeeQuote(this.user, bookName, quote, idQuote);
