@@ -5,6 +5,8 @@
 package com.bitquotes.controller;
 
 import com.bitquotes.view.VJFrameAuthentication;
+import com.bitquotes.view.VJFrameAddUserFirstAccess;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,8 +15,19 @@ import com.bitquotes.view.VJFrameAuthentication;
 public class CMain {
     
     public static void main(String[] args) {
-        VJFrameAuthentication screen = new VJFrameAuthentication();
-        screen.setVisible(true);
+        ArrayList<String> userList= new ArrayList<String>();
+        userList = CRecoverUser.cRecoverUser();
+        boolean verification = false;
+        for (int i = 0; i < userList.size(); i++) {
+           verification = true;
+        }
+        if (verification) {
+            VJFrameAuthentication screen = new VJFrameAuthentication();
+            screen.setVisible(true);
+        } else if (!verification) {
+            VJFrameAddUserFirstAccess screenAddUser = new VJFrameAddUserFirstAccess();
+            screenAddUser.setVisible(true);
+        }
     }
     
 }

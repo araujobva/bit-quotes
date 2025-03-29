@@ -13,21 +13,18 @@ import javax.swing.JOptionPane;
  *
  * @author bruno
  */
-public class VJFrameAddUser extends javax.swing.JFrame {
+public class VJFrameAddUserFirstAccess extends javax.swing.JFrame {
     
-    private String user;
-
     /**
      * Creates new form VJFrameAddUser
      */
-    public VJFrameAddUser() {
-        initComponents();
-    }
+//    public VJFrameAddUserFirstAccess() {
+//        initComponents();
+//    }
     
-    public VJFrameAddUser(String user) {
+    public VJFrameAddUserFirstAccess() {
         initComponents();
         setLocationRelativeTo(null);
-        this.user = user;
     }
 
     /**
@@ -49,6 +46,8 @@ public class VJFrameAddUser extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Adiciona Usuário");
@@ -92,7 +91,7 @@ public class VJFrameAddUser extends javax.swing.JFrame {
         jLabel3.setText("Repita a senha:");
 
         jComboBox1.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Administrador", "Comum" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -178,6 +177,11 @@ public class VJFrameAddUser extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
+        jLabel5.setText("Para o primeiro acesso, adicione um usuário");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/add.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -192,11 +196,21 @@ public class VJFrameAddUser extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -221,8 +235,6 @@ public class VJFrameAddUser extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         dispose();
-        VJFrameUserManagerADM screen = new VJFrameUserManagerADM(this.user);
-        screen.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -236,29 +248,20 @@ public class VJFrameAddUser extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha o nome do usuário!", "ERRO!", JOptionPane.ERROR_MESSAGE);
         } else if (!password01.equals(password02)) {
             JOptionPane.showMessageDialog(null, "As senhas são diferentes!", "ERRO!", JOptionPane.ERROR_MESSAGE);
-        } else if (index == 0) {
-            JOptionPane.showMessageDialog(null, "Defina o tipo de usuário!", "ERRO!", JOptionPane.ERROR_MESSAGE);
-        } else if (index == 1) {
+        } else {
             user.setAdministrator(true);
             boolean verification = CAddUser.cAddUser(user);
             if (verification) {
                 jTextField1.setText(null);
                 jPasswordField1.setText(null);
                 jPasswordField2.setText(null);
-                jComboBox1.setSelectedIndex(0);
                 JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } else if (index == 2) {
-            user.setAdministrator(false);
-            boolean verification = CAddUser.cAddUser(user);
-            if (verification) {
-                jTextField1.setText(null);
-                jPasswordField1.setText(null);
-                jPasswordField2.setText(null);
-                jComboBox1.setSelectedIndex(0);
-                JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+                VJFrameAuthentication frame = new VJFrameAuthentication();
+                frame.setVisible(true);
             }
         }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -336,20 +339,21 @@ public class VJFrameAddUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VJFrameAddUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VJFrameAddUserFirstAccess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VJFrameAddUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VJFrameAddUserFirstAccess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VJFrameAddUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VJFrameAddUserFirstAccess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VJFrameAddUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VJFrameAddUserFirstAccess.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VJFrameAddUser().setVisible(true);
+                new VJFrameAddUserFirstAccess().setVisible(true);
             }
         });
     }
@@ -362,6 +366,8 @@ public class VJFrameAddUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
