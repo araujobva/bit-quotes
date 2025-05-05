@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Bit Quotes - BETA
+Type=Application
+Exec=java -jar "/home/bruno/applications/Bit Quotes - BETA/BitQuotes.jar"
+Icon=/home/bruno/applications/Bit Quotes - BETA/icon.png
+Terminal=false
+StartupWMClass=BitQuotes
+Path=/home/bruno/applications/Bit Quotes - BETA
+
+
+
+
