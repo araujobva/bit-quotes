@@ -19,8 +19,8 @@ public class VJFrameBackUp {
 
     public void vJFrameBackUp() {
         JFileChooser fileChooser = new JFileChooser();
-        // Define o filtro para permitir apenas arquivos com a extensão desejada (exemplo: ".db")
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivos de Banco de Dados (*.db)", "db");
+        // Define o filtro para permitir apenas arquivos com a extensão desejada (exemplo: ".db")
         fileChooser.setFileFilter(filter);
         Dimension dimension = new Dimension(800, 600);
         fileChooser.setPreferredSize(dimension);
@@ -39,8 +39,8 @@ public class VJFrameBackUp {
     
     public void vJFrameRecoverBackUp() {
         JFileChooser fileChooser = new JFileChooser();
-        // Define o filtro para mostrar apenas arquivos .db
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivos de Banco de Dados (*.db)", "db");
+        // Define o filtro para mostrar apenas arquivos .db
         fileChooser.setFileFilter(filter);
         Dimension dimension = new Dimension(800, 600);
         fileChooser.setPreferredSize(dimension);
