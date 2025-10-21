@@ -12,7 +12,7 @@ import java.io.*;
  */
 public class CBackUpSQLite {
 
-    private String databasePath = System.getProperty("user.home") + "/Bit Quotes - BETA/bitQuoteDatabase.db";
+    private String databasePath = System.getProperty("user.home") + "/Applications/Bit Quotes - BETA/bitQuoteDatabase.db";
 
     public boolean backUp(String backupFilePath) {
         String backupFile = backupFilePath + ".db";
@@ -53,7 +53,7 @@ public class CBackUpSQLite {
     }
 
     public boolean restoreBackup(String backupFilePath) {
-        String restorePath = System.getProperty("user.home") + "/Bit Quotes - BETA/bitQuoteDatabase.db";
+        String restorePath = System.getProperty("user.home") + "/Applications/Bit Quotes - BETA/bitQuoteDatabase.db";
         String command = "cp \"" + backupFilePath + "\" \"" + restorePath + "\"";
 
         try {
