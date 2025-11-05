@@ -12,7 +12,7 @@ import java.io.*;
  */
 public class CBackUpSQLite {
 
-    private String databasePath = System.getProperty("user.home") + "/Applications/Bit Quotes - BETA/bitQuoteDatabase.db";
+    private String databasePath = System.getProperty("user.home") + "/applications/Bit Quotes - BETA/bitQuoteDatabase.db";
 
     public boolean backUp(String backupFilePath) {
         String backupFile = backupFilePath + ".db";
