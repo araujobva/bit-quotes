@@ -53,7 +53,7 @@ public class CBackUpSQLite {
     }
 
     public boolean restoreBackup(String backupFilePath) {
-        String restorePath = System.getProperty("user.home") + "/Applications/Bit Quotes - BETA/bitQuoteDatabase.db";
+        String restorePath = System.getProperty("user.home") + "/applications/Bit Quotes - BETA/bitQuoteDatabase.db";
         String command = "cp \"" + backupFilePath + "\" \"" + restorePath + "\"";
 
         try {
