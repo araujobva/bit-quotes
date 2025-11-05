@@ -66,14 +66,26 @@ public class SUpdate {
     public static boolean userUpdate(MUser user, String oldUser) {
         try {
             Connection con = JConnectionFactorySQLite.getConnection();
-            String query = "UPDATE user SET us_name = ?, us_password = ?, us_administrator = ? WHERE us_name = ?";
-            PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setString(1, user.getName());
-            stmt.setString(2, user.getPassword());
-            stmt.setBoolean(3, user.getAdministrator());
-            stmt.setString(4, oldUser);
-            stmt.executeUpdate();
-            stmt.close(); // Fechando o PrepareStatement
+            String queryUser = "UPDATE user SET us_name = ?, us_password = ?, us_administrator = ? WHERE us_name = ?";
+            PreparedStatement stmtUser = con.prepareStatement(queryUser);
+            stmtUser.setString(1, user.getName());
+            stmtUser.setString(2, user.getPassword());
+            stmtUser.setBoolean(3, user.getAdministrator());
+            stmtUser.setString(4, oldUser);
+            stmtUser.executeUpdate();
+            String queryBook = "UPDATE book SET us_us_name = ? WHERE us_us_name = ?";
+            PreparedStatement stmtBook = con.prepareStatement(queryBook);
+            stmtBook.setString(1, user.getName());
+            stmtBook.setString(2, oldUser);
+            stmtBook.executeUpdate();
+            String queryQuote = "UPDATE quote SET us_name = ? WHERE us_name = ?";
+            PreparedStatement stmtQuote = con.prepareStatement(queryQuote);
+            stmtQuote.setString(1, user.getName());
+            stmtQuote.setString(2, oldUser);
+            stmtQuote.executeUpdate();
+            stmtUser.close(); // Fechando o PrepareStatement
+            stmtBook.close();
+            stmtQuote.close();
             con.close(); // Fechando a conexão          
             return true;  
         } catch (Exception ex) {
