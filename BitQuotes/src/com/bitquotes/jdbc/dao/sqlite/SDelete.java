@@ -56,11 +56,16 @@ public class SDelete {
     public static boolean deleteUser(String user) {
         try {
             Connection con = JConnectionFactorySQLite.getConnection();
-            String query = "DELETE FROM user WHERE us_name = ?"; 
-            PreparedStatement stmt = con.prepareStatement(query);
-            stmt.setString(1, user);
-            stmt.executeUpdate();
-            stmt.close();
+            String query1 = "DELETE FROM user WHERE us_name = ?"; 
+            String query2 = "DELETE FROM quote WHERE us_name = ?";
+            PreparedStatement stmt1 = con.prepareStatement(query1);
+            stmt1.setString(1, user);
+            stmt1.executeUpdate();
+            stmt1.close();
+            PreparedStatement stmt2 = con.prepareStatement(query2);
+            stmt2.setString(1, user);
+            stmt2.executeUpdate();
+            stmt2.close();
             con.close();
             return true;            
         } catch (SQLException ex) {
