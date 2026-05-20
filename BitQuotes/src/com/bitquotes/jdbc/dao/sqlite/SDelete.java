@@ -58,6 +58,7 @@ public class SDelete {
             Connection con = JConnectionFactorySQLite.getConnection();
             String query1 = "DELETE FROM user WHERE us_name = ?"; 
             String query2 = "DELETE FROM quote WHERE us_name = ?";
+            String query3 = "DELETE FROM book WHERE us_us_name = ?";
             PreparedStatement stmt1 = con.prepareStatement(query1);
             stmt1.setString(1, user);
             stmt1.executeUpdate();
@@ -66,6 +67,10 @@ public class SDelete {
             stmt2.setString(1, user);
             stmt2.executeUpdate();
             stmt2.close();
+            PreparedStatement stmt3 = con.prepareStatement(query3);
+            stmt3.setString(1, user);
+            stmt3.executeUpdate();
+            stmt3.close();
             con.close();
             return true;            
         } catch (SQLException ex) {
