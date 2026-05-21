@@ -178,7 +178,7 @@ public class VJFrameAddUserFirstAccess extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
-        jLabel5.setText("Para o primeiro acesso, adicione um usuário");
+        jLabel5.setText("Para começar, adicione um usuário!");
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/bitquotes/img/add.png"))); // NOI18N
 
@@ -197,7 +197,7 @@ public class VJFrameAddUserFirstAccess extends javax.swing.JFrame {
                         .addComponent(jButton1)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(103, 103, 103)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
