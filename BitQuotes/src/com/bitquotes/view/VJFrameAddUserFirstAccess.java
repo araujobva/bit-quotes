@@ -256,6 +256,7 @@ public class VJFrameAddUserFirstAccess extends javax.swing.JFrame {
                 jPasswordField1.setText(null);
                 jPasswordField2.setText(null);
                 JOptionPane.showMessageDialog(null, "Usuário adicionado com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "IMPORTANTE: Esse usuário nunca poderá ser excluído.\nEle será o administrador padrão do sistema.", "IMPORTANTE!", JOptionPane.INFORMATION_MESSAGE);
                 dispose();
                 VJFrameAuthentication frame = new VJFrameAuthentication();
                 frame.setVisible(true);
