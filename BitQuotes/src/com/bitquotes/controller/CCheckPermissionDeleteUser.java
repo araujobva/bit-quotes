@@ -8,7 +8,7 @@ import com.bitquotes.jdbc.dao.sqlite.SSelect;
 
 /**
  *
- * @author wolf
+ * @author bruno
  */
 public class CCheckPermissionDeleteUser {
     
