@@ -73,6 +73,25 @@ public class SInsert {
             return false;
         }
     }
+    
+        public static boolean addUserFirstAccess(MUser user) {
+        try {
+            Connection con = JConnectionFactorySQLite.getConnection();
+            String query = "INSERT INTO user (us_name, us_password, us_administrator, us_permission_to_delete_user) VALUES (?, ?, ?, ?)";
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getPassword());
+            stmt.setBoolean(3, user.getAdministrator());
+            stmt.setBoolean(4, false);
+            stmt.executeUpdate();
+            con.close();
+            stmt.close();
+            return true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao adicionar um novo usuário!\nESSE USUÁRIO JÁ EXISTE!","ERRO!", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
 
 }
 

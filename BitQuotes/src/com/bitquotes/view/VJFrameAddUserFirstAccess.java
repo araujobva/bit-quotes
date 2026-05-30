@@ -4,7 +4,7 @@
  */
 package com.bitquotes.view;
 
-import com.bitquotes.controller.CAddUser;
+import com.bitquotes.controller.CAddUserFirstAccess;
 import com.bitquotes.model.MUser;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -250,7 +250,7 @@ public class VJFrameAddUserFirstAccess extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "As senhas são diferentes!", "ERRO!", JOptionPane.ERROR_MESSAGE);
         } else {
             user.setAdministrator(true);
-            boolean verification = CAddUser.cAddUser(user);
+            boolean verification = CAddUserFirstAccess.cAddUserFirstAccess(user);
             if (verification) {
                 jTextField1.setText(null);
                 jPasswordField1.setText(null);
