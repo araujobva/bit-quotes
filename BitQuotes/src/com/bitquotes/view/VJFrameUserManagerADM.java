@@ -7,6 +7,7 @@ package com.bitquotes.view;
 import java.util.ArrayList;
 import com.bitquotes.controller.CRecoverUser;
 import com.bitquotes.controller.CRemoveUser;
+import com.bitquotes.controller.CCheckPermissionDeleteUser;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -327,18 +328,21 @@ public class VJFrameUserManagerADM extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String user = jComboBox1.getSelectedItem().toString();
         boolean confirmationDelete = confirmationButton();
-        if (confirmationDelete) {
-            boolean verification = CRemoveUser.cRemoveUser(user);
-            if (verification) {
-                if (user.equals(this.user)) {
-                    JOptionPane.showMessageDialog(null, "Usúario excluído com sucesso!\nNOTA: O programa será fechado!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
-                    System.exit(0);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Usúario excluído com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
-                    comboBox();
+        boolean check = CCheckPermissionDeleteUser.checkPermissionDeleteUser(user);
+        if (check) {
+            if (confirmationDelete) {
+                boolean verification = CRemoveUser.cRemoveUser(user);
+                if (verification) {
+                    if (user.equals(this.user)) {
+                        JOptionPane.showMessageDialog(null, "Usúario excluído com sucesso!\nNOTA: O programa será fechado!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                        System.exit(0);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Usúario excluído com sucesso!", "SUCESSO!", JOptionPane.INFORMATION_MESSAGE);
+                        comboBox();
+                    }
                 }
             }
-        }    
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private boolean confirmationButton() {

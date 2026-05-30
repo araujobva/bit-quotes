@@ -267,4 +267,25 @@ public class SSelect {
         return false;
     }
         
+        // Verifica se o usuário pode ser excluído, pois o primeiro usuários inserido no sistema não pode ser excluído, ele é o administrador padrão do sistema
+        public static boolean checkPermissionDeleteUser(String user) {
+            try{
+                Connection con = JConnectionFactorySQLite.getConnection();
+                String query = "SELECT us_permission_to_delete_user FROM user WHERE user = ?";
+                PreparedStatement stmt;
+                stmt = con.prepareStatement(query);
+                stmt.setString(1, user);
+                ResultSet rs = stmt.executeQuery();
+                rs.next();
+                boolean adm = rs.getBoolean("us_permission_to_delete_user");
+                con.close();
+                stmt.close();
+                rs.close();
+                return adm;
+            } catch(SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Esse foi o primeiro usuário a ser adicionado no sistema, e não pode ser excluído!\n"+ex, "ERRO!",JOptionPane.ERROR_MESSAGE);
+            }
+            return false;
+        }
+        
 }
